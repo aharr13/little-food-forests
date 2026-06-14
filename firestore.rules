@@ -2,41 +2,64 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Default: deny everything not explicitly allowed
+    // ---- Helpers -------------------------------------------------------
+    function isSignedIn() {
+      return request.auth != null;
+    }
+    // Admin = the wiki/plant-database maintainer. UID is found in
+    // Firebase Console → Authentication → Users (aharr13@gmail.com).
+    function isAdmin() {
+      return isSignedIn()
+        && request.auth.uid == 'AzE3BYGCbefVle0FmKm6MFt961x2';
+    }
+    // A user "owns" a document if its userId field matches their auth uid.
+    function ownsExisting() {
+      return isSignedIn() && request.auth.uid == resource.data.userId;
+    }
+    function ownsIncoming() {
+      return isSignedIn() && request.auth.uid == request.resource.data.userId;
+    }
+
+    // ---- Default: deny everything not explicitly allowed ---------------
     match /{document=**} {
       allow read, write: if false;
     }
 
-    // Projects — users can only access their own
+    // ---- Per-user data (owner-only) ------------------------------------
+    // Each document carries a userId field; only its owner may touch it.
     match /projects/{projectId} {
-      allow read, update, delete: if request.auth != null
-        && request.auth.uid == resource.data.userId;
-      allow create: if request.auth != null
-        && request.auth.uid == request.resource.data.userId;
+      allow read, update, delete: if ownsExisting();
+      allow create: if ownsIncoming();
     }
 
-    // Planting tasks — userId stored on each document, queried by userId
     match /tasks/{taskId} {
-      allow read, update, delete: if request.auth != null
-        && request.auth.uid == resource.data.userId;
-      allow create: if request.auth != null
-        && request.auth.uid == request.resource.data.userId;
+      allow read, update, delete: if ownsExisting();
+      allow create: if ownsIncoming();
     }
 
-    // Recurring care items — same pattern as tasks
     match /careItems/{itemId} {
-      allow read, update, delete: if request.auth != null
-        && request.auth.uid == resource.data.userId;
-      allow create: if request.auth != null
-        && request.auth.uid == request.resource.data.userId;
+      allow read, update, delete: if ownsExisting();
+      allow create: if ownsIncoming();
     }
 
-    // Wiki articles — any authenticated user can read; writes are admin-only
-    // To grant admin write access, add specific UIDs to the condition below
-    match /wikiArticles/{articleId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null
-        && request.auth.uid == 'AzE3BYGCbefVle0FmKm6MFt961x2'; // find this in Firebase Console → Authentication → Users
+    match /photoReminders/{reminderId} {
+      allow read, update, delete: if ownsExisting();
+      allow create: if ownsIncoming();
+    }
+
+    // ---- Shared, read-only catalogs (admin-curated) --------------------
+    // Any signed-in user can read; only the admin can modify.
+    // NOTE: the Node seed scripts in src/components/Canvas/scripts use the
+    // client SDK unauthenticated, so they cannot write under these rules.
+    // Re-seed via the Firebase Admin SDK, or temporarily relax `write`.
+    match /plants/{plantId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /wiki/{articleId} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
     }
   }
 }
