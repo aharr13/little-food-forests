@@ -1,0 +1,4767 @@
+[
+  {
+    "commonName": "Agarita",
+    "scientificName": "Mahonia trifoliolata",
+    "description": "Evergreen with edible red berries for jams. Extremely drought-tolerant. Spiny leaves deter browsing.",
+    "layerTypes": [
+      "shrub"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "low",
+    "matureHeight": 6,
+    "matureSpread": 5,
+    "edible": true,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Agarita",
+    "scientificName": "Mahonia trifoliata",
+    "description": "Native Texas shrub with tart berries. First spring blooms for pollinators.",
+    "layerTypes": [
+      "shrub"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "low",
+    "matureHeight": 6,
+    "matureSpread": 5,
+    "edible": true,
+    "nativeToTexas": true
+  },
+  {
+    "commonName": "Amaranth",
+    "scientificName": "Amaranthus spp.",
+    "description": "Ancient grain and leafy green thriving in Texas heat. Leaves are edible raw or cooked (similar to spinach). Seeds are a protein-rich grain. Self-seeds prolifically. Heat and drought tolerant. Excellent bee forage. Use as a chop-and-drop mulch producer once seed is set.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "dynamic-accumulator",
+      "mulch-producer",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 6,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas",
+      "south-texas",
+      "west-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "American Beautyberry",
+    "scientificName": "Callicarpa americana",
+    "description": "Native shrub with striking purple berries. Natural insect repellent.",
+    "layerTypes": [
+      "shrub"
+    ],
+    "guildFunctions": [
+      "pest-confuser",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 6,
+    "matureSpread": 6,
+    "edible": true,
+    "nativeToTexas": true
+  },
+  {
+    "commonName": "Anise Hyssop",
+    "scientificName": "Agastache foeniculum",
+    "description": "Premier bee forage plant — rated among the top plants for honey bee and butterfly attraction. Fragrant leaves used as herb. Self-seeds freely. Short-lived perennial (2-3 years) but perpetuates by self-seeding. Excellent insectary under fruit trees. Blooms July–September when other summer flowers are fading.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "4a",
+      "4b",
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 4,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Apple",
+    "scientificName": "Malus domestica",
+    "description": "Requires careful variety selection for Texas. Choose low-chill varieties (Anna, Dorsett Golden, Ein Shemer) for Central/South Texas. Higher-chill varieties work in North Texas Hill Country. Plant two varieties for cross-pollination.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 20,
+    "matureSpread": 20,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "north-texas",
+      "hill-country",
+      "central-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Arugula",
+    "scientificName": "Eruca vesicaria",
+    "description": "Fast-growing cool-season green — 30-40 days from seed to harvest. Excellent bee forage when allowed to flower (white flowers attract beneficials). Self-seeds prolifically under fruit trees for a perpetual groundcover of edible greens in fall and spring. Bolts in heat — treat as seasonal groundcover.",
+    "layerTypes": [
+      "herbaceous",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 1,
+    "matureSpread": 1,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Asian Jasmine",
+    "scientificName": "Trachelospermum asiaticum",
+    "description": "Evergreen groundcover forming dense mat. Tolerates deep shade. Low maintenance once established.",
+    "layerTypes": [
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 0.5,
+    "matureSpread": 4,
+    "edible": false,
+    "nativeToTexas": false,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Asian Pear",
+    "scientificName": "Pyrus pyrifolia",
+    "description": "Lower chill-hour requirement than European pears. Crisp, apple-textured fruit. Very disease resistant. Excellent choice for Central Texas where European pears struggle. Self-fruitful varieties available.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 20,
+    "matureSpread": 15,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Asparagus",
+    "scientificName": "Asparagus officinalis",
+    "description": "Long-lived perennial vegetable producing edible spears each spring for 20+ years. Ferny summer fronds add texture and drop as mulch. Deep roots mine nutrients from subsoil.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "dynamic-accumulator",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "4a",
+      "4b",
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 5,
+    "matureSpread": 3,
+    "edible": true,
+    "nativeToTexas": false,
+    "toxicityWarning": "Red berries are toxic — harvest spears only"
+  },
+  {
+    "commonName": "Autumn Sage",
+    "scientificName": "Salvia greggii",
+    "description": "Native perennial with red tubular flowers. Hummingbird favorite. Blooms spring to fall. Extremely drought-tolerant.",
+    "layerTypes": [
+      "herbaceous",
+      "shrub"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 3,
+    "matureSpread": 3,
+    "edible": false,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "south-texas",
+      "west-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Autumn Sage Furman's Red",
+    "scientificName": "Salvia greggii 'Furman's Red'",
+    "description": "The most popular cultivar of Texas native Autumn Sage — brilliant cherry-red flowers nearly year-round in mild winters. More floriferous and compact than the species. Rated one of the top hummingbird plants in Texas. Extremely drought-tolerant and heat-hardy. Deer resistant. Cut back hard in late winter for dense regrowth. Excellent front-of-border or groundcover companion in a food forest guild.",
+    "layerTypes": [
+      "herbaceous",
+      "shrub"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 3,
+    "matureSpread": 3,
+    "edible": false,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "hill-country",
+      "west-texas",
+      "south-texas",
+      "north-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Avocado",
+    "scientificName": "Persea americana",
+    "description": "Hardy Mexican varieties (Fantastic, Lula, Mexicola) survive to 22°F. Best suited for Zone 9b+ in Texas. Needs excellent drainage. Large productive canopy tree when established. Plant two trees (one Type A and one Type B) for best fruit set. Very rewarding in South Texas and Gulf Coast.",
+    "layerTypes": [
+      "canopy",
+      "understory"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "9b",
+      "10a",
+      "10b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 30,
+    "matureSpread": 25,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "south-texas",
+      "gulf-coast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Bald Cypress",
+    "scientificName": "Taxodium distichum",
+    "description": "Majestic native deciduous conifer. Tolerates wet feet and drought once established. Excellent shade and windbreak.",
+    "layerTypes": [
+      "canopy"
+    ],
+    "guildFunctions": [
+      "dynamic-accumulator"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 60,
+    "matureSpread": 30,
+    "edible": false,
+    "nativeToTexas": true
+  },
+  {
+    "commonName": "Banana",
+    "scientificName": "Musa spp.",
+    "description": "Grows vigorously in Texas Zones 8b+. Dies back to ground below 28°F but regrows from rhizomes. Produces suckers that create dense clumps — perfect for windbreak and microclimate creation. Fruit production requires consistently warm winters (reliable in zones 9+).",
+    "layerTypes": [
+      "understory",
+      "shrub"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "8b",
+      "9a",
+      "9b",
+      "10a",
+      "10b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "high",
+    "matureHeight": 15,
+    "matureSpread": 8,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "south-texas",
+      "gulf-coast",
+      "central-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Bean",
+    "scientificName": "Phaseolus vulgaris",
+    "description": "Nitrogen-fixing legume. Bush or pole varieties. Plant spring and fall in Texas. Improves soil while producing food.",
+    "layerTypes": [
+      "herbaceous",
+      "vine"
+    ],
+    "guildFunctions": [
+      "nitrogen-fixer",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 6,
+    "matureSpread": 1,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": "Raw beans contain toxins. Must be cooked thoroughly."
+  },
+  {
+    "commonName": "Black Walnut",
+    "scientificName": "Juglans nigra",
+    "description": "Valuable nut tree with allelopathic roots. Plant guild members that tolerate juglone.",
+    "layerTypes": [
+      "canopy"
+    ],
+    "guildFunctions": [
+      "dynamic-accumulator"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 60,
+    "matureSpread": 35,
+    "edible": true,
+    "nativeToTexas": true
+  },
+  {
+    "commonName": "Black-Eyed Susan",
+    "scientificName": "Rudbeckia hirta",
+    "description": "Native wildflower with bright yellow petals. Blooms summer to fall. Self-seeds. Essential pollinator plant.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 2,
+    "matureSpread": 1.5,
+    "edible": false,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "east-texas",
+      "midwest",
+      "northeast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Blackberry",
+    "scientificName": "Rubus spp.",
+    "description": "Thorny berry producer. Prime Ark Freedom is thornless and productive in Texas.",
+    "layerTypes": [
+      "shrub"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 5,
+    "matureSpread": 4,
+    "edible": true,
+    "nativeToTexas": true
+  },
+  {
+    "commonName": "Blueberry",
+    "scientificName": "Vaccinium corymbosum",
+    "description": "Requires acidic soil (pH 4.5–5.5) — a challenge in alkaline Central Texas but doable with raised beds and soil acidification. Rabbiteye varieties (Tifblue, Brightwell) perform best in Texas. Highbush varieties need more chill hours. Plant 2+ varieties for cross-pollination.",
+    "layerTypes": [
+      "shrub"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 6,
+    "matureSpread": 5,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "east-texas",
+      "central-texas",
+      "north-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Bluebonnet",
+    "scientificName": "Lupinus texensis",
+    "description": "Texas state flower. Nitrogen-fixing legume. Blue spikes in spring. Self-seeds. Must-have for Texas gardens.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "nitrogen-fixer",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 1,
+    "matureSpread": 1,
+    "edible": false,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "hill-country",
+      "north-texas"
+    ],
+    "toxicityWarning": "All parts toxic if ingested in large quantities."
+  },
+  {
+    "commonName": "Borage",
+    "scientificName": "Borago officinalis",
+    "description": "One of the best insectary plants for the food forest. Blue star-shaped flowers bloom prolifically and attract bees continuously. Dynamic accumulator (high in potassium, calcium, silicon). Excellent companion for tomatoes and strawberries. Self-seeds aggressively — treat as a welcome volunteer.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "dynamic-accumulator"
+    ],
+    "hardinessZones": [
+      "4a",
+      "4b",
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 3,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas",
+      "south-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Calendula",
+    "scientificName": "Calendula officinalis",
+    "description": "Bright orange flowers for skin healing. Edible petals. Self-seeds. Blooms cool season in Texas.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "2a",
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 1.5,
+    "matureSpread": 1,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Carolina Jessamine",
+    "scientificName": "Gelsemium sempervirens",
+    "description": "Evergreen vine with fragrant yellow flowers in spring. Fast-growing. All parts toxic but beautiful ornamental.",
+    "layerTypes": [
+      "vine"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 20,
+    "matureSpread": 6,
+    "edible": false,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Carrot",
+    "scientificName": "Daucus carota",
+    "description": "Cool-season root vegetable. Plant fall in Texas. Needs loose, deep soil. Harvest when shoulders push up above soil.",
+    "layerTypes": [
+      "rhizosphere"
+    ],
+    "guildFunctions": [
+      "dynamic-accumulator"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 1,
+    "matureSpread": 0.5,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Catalpa",
+    "scientificName": "Catalpa speciosa",
+    "description": "Large heart-shaped leaves provide dense shade. White orchid-like flowers. Long bean pods. Fast-growing shade tree.",
+    "layerTypes": [
+      "canopy"
+    ],
+    "guildFunctions": [
+      "mulch-producer",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 50,
+    "matureSpread": 40,
+    "edible": false,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "midwest",
+      "southeast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Cedar Elm",
+    "scientificName": "Ulmus crassifolia",
+    "description": "Drought-tolerant deciduous shade tree. Drops leaves late fall providing mulch. Excellent for hot, dry sites.",
+    "layerTypes": [
+      "canopy"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 40,
+    "matureSpread": 35,
+    "edible": false,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Chamomile",
+    "scientificName": "Matricaria chamomilla",
+    "description": "German chamomile — excellent insectary plant whose flowers attract beneficial insects. Called 'the physician of the garden' for its beneficial effects on neighboring plants. Cool-season annual in Texas; plant fall through spring. Self-seeds profusely. Use as companion near brassicas, onions, and fruit trees.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "3a",
+      "3b",
+      "4a",
+      "4b",
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 2,
+    "matureSpread": 1,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Chaya",
+    "scientificName": "Cnidoscolus aconitifolius",
+    "description": "Tree spinach — one of the most productive perennial vegetables for Texas. Leaves must be cooked (boiled 5+ min) before eating to neutralize HCN — cooked greens taste like spinach. Grows 6–12ft, extremely drought-tolerant once established, produces leaves year-round in warm climates. Spreads via cuttings.",
+    "layerTypes": [
+      "shrub"
+    ],
+    "guildFunctions": [
+      "dynamic-accumulator",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "8b",
+      "9a",
+      "9b",
+      "10a",
+      "10b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 10,
+    "matureSpread": 6,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "south-texas",
+      "central-texas",
+      "gulf-coast"
+    ],
+    "toxicityWarning": "Raw leaves are toxic — must be boiled for 5+ minutes before eating"
+  },
+  {
+    "commonName": "Chinaberry",
+    "scientificName": "Melia azedarach",
+    "description": "Fast-growing shade tree with fragrant purple flowers. Naturalized in Texas. Provides quick shade but can be invasive. Birds spread seeds.",
+    "layerTypes": [
+      "canopy"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 40,
+    "matureSpread": 30,
+    "edible": false,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "south-texas",
+      "southeast"
+    ],
+    "toxicityWarning": "All parts highly toxic to humans and livestock. Berries can be fatal if eaten."
+  },
+  {
+    "commonName": "Chinkapin Oak",
+    "scientificName": "Quercus muehlenbergii",
+    "description": "Smaller oak with sweet acorns edible for humans and wildlife. Alkaline soil tolerant. Fast-growing for an oak.",
+    "layerTypes": [
+      "canopy"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 50,
+    "matureSpread": 40,
+    "edible": true,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Chives",
+    "scientificName": "Allium schoenoprasum",
+    "description": "Perennial allium that returns reliably every year in Texas. Purple ball-shaped flowers are excellent bee forage. Pest-confusing aroma deters aphids and carrot fly. Excellent border plant and groundcover companion under fruit trees. Divide clumps every 2-3 years. Extremely low-maintenance.",
+    "layerTypes": [
+      "herbaceous",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "pest-confuser",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "3a",
+      "3b",
+      "4a",
+      "4b",
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 1,
+    "matureSpread": 1,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Cilantro",
+    "scientificName": "Coriandrum sativum",
+    "description": "Cool-season herb for fall and spring in Texas (bolts in summer heat). Excellent pest-confuser and insectary plant — flowers attract predatory wasps. Let it bolt and set seed; the seeds (coriander) are also edible. Self-seeds reliably. Plant densely under taller summer plants for succession.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 2,
+    "matureSpread": 1,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas",
+      "south-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Collard Greens",
+    "scientificName": "Brassica oleracea var. viridis",
+    "description": "Southern staple that is among the most productive cool-season greens for Texas. Extremely cold-hardy (survives hard freezes). Plant in fall for winter production. Works under fruit trees in partial shade during summer. Can grow as perennial in Zones 9+ with careful management. Bee flowers if allowed to bolt.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 3,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "east-texas",
+      "south-texas",
+      "north-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Comfrey",
+    "scientificName": "Symphytum officinale",
+    "description": "Dynamic accumulator mining deep nutrients. Leaves make excellent mulch and compost activator. Purple flowers for pollinators.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "dynamic-accumulator",
+      "mulch-producer",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 3,
+    "matureSpread": 2,
+    "edible": false,
+    "nativeToTexas": false,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Coral Honeysuckle",
+    "scientificName": "Lonicera sempervirens",
+    "description": "Native vine with tubular red flowers loved by hummingbirds. Non-invasive. Evergreen in mild winters.",
+    "layerTypes": [
+      "vine"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 15,
+    "matureSpread": 3,
+    "edible": false,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Corn",
+    "scientificName": "Zea mays",
+    "description": "Annual grain crop that thrives in Texas summers. Plant in blocks (not rows) for pollination. A quick-win annual that produces in 70-90 days. Works as a trellis for beans (Three Sisters guild).",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 8,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "east-texas",
+      "south-texas",
+      "north-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Cowpea (Southern Pea)",
+    "scientificName": "Vigna unguiculata",
+    "description": "Heat-loving annual nitrogen fixer that thrives in Texas summers when other legumes fail. Fixes significant nitrogen while producing edible peas. Fast-growing, drought-tolerant, and improves soil for subsequent plantings. Varieties: Black-Eyed Pea, Crowder Pea, Purple Hull. Plant spring and fall.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "nitrogen-fixer",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 3,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "east-texas",
+      "south-texas",
+      "north-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Creeping Thyme",
+    "scientificName": "Thymus serpyllum",
+    "description": "Low-growing aromatic groundcover. Edible leaves, pink flowers attract bees. Tolerates light foot traffic.",
+    "layerTypes": [
+      "groundcover",
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 0.25,
+    "matureSpread": 1,
+    "edible": true,
+    "nativeToTexas": false,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Crepe Myrtle",
+    "scientificName": "Lagerstroemia indica",
+    "description": "Showy summer blooms in pink, purple, white, red. Beautiful exfoliating bark. Drought-tolerant once established. Multi-trunk small tree.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 20,
+    "matureSpread": 15,
+    "edible": false,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "south-texas",
+      "southeast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Cucumber",
+    "scientificName": "Cucumis sativus",
+    "description": "Vigorous vine producing prolific summer fruit. Needs trellis or support. Plant after last frost. Harvest frequently.",
+    "layerTypes": [
+      "vine",
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "high",
+    "matureHeight": 6,
+    "matureSpread": 3,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Dewberry",
+    "scientificName": "Rubus trivialis",
+    "description": "Native trailing blackberry. Sweet berries in late spring. Spreads aggressively via runners. Thorny but delicious.",
+    "layerTypes": [
+      "vine",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 2,
+    "matureSpread": 10,
+    "edible": true,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "east-texas",
+      "south-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Dill",
+    "scientificName": "Anethum graveolens",
+    "description": "Excellent insectary and pest-confuser plant. Flowers attract parasitic wasps and beneficial insects. Host plant for Black Swallowtail butterfly caterpillars. Cool-season annual in Texas — plant fall through spring. Self-seeds. Companion to brassicas and fruit trees for pest management.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 4,
+    "matureSpread": 1,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Echinacea",
+    "scientificName": "Echinacea purpurea",
+    "description": "Purple coneflower with immune-boosting medicinal properties. Excellent pollinator plant. Drought-tolerant once established.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "dynamic-accumulator"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 3,
+    "matureSpread": 1.5,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "midwest",
+      "northeast",
+      "southeast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Eggplant",
+    "scientificName": "Solanum melongena",
+    "description": "Heat-loving summer vegetable. Purple or white fruits. Needs long warm season. Excellent in Texas heat.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 3,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": "Leaves and green parts toxic. Only eat ripe fruit."
+  },
+  {
+    "commonName": "Elderberry",
+    "scientificName": "Sambucus nigra",
+    "description": "Fast-growing shrub with medicinal berries. Major pollinator magnet.",
+    "layerTypes": [
+      "shrub"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 10,
+    "matureSpread": 8,
+    "edible": true,
+    "nativeToTexas": false
+  },
+  {
+    "commonName": "Eve's Necklace",
+    "scientificName": "Styphnolobium affine",
+    "description": "Fragrant pink flowers and unique black seed pods. Nitrogen-fixing legume. Drought-tolerant once established.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "nitrogen-fixer",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 15,
+    "matureSpread": 12,
+    "edible": false,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Fennel",
+    "scientificName": "Foeniculum vulgare",
+    "description": "Host plant for swallowtail butterflies. All parts edible with anise flavor.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 4,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false
+  },
+  {
+    "commonName": "Feverfew",
+    "scientificName": "Tanacetum parthenium",
+    "description": "Traditional migraine remedy with daisy-like flowers. Self-seeds prolifically. Excellent insectary plant.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 2,
+    "matureSpread": 1.5,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "all-regions"
+    ],
+    "toxicityWarning": "Can cause mouth ulcers if chewed fresh. Avoid during pregnancy."
+  },
+  {
+    "commonName": "Fig",
+    "scientificName": "Ficus carica",
+    "description": "Mediterranean adapted tree with sweet figs twice per year. Easy to grow. Tolerates alkaline soil and heat.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 12,
+    "matureSpread": 15,
+    "edible": true,
+    "nativeToTexas": false,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Fishbone Cactus",
+    "scientificName": "Epiphyllum anguliger",
+    "description": "Epiphytic jungle cactus with zigzag leaves. White night-blooming flowers. Grows in trees or hanging baskets. Shade-loving succulent.",
+    "layerTypes": [
+      "herbaceous",
+      "vine"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "9b",
+      "10a",
+      "10b",
+      "11a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "low",
+    "matureHeight": 2,
+    "matureSpread": 3,
+    "edible": false,
+    "nativeToTexas": false,
+    "regions": [
+      "south-texas",
+      "tropical"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Flame Acanthus",
+    "scientificName": "Anisacanthus quadrifidus var. wrightii",
+    "description": "Orange tubular flowers loved by hummingbirds. Blooms spring to fall. Drought-tolerant once established.",
+    "layerTypes": [
+      "shrub"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 4,
+    "matureSpread": 3,
+    "edible": false,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Fragrant Sumac",
+    "scientificName": "Rhus aromatica",
+    "description": "Low-growing groundcover shrub. Aromatic leaves. Red berries make tart 'sumac-ade'. Beautiful fall color.",
+    "layerTypes": [
+      "shrub",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 3,
+    "matureSpread": 6,
+    "edible": true,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Frogfruit",
+    "scientificName": "Phyla nodiflora",
+    "description": "Low-growing native groundcover. White flowers loved by butterflies. Tolerates foot traffic. Great lawn substitute.",
+    "layerTypes": [
+      "herbaceous",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 0.25,
+    "matureSpread": 2,
+    "edible": false,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Garlic",
+    "scientificName": "Allium sativum",
+    "description": "Essential culinary crop. Plant in fall for spring harvest. Companion plant deters many pests. Stores well.",
+    "layerTypes": [
+      "rhizosphere"
+    ],
+    "guildFunctions": [
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 2,
+    "matureSpread": 0.5,
+    "edible": true,
+    "nativeToTexas": false,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Garlic Chives",
+    "scientificName": "Allium tuberosum",
+    "description": "Perennial allium that repels pests and attracts pollinators when blooming.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "pest-confuser",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 1.5,
+    "matureSpread": 1,
+    "edible": true,
+    "nativeToTexas": false
+  },
+  {
+    "commonName": "Ginger",
+    "scientificName": "Zingiber officinale",
+    "description": "Tropical rhizome for culinary use. Grows well in shade. Harvest after frost kills foliage. Stores fresh or dried.",
+    "layerTypes": [
+      "rhizosphere",
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "8b",
+      "9a",
+      "9b",
+      "10a",
+      "11a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "high",
+    "matureHeight": 3,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Gold Star Esperanza",
+    "scientificName": "Tecoma stans",
+    "description": "Showstopping Texas native shrub covered in trumpet-shaped yellow flowers summer through frost. Fast-growing (6-8ft in one season). Exceptional hummingbird and butterfly plant. Dies back in hard freezes but regrows powerfully from roots in spring. Tolerates poor, alkaline, rocky soils where almost nothing else thrives. One of the longest-blooming and most drought-tolerant shrubs for Texas food forests.",
+    "layerTypes": [
+      "shrub"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b",
+      "10a",
+      "10b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 8,
+    "matureSpread": 6,
+    "edible": false,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "hill-country",
+      "south-texas",
+      "west-texas",
+      "gulf-coast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Goumi",
+    "scientificName": "Elaeagnus multiflora",
+    "description": "Nitrogen-fixing shrub with tart red berries high in lycopene.",
+    "layerTypes": [
+      "shrub"
+    ],
+    "guildFunctions": [
+      "nitrogen-fixer"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 8,
+    "matureSpread": 6,
+    "edible": true,
+    "nativeToTexas": false
+  },
+  {
+    "commonName": "Ground Cherry",
+    "scientificName": "Physalis pruinosa",
+    "description": "Compact relative of tomatillo producing sweet, papery-husked fruits with vanilla-pineapple flavor. Self-seeds prolifically — plant once and harvest for years. Thrives in Texas heat. Fruits ripen when husks turn tan and fall from plant. Excellent under taller plants; handles part shade.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "4a",
+      "4b",
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 2,
+    "matureSpread": 3,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas",
+      "south-texas"
+    ],
+    "toxicityWarning": "Remove papery husk before eating; green/unripe fruits may cause digestive upset"
+  },
+  {
+    "commonName": "Gulf Muhly",
+    "scientificName": "Muhlenbergia capillaris",
+    "description": "Native grass with pink-purple plumes in fall. Clumping habit. Excellent for erosion control and wildlife.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 3,
+    "matureSpread": 3,
+    "edible": false,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Hackberry",
+    "scientificName": "Celtis laevigata",
+    "description": "Native sugarberry with small edible berries beloved by wildlife. Extremely tough and adaptable. Juveniles work well in understory, matures to canopy.",
+    "layerTypes": [
+      "canopy",
+      "understory"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "dynamic-accumulator"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 50,
+    "matureSpread": 40,
+    "edible": true,
+    "nativeToTexas": true
+  },
+  {
+    "commonName": "Hardy Kiwi",
+    "scientificName": "Actinidia arguta",
+    "description": "Vigorous vine with smooth-skinned mini kiwis. Needs male and female plants.",
+    "layerTypes": [
+      "vine"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 25,
+    "matureSpread": 15,
+    "edible": true,
+    "nativeToTexas": false
+  },
+  {
+    "commonName": "Holy Basil",
+    "scientificName": "Ocimum tenuiflorum",
+    "description": "Sacred Ayurvedic herb for stress relief. Spicy aromatic leaves. Purple flowers attract pollinators. Adapts to heat.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "9a",
+      "9b",
+      "10a",
+      "11a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 2,
+    "matureSpread": 1.5,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "south-texas",
+      "tropical"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Horseherb",
+    "scientificName": "Calyptocarpus vialis",
+    "description": "Native groundcover with tiny yellow flowers. Spreads readily in shade. Excellent living mulch and lawn alternative.",
+    "layerTypes": [
+      "herbaceous",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "mulch-producer",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "10a",
+      "11a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 0.5,
+    "matureSpread": 3,
+    "edible": false,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Horseradish",
+    "scientificName": "Armoracia rusticana",
+    "description": "Pungent root for culinary use. Very vigorous and can be invasive. Harvest roots in fall. Regrows from pieces.",
+    "layerTypes": [
+      "rhizosphere"
+    ],
+    "guildFunctions": [
+      "pest-confuser",
+      "dynamic-accumulator"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 2,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Inland Sea Oats",
+    "scientificName": "Chasmanthium latifolium",
+    "description": "Ornamental native grass with beautiful seed heads. Thrives in shade. Self-seeds to create groundcover.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 3,
+    "matureSpread": 2,
+    "edible": false,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Jerusalem Artichoke",
+    "scientificName": "Helianthus tuberosus",
+    "description": "Native sunflower producing edible tubers. Very vigorous. Yellow flowers in fall. Can be invasive.",
+    "layerTypes": [
+      "rhizosphere",
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 8,
+    "matureSpread": 4,
+    "edible": true,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Jujube",
+    "scientificName": "Ziziphus jujuba",
+    "description": "Chinese date. Extremely drought tolerant once established. Sweet apple-like fruits.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "nitrogen-fixer"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 20,
+    "matureSpread": 15,
+    "edible": true,
+    "nativeToTexas": false
+  },
+  {
+    "commonName": "Kale",
+    "scientificName": "Brassica oleracea var. acephala",
+    "description": "Hardy cool-season green surviving Texas winters. Improved flavor after frost. Lacinato and curly varieties. Very productive.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "dynamic-accumulator"
+    ],
+    "hardinessZones": [
+      "2a",
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 2,
+    "matureSpread": 1.5,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Lemon Balm",
+    "scientificName": "Melissa officinalis",
+    "description": "Calming medicinal herb with lemon-scented leaves. Makes excellent tea. Self-seeds readily. Attracts pollinators.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 2,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Lemongrass",
+    "scientificName": "Cymbopogon citratus",
+    "description": "Tall aromatic grass for culinary use. Makes excellent tea. Clumping habit, drought-tolerant once established.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "pest-confuser",
+      "dynamic-accumulator"
+    ],
+    "hardinessZones": [
+      "8b",
+      "9a",
+      "9b",
+      "10a",
+      "11a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 4,
+    "matureSpread": 3,
+    "edible": true,
+    "nativeToTexas": false,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Lettuce",
+    "scientificName": "Lactuca sativa",
+    "description": "Cool-season leafy green. Plant fall through spring in Texas. Bolt-resistant varieties for heat. Successive plantings for continuous harvest.",
+    "layerTypes": [
+      "herbaceous",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "high",
+    "matureHeight": 1,
+    "matureSpread": 1,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Leucaena",
+    "scientificName": "Leucaena leucocephala",
+    "description": "One of the most productive nitrogen-fixing trees in the world. Fast-growing shrub/small tree producing massive amounts of biomass for mulch. Pods and young leaves are edible. Thrives in Texas heat and alkaline soils. Can be coppiced repeatedly. Use as a chop-and-drop mulch producer near fruit trees.",
+    "layerTypes": [
+      "shrub",
+      "understory"
+    ],
+    "guildFunctions": [
+      "nitrogen-fixer",
+      "mulch-producer",
+      "dynamic-accumulator"
+    ],
+    "hardinessZones": [
+      "9a",
+      "9b",
+      "10a",
+      "10b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 20,
+    "matureSpread": 10,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "south-texas",
+      "central-texas",
+      "gulf-coast"
+    ],
+    "toxicityWarning": "Mimosine in seeds and leaves can cause hair loss in non-ruminant animals — avoid feeding livestock in large quantities"
+  },
+  {
+    "commonName": "Lion's Mane Mushroom",
+    "scientificName": "Hericium erinaceus",
+    "description": "Medicinal and edible mushroom growing on hardwood logs. Cascading white tendrils. Cognitive health benefits. Inoculate oak logs.",
+    "layerTypes": [
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "dynamic-accumulator",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-shade",
+    "waterRequirement": "high",
+    "matureHeight": 0.5,
+    "matureSpread": 1,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Little Bluestem",
+    "scientificName": "Schizachyrium scoparium",
+    "description": "Texas's signature native grass — the backbone of the original tall grass and mixed grass prairies. Spectacular year-round interest: blue-green in summer, copper-orange-red in fall and winter. Fluffy white seed heads provide winter bird food. Clump-forming, non-spreading. Exceptional on dry rocky soils where other grasses fail. Provides habitat for ground-nesting bees. Outstanding pollinator insectary plant when in seed.",
+    "layerTypes": [
+      "groundcover",
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "3a",
+      "3b",
+      "4a",
+      "4b",
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 3,
+    "matureSpread": 2,
+    "edible": false,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "hill-country",
+      "north-texas",
+      "west-texas",
+      "east-texas",
+      "south-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Live Oak",
+    "scientificName": "Quercus fusiformis",
+    "description": "Iconic Texas evergreen oak providing year-round shade and structure. Produces acorns for wildlife. Long-lived anchor species.",
+    "layerTypes": [
+      "canopy"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 40,
+    "matureSpread": 50,
+    "edible": false,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "south-texas",
+      "hill-country"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Live Oak",
+    "scientificName": "Quercus virginiana",
+    "description": "Iconic evergreen Texas oak. Provides year-round shade and wildlife habitat. Acorns feed wildlife.",
+    "layerTypes": [
+      "canopy"
+    ],
+    "guildFunctions": [
+      "dynamic-accumulator",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 50,
+    "matureSpread": 80,
+    "edible": false,
+    "nativeToTexas": true
+  },
+  {
+    "commonName": "Loquat",
+    "scientificName": "Eriobotrya japonica",
+    "description": "One of the best understory fruit trees for Texas. Blooms November–January (unusual winter bloom), ripens fruit March–May. Evergreen, ornamental, and incredibly productive. Tolerates part shade and alkaline soil. A must-have for Texas food forests.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 25,
+    "matureSpread": 20,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "south-texas",
+      "east-texas",
+      "gulf-coast"
+    ],
+    "toxicityWarning": "Seeds contain cyanogenic glycosides — do not eat seeds"
+  },
+  {
+    "commonName": "Malabar Spinach",
+    "scientificName": "Basella alba",
+    "description": "The summer spinach solution for Texas — unlike true spinach, thrives in heat. Vining plant that climbs fences and trellises. Leaves taste like spinach. Perennial in Zones 9+, annual elsewhere (self-seeds). High in iron, calcium, and vitamins. Produces all summer when true greens fail.",
+    "layerTypes": [
+      "vine",
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b",
+      "10a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 10,
+    "matureSpread": 3,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "south-texas",
+      "east-texas",
+      "gulf-coast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Marigold",
+    "scientificName": "Tagetes spp.",
+    "description": "Powerhouse pest-confuser and insectary plant. Root exudates suppress soil nematodes. Aromatic foliage deters aphids, whitefly, and some beetles. Flowers attract beneficial insects and pollinators. French marigolds (small) are especially effective for nematode suppression. African marigolds (tall) are excellent bee forage.",
+    "layerTypes": [
+      "herbaceous",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "pest-confuser",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "3a",
+      "3b",
+      "4a",
+      "4b",
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 3,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas",
+      "south-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Mayhaw",
+    "scientificName": "Crataegus opaca",
+    "description": "Texas native understory tree producing tart red berries beloved for jelly-making. Blooms January–March when little else is flowering — critical early nectar source for pollinators. Tolerates wet, low areas where other fruit trees struggle. Beautiful ornamental with fall foliage. One of Texas's most underutilized native fruit trees.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 25,
+    "matureSpread": 20,
+    "edible": true,
+    "nativeToTexas": true,
+    "regions": [
+      "east-texas",
+      "central-texas",
+      "gulf-coast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Mealy Blue Sage",
+    "scientificName": "Salvia farinacea",
+    "description": "Texas native sage with long spikes of powdery blue flowers from spring through hard freeze. One of the best native plants for attracting bumblebees and cloudless sulphur butterflies. Extremely heat and drought tolerant. Self-seeds prolifically — a dependable annual in most of Texas, short-lived perennial in zones 8b+. Works as a durable groundcover-height insectary throughout the food forest.",
+    "layerTypes": [
+      "herbaceous",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 3,
+    "matureSpread": 2,
+    "edible": false,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "hill-country",
+      "south-texas",
+      "north-texas",
+      "west-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Melon",
+    "scientificName": "Cucumis melo",
+    "description": "Sweet summer fruit. Cantaloupe, honeydew varieties. Sprawling vine needs space. Thrives in Texas heat.",
+    "layerTypes": [
+      "groundcover",
+      "vine"
+    ],
+    "guildFunctions": [
+      "mulch-producer",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 1,
+    "matureSpread": 8,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Mexican Buckeye",
+    "scientificName": "Ungnadia speciosa",
+    "description": "Early spring pink flowers appear before leaves. Thrives in shade and rocky soil. Beautiful ornamental.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "low",
+    "matureHeight": 12,
+    "matureSpread": 10,
+    "edible": false,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Mexican Elder",
+    "scientificName": "Sambucus mexicana",
+    "description": "Texas native elder better adapted to alkaline soils and heat than common elderberry. Grows to 20ft as a large shrub or small tree. Fragrant white flower clusters attract pollinators. Berries used for syrup and wildlife. More drought-tolerant than S. nigra. Natural in Central Texas limestone country.",
+    "layerTypes": [
+      "shrub",
+      "understory"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "dynamic-accumulator",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "low",
+    "matureHeight": 20,
+    "matureSpread": 15,
+    "edible": true,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "hill-country",
+      "west-texas",
+      "south-texas"
+    ],
+    "toxicityWarning": "Raw berries and uncooked plant parts can cause nausea — always cook berries before consuming"
+  },
+  {
+    "commonName": "Mexican Honeysuckle",
+    "scientificName": "Justicia spicigera",
+    "description": "Stunning hummingbird magnet with tubular orange flowers from spring through frost. Thrives in part shade — one of the few flowering shrubs that performs well under trees. Evergreen in Zones 9+; dies back in hard freezes but regrows reliably. Spreads slowly by suckers. Combines beautifully with salvias and turk's cap in a shade guild.",
+    "layerTypes": [
+      "shrub",
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "8b",
+      "9a",
+      "9b",
+      "10a",
+      "10b"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "low",
+    "matureHeight": 4,
+    "matureSpread": 4,
+    "edible": false,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "south-texas",
+      "east-texas",
+      "gulf-coast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Mexican Lime",
+    "scientificName": "Citrus aurantiifolia",
+    "description": "Key lime. Very productive in South Texas. More cold-sensitive than lemons — protect below 28°F. Small tree, dense canopy. Produces heavily with minimal care in appropriate zones. Bloom attracts pollinators spring through fall.",
+    "layerTypes": [
+      "understory",
+      "shrub"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "9a",
+      "9b",
+      "10a",
+      "10b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 12,
+    "matureSpread": 10,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "south-texas",
+      "gulf-coast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Mexican Mint Marigold",
+    "scientificName": "Tagetes lucida",
+    "description": "Anise-flavored herb, tarragon substitute. Yellow flowers in fall. Self-seeds readily. Excellent pollinator plant.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 2,
+    "matureSpread": 1.5,
+    "edible": true,
+    "nativeToTexas": false,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Mexican Plum",
+    "scientificName": "Prunus mexicana",
+    "description": "Beautiful spring blooms followed by edible plums. Excellent wildlife tree. Thrives in diverse conditions.",
+    "layerTypes": [
+      "canopy",
+      "understory"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 25,
+    "matureSpread": 20,
+    "edible": true,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Meyer Lemon",
+    "scientificName": "Citrus × meyeri",
+    "description": "The most cold-hardy lemon for Texas. Produces fruit nearly year-round. Thin-skinned, sweet, prolific. Protect below 20°F. In Central Texas grow in containers or against south-facing walls. Excellent in South Texas and Gulf Coast in ground.",
+    "layerTypes": [
+      "understory",
+      "shrub"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "8b",
+      "9a",
+      "9b",
+      "10a",
+      "10b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 10,
+    "matureSpread": 10,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "south-texas",
+      "gulf-coast",
+      "central-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Milkweed",
+    "scientificName": "Asclepias tuberosa",
+    "description": "Essential monarch butterfly host plant. Orange flowers. Deep taproot for drought tolerance. Critical for pollinators.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 2,
+    "matureSpread": 1,
+    "edible": false,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "all-regions"
+    ],
+    "toxicityWarning": "Toxic if ingested. Sap can irritate skin."
+  },
+  {
+    "commonName": "Moringa",
+    "scientificName": "Moringa oleifera",
+    "description": "The 'miracle tree' for Texas food forests. Fastest-growing edible tree in warm climates — can reach 15ft in one season. Leaves, pods, seeds, and flowers all edible and highly nutritious. Excellent nitrogen fixer and dynamic accumulator. Dies back to roots in cold winters but regrows vigorously from roots.",
+    "layerTypes": [
+      "canopy",
+      "understory"
+    ],
+    "guildFunctions": [
+      "nitrogen-fixer",
+      "dynamic-accumulator",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "9a",
+      "9b",
+      "10a",
+      "10b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 20,
+    "matureSpread": 10,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "south-texas",
+      "central-texas",
+      "gulf-coast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Mulberry",
+    "scientificName": "Morus alba",
+    "description": "Fast-growing tree with abundant sweet berries. Excellent chop-and-drop material.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 25,
+    "matureSpread": 20,
+    "edible": true,
+    "nativeToTexas": false
+  },
+  {
+    "commonName": "Mulberry",
+    "scientificName": "Morus alba / rubra",
+    "description": "Extremely productive, fast-growing Texas performer. Produces abundant fruit with zero effort. Fruits are the most productive berry per square foot of any tree in Texas. Excellent wildlife plant — birds will flock to it. Red mulberry is native to Texas. White and hybrid varieties are more drought-tolerant. Excellent nurse tree.",
+    "layerTypes": [
+      "canopy",
+      "understory"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 40,
+    "matureSpread": 35,
+    "edible": true,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "east-texas",
+      "north-texas",
+      "south-texas",
+      "hill-country"
+    ],
+    "toxicityWarning": "Unripe fruits and white sap may cause hallucinations and digestive upset — only eat ripe fruits"
+  },
+  {
+    "commonName": "Muscadine Grape",
+    "scientificName": "Vitis rotundifolia",
+    "description": "Native grape producing large sweet fruit. Extremely disease-resistant. Needs strong support structure.",
+    "layerTypes": [
+      "vine"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 20,
+    "matureSpread": 10,
+    "edible": true,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Nasturtium",
+    "scientificName": "Tropaeolum majus",
+    "description": "Cool-season annual that does double duty as pest trap and insectary plant. Aphids prefer nasturtiums over most food crops — plant as a sacrificial trap crop near vulnerable plants. Flowers and leaves are edible and peppery. Excellent groundcover under fruit trees in fall and spring.",
+    "layerTypes": [
+      "herbaceous",
+      "groundcover",
+      "vine"
+    ],
+    "guildFunctions": [
+      "pest-confuser",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 1,
+    "matureSpread": 3,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas",
+      "south-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Nectarine",
+    "scientificName": "Prunus persica var. nucipersica",
+    "description": "Smooth-skinned peach relative requiring the same low-chill varieties as peaches in Texas (Suncoast, Sunbest, Sunraycer for Central Texas). More susceptible to brown rot than peaches in humid East Texas — best in drier Central and West Texas. Same care requirements as peach.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 15,
+    "matureSpread": 15,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "hill-country",
+      "north-texas",
+      "west-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Okra",
+    "scientificName": "Abelmoschus esculentus",
+    "description": "Heat-loving summer vegetable thriving in Texas. Beautiful hibiscus-like flowers. Highly productive.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 5,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "south-texas",
+      "southeast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Onion",
+    "scientificName": "Allium cepa",
+    "description": "Essential cool-season vegetable. Plant bulbs in fall for spring harvest. Stores well. Companion plant deters many pests.",
+    "layerTypes": [
+      "rhizosphere",
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 2,
+    "matureSpread": 0.5,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": "Toxic to dogs and cats."
+  },
+  {
+    "commonName": "Oregano",
+    "scientificName": "Origanum vulgare",
+    "description": "Mediterranean herb thriving in Texas. Spreads to form groundcover. Edible leaves and flowers attract pollinators.",
+    "layerTypes": [
+      "herbaceous",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 1,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Oyster Mushroom",
+    "scientificName": "Pleurotus ostreatus",
+    "description": "Easy-to-grow edible mushroom on straw or hardwood logs. Fast colonizer. Thrives in Texas humidity. Multiple flushes per year.",
+    "layerTypes": [
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "dynamic-accumulator",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-shade",
+    "waterRequirement": "high",
+    "matureHeight": 0.5,
+    "matureSpread": 1,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Papaya",
+    "scientificName": "Carica papaya",
+    "description": "Fast-growing tropical producing fruit in 6-12 months from seed. Perennial in zones 9b+, treated as annual elsewhere. Dies below 32°F but can be grown as summer annual in Central Texas with impressive results. Seeds, leaves, and fruit all edible. Needs well-drained soil — does not tolerate wet feet.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "9b",
+      "10a",
+      "10b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 15,
+    "matureSpread": 6,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "south-texas",
+      "gulf-coast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Passionflower",
+    "scientificName": "Passiflora incarnata",
+    "description": "Stunning purple flowers produce edible passion fruit. Host plant for Gulf Fritillary butterflies. Spreads by runners.",
+    "layerTypes": [
+      "vine"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 20,
+    "matureSpread": 6,
+    "edible": true,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Pawpaw",
+    "scientificName": "Asimina triloba",
+    "description": "Native understory tree producing tropical-flavored fruit. Largest edible fruit native to North America. Thrives in shade and forms colonies.",
+    "layerTypes": [
+      "understory",
+      "canopy"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 20,
+    "matureSpread": 15,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "east-texas",
+      "southeast"
+    ],
+    "toxicityWarning": "Seeds and skin are toxic. Only eat ripe fruit pulp."
+  },
+  {
+    "commonName": "Peach",
+    "scientificName": "Prunus persica",
+    "description": "Classic Texas stone fruit. Choose low-chill varieties (150-400 chill hours) for Central and South Texas. Plant in well-drained soil; does not tolerate wet feet. One of the highest-yielding backyard fruit trees when properly sited.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 15,
+    "matureSpread": 15,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "hill-country",
+      "east-texas"
+    ],
+    "toxicityWarning": "Leaves, bark, and seeds contain cyanogenic compounds — do not eat"
+  },
+  {
+    "commonName": "Pear",
+    "scientificName": "Pyrus communis",
+    "description": "Fire-blight resistant varieties (Kieffer, Moonglow, Orient) perform best in Texas. Very reliable producer once established. Tolerates heavier soils than most fruit trees. Long-lived (50+ years). Excellent high-canopy understory tree.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 25,
+    "matureSpread": 20,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas",
+      "hill-country"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Pecan",
+    "scientificName": "Carya illinoinensis",
+    "description": "Texas state tree producing delicious nuts. Needs deep soil and regular water. Provides heavy shade and leaf mulch.",
+    "layerTypes": [
+      "canopy"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "high",
+    "matureHeight": 70,
+    "matureSpread": 40,
+    "edible": true,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Pepper",
+    "scientificName": "Capsicum annuum",
+    "description": "Heat-loving annual thriving in Texas summers. Sweet bells to hot jalapeños. Excellent container plant.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 2,
+    "matureSpread": 1.5,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Peppermint",
+    "scientificName": "Mentha × piperita",
+    "description": "Vigorous perennial groundcover and pest-confuser. Aromatic oils deter aphids and some beetles. Spreads aggressively via runners — plant in containers or use as an intentional groundcover. Prefers moist soil and part shade. Excellent companion near aphid-prone plants.",
+    "layerTypes": [
+      "herbaceous",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "pest-confuser",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 2,
+    "matureSpread": 3,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Persimmon",
+    "scientificName": "Diospyros virginiana",
+    "description": "Native persimmon with sweet fall fruit after frost. Beautiful orange fall color. Great wildlife value.",
+    "layerTypes": [
+      "canopy",
+      "understory"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 35,
+    "matureSpread": 25,
+    "edible": true,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "east-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Pigeon Pea",
+    "scientificName": "Cajanus cajan",
+    "description": "Fast-growing nitrogen fixer with edible peas. Excellent chop-and-drop plant.",
+    "layerTypes": [
+      "shrub"
+    ],
+    "guildFunctions": [
+      "nitrogen-fixer",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 8,
+    "matureSpread": 4,
+    "edible": true,
+    "nativeToTexas": false
+  },
+  {
+    "commonName": "Pipevine",
+    "scientificName": "Aristolochia fimbriata",
+    "description": "Host plant for Pipevine Swallowtail butterflies. Unique purple flowers. Herbaceous vine dies back in winter.",
+    "layerTypes": [
+      "vine"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 10,
+    "matureSpread": 4,
+    "edible": false,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Plum",
+    "scientificName": "Prunus domestica",
+    "description": "Japanese plum varieties (Methley, Bruce, Morris, Byrongold) perform best in Texas. Low chill requirements (150-400 hours). Very productive when properly sited. Cross-pollination improves fruit set — plant two varieties. Highly drought-tolerant once established in well-drained soil.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "mulch-producer",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 20,
+    "matureSpread": 15,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas",
+      "hill-country"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Pomegranate",
+    "scientificName": "Punica granatum",
+    "description": "Heat-loving shrub with stunning orange flowers and nutritious fruit. Tolerates alkaline soil and drought.",
+    "layerTypes": [
+      "shrub"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 8,
+    "matureSpread": 6,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "southwest",
+      "mediterranean-climates"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Possumhaw Holly",
+    "scientificName": "Ilex decidua",
+    "description": "Deciduous holly with brilliant red berries in winter. Excellent wildlife value. Tolerates wet and dry conditions.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 15,
+    "matureSpread": 12,
+    "edible": false,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Prairie Verbena",
+    "scientificName": "Glandularia bipinnatifida",
+    "description": "Low-growing native groundcover with clusters of purple-pink flowers from February through November. Spreads by runners to form a weed-suppressing mat 12-18 inches high. Exceptional butterfly and bee plant — a major nectar source for monarchs during spring migration. Extremely drought-tolerant on rocky limestone soils. Self-seeds freely once established.",
+    "layerTypes": [
+      "groundcover",
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 1,
+    "matureSpread": 3,
+    "edible": false,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "hill-country",
+      "west-texas",
+      "north-texas",
+      "south-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Privet",
+    "scientificName": "Ligustrum japonicum",
+    "description": "Evergreen hedge plant with white fragrant flowers. Can be invasive. Birds spread seeds. Fast-growing screen.",
+    "layerTypes": [
+      "shrub",
+      "understory"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 12,
+    "matureSpread": 8,
+    "edible": false,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "south-texas",
+      "southeast"
+    ],
+    "toxicityWarning": "Berries toxic if ingested. Can cause nausea and digestive upset."
+  },
+  {
+    "commonName": "Purple Heart",
+    "scientificName": "Tradescantia pallida",
+    "description": "Stunning purple foliage groundcover. Thrives in heat and drought. Pink flowers in summer. Spreads readily.",
+    "layerTypes": [
+      "groundcover",
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "10a",
+      "11a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 1,
+    "matureSpread": 3,
+    "edible": false,
+    "nativeToTexas": false,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Quince",
+    "scientificName": "Cydonia oblonga",
+    "description": "Extremely productive and disease-resistant fruit tree for Texas. Requires very few chill hours. Large fragrant yellow fruits used for jam, paste, and cider. Blooms late (avoids frost damage). Tolerates clay and alkaline soils. Often overlooked but one of the best-adapted fruit trees for Texas conditions.",
+    "layerTypes": [
+      "understory",
+      "shrub"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 15,
+    "matureSpread": 15,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas",
+      "hill-country"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Radish",
+    "scientificName": "Raphanus sativus",
+    "description": "Fast-growing cool-season root. Ready in 25-30 days. Excellent for breaking up compacted soil. Plant fall through spring.",
+    "layerTypes": [
+      "rhizosphere"
+    ],
+    "guildFunctions": [
+      "dynamic-accumulator"
+    ],
+    "hardinessZones": [
+      "2a",
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 0.5,
+    "matureSpread": 0.5,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Rock Penstemon",
+    "scientificName": "Penstemon baccharifolius",
+    "description": "Texas endemic native growing naturally on limestone cliffs and canyon walls. Bright red tubular flowers bloom summer through fall — a peak hummingbird season plant when many others fade. Extremely heat and drought tolerant once established in well-drained soil. Evergreen in mild winters. One of the most spectacular native perennials for rocky Central Texas landscapes.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 2,
+    "matureSpread": 2,
+    "edible": false,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "hill-country",
+      "west-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Roselle (Hibiscus)",
+    "scientificName": "Hibiscus sabdariffa",
+    "description": "Texas food forest star. Ornamental shrubby annual producing tart crimson calyxes used for tea, jam, and agua fresca. Thrives in Texas summer heat. Blooms attract pollinators. Grows 5-7ft in one season. Easy from seed each spring. One of the most beautiful and productive additions to a food forest.",
+    "layerTypes": [
+      "shrub",
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 7,
+    "matureSpread": 4,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "south-texas",
+      "east-texas",
+      "gulf-coast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Rosemary",
+    "scientificName": "Salvia rosmarinus",
+    "description": "Mediterranean herb thriving in Texas heat. Evergreen with edible leaves and flowers. Excellent culinary and ornamental.",
+    "layerTypes": [
+      "shrub",
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "pest-confuser"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 4,
+    "matureSpread": 3,
+    "edible": true,
+    "nativeToTexas": false,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Ruby Red Grapefruit",
+    "scientificName": "Citrus paradisi",
+    "description": "Texas's most famous citrus, bred in the Rio Grande Valley. Exceptional sweetness and color. Needs longer growing season — best in South Texas and Gulf Coast. In Central Texas, grow against south-facing masonry walls for reflected heat.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "9a",
+      "9b",
+      "10a",
+      "10b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 15,
+    "matureSpread": 15,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "south-texas",
+      "gulf-coast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Rusty Blackhaw Viburnum",
+    "scientificName": "Viburnum rufidulum",
+    "description": "White spring flowers, edible blue-black berries in fall. Glossy leaves turn burgundy. Great wildlife shrub.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 15,
+    "matureSpread": 12,
+    "edible": true,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Sage",
+    "scientificName": "Salvia officinalis",
+    "description": "Culinary sage — woody perennial herb with strong pest-confusing aroma. Attracts bumblebees. Excellent companion near brassicas and carrots. Drought-tolerant once established. Dies back in hard freezes but usually regrows. Use under fruit trees as pest deterrent.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "pest-confuser",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 2,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas",
+      "hill-country"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Satsuma Mandarin",
+    "scientificName": "Citrus unshiu",
+    "description": "Most cold-hardy mandarin for Texas. Ripens October–December (earlier than other citrus). Very productive, easy to peel, seedless. Tolerates brief cold snaps to 15°F. Excellent choice for all but the coldest Texas locations.",
+    "layerTypes": [
+      "understory",
+      "shrub"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 12,
+    "matureSpread": 12,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "south-texas",
+      "gulf-coast",
+      "central-texas",
+      "east-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Saw Greenbrier",
+    "scientificName": "Smilax bona-nox",
+    "description": "Native thorny vine with edible young shoots. Medicinal roots. Aggressive spreader via rhizomes. Wildlife food and cover.",
+    "layerTypes": [
+      "vine"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 20,
+    "matureSpread": 10,
+    "edible": true,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "east-texas",
+      "south-texas",
+      "southeast"
+    ],
+    "toxicityWarning": "Very thorny. Handle with care to avoid injury."
+  },
+  {
+    "commonName": "Shiitake Mushroom",
+    "scientificName": "Lentinula edodes",
+    "description": "Premium culinary mushroom on oak logs. Requires shaded location and consistent moisture. Produces for 3-5 years.",
+    "layerTypes": [
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "dynamic-accumulator",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-shade",
+    "waterRequirement": "high",
+    "matureHeight": 0.3,
+    "matureSpread": 0.5,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Spearmint",
+    "scientificName": "Mentha spicata",
+    "description": "Slightly more heat-tolerant than peppermint. Good summer performer in part shade. Excellent groundcover under fruit trees — suppresses weeds, confuses pests with scent, and provides edible harvest. Spreads via runners. Contains rosmarinic acid that deters some soil pathogens.",
+    "layerTypes": [
+      "herbaceous",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "pest-confuser",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 2,
+    "matureSpread": 3,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Spinach",
+    "scientificName": "Spinacia oleracea",
+    "description": "Nutrient-dense cool-season green. Plant fall in Texas. Bolts quickly in heat. Excellent in partial shade.",
+    "layerTypes": [
+      "herbaceous",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 1,
+    "matureSpread": 1,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Squash",
+    "scientificName": "Cucurbita pepo",
+    "description": "Large-leafed vine providing living mulch. Summer and winter varieties. Zucchini, yellow squash, acorn, butternut. Sprawling habit.",
+    "layerTypes": [
+      "groundcover",
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "mulch-producer",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 2,
+    "matureSpread": 6,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Strawberry",
+    "scientificName": "Fragaria × ananassa",
+    "description": "Evergreen groundcover in mild winters. Everbearing varieties fruit spring through fall.",
+    "layerTypes": [
+      "groundcover"
+    ],
+    "guildFunctions": [],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 0.5,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false
+  },
+  {
+    "commonName": "Sunflower",
+    "scientificName": "Helianthus annuus",
+    "description": "Fast-growing annual providing quick temporary shade for understory plants. Edible seeds. Attracts pollinators and birds. Can be planted as makeshift shade.",
+    "layerTypes": [
+      "herbaceous",
+      "understory"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "dynamic-accumulator",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "2a",
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 8,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": true,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Sweet Potato",
+    "scientificName": "Ipomoea batatas",
+    "description": "Vigorous vine producing edible tubers. Leaves also edible. Spreads to suppress weeds. Annual in most climates.",
+    "layerTypes": [
+      "rhizosphere",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "8b",
+      "9a",
+      "9b",
+      "10a",
+      "11a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 1,
+    "matureSpread": 6,
+    "edible": true,
+    "nativeToTexas": false,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Swiss Chard",
+    "scientificName": "Beta vulgaris var. cicla",
+    "description": "Heat-tolerant leafy green. Beautiful rainbow stems. Thrives spring and fall. More heat-resistant than spinach.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "dynamic-accumulator"
+    ],
+    "hardinessZones": [
+      "2a",
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 2,
+    "matureSpread": 1,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Table Grape",
+    "scientificName": "Vitis vinifera",
+    "description": "Classic European grape for eating fresh. Needs hot dry summers. Requires pruning and strong support.",
+    "layerTypes": [
+      "vine"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 20,
+    "matureSpread": 10,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "hill-country",
+      "mediterranean-climates"
+    ],
+    "toxicityWarning": "Grapes toxic to dogs."
+  },
+  {
+    "commonName": "Texas Mountain Laurel",
+    "scientificName": "Dermatophyllum secundiflorum",
+    "description": "Stunning evergreen with fragrant purple grape-scented flowers in spring. Extremely drought-tolerant. Slow-growing but worth the wait.",
+    "layerTypes": [
+      "shrub",
+      "understory"
+    ],
+    "guildFunctions": [
+      "nitrogen-fixer",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 12,
+    "matureSpread": 8,
+    "edible": false,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "south-texas",
+      "hill-country",
+      "west-texas"
+    ],
+    "toxicityWarning": "HIGHLY TOXIC. All parts poisonous, especially seeds. Can be fatal if ingested. Keep away from children and pets."
+  },
+  {
+    "commonName": "Texas Persimmon",
+    "scientificName": "Diospyros texana",
+    "description": "Native understory tree with sweet black fruits. Extremely drought tolerant.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "low",
+    "matureHeight": 15,
+    "matureSpread": 12,
+    "edible": true,
+    "nativeToTexas": true
+  },
+  {
+    "commonName": "Texas Red Oak",
+    "scientificName": "Quercus buckleyi",
+    "description": "Native deciduous oak with brilliant red fall color. Smaller than live oak. Acorns for wildlife. Limestone soil tolerant.",
+    "layerTypes": [
+      "canopy"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 40,
+    "matureSpread": 35,
+    "edible": false,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "hill-country",
+      "north-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Texas Redbud",
+    "scientificName": "Cercis canadensis var. texensis",
+    "description": "Stunning pink spring blooms before leaves emerge. Edible flowers. Nitrogen-fixing legume excellent for building soil.",
+    "layerTypes": [
+      "understory"
+    ],
+    "guildFunctions": [
+      "nitrogen-fixer",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "low",
+    "matureHeight": 15,
+    "matureSpread": 15,
+    "edible": true,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Texas Sage",
+    "scientificName": "Leucophyllum frutescens",
+    "description": "Silvery evergreen foliage with purple flowers after rain. Extremely drought-tolerant. Excellent for dry sites.",
+    "layerTypes": [
+      "shrub"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 5,
+    "matureSpread": 4,
+    "edible": false,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Texas Sedge",
+    "scientificName": "Carex texensis",
+    "description": "Native sedge forming dense groundcover. Excellent lawn substitute for shade. Tolerates foot traffic.",
+    "layerTypes": [
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 0.5,
+    "matureSpread": 1,
+    "edible": false,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Tomatillo",
+    "scientificName": "Physalis ixocarpa",
+    "description": "Essential Texas salsa ingredient. Extremely productive annual. Grows 3–4ft and sprawls — use a cage. Plant at least 2 for pollination. Prolific self-seeder — you'll have volunteers every year after the first. Excellent companion under taller plants; handles part shade.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 4,
+    "matureSpread": 3,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "south-texas",
+      "east-texas",
+      "north-texas"
+    ],
+    "toxicityWarning": "Remove husk before eating — husk is mildly toxic"
+  },
+  {
+    "commonName": "Tomato",
+    "scientificName": "Solanum lycopersicum",
+    "description": "Essential garden vegetable. Many varieties adapted to Texas heat. Plant spring and fall. Needs support structure.",
+    "layerTypes": [
+      "herbaceous",
+      "vine"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "high",
+    "matureHeight": 6,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": "Leaves and green parts are toxic. Only eat ripe fruit."
+  },
+  {
+    "commonName": "Turk's Cap",
+    "scientificName": "Malvaviscus arboreus var. drummondii",
+    "description": "Red tubular flowers attract hummingbirds. Edible flowers and fruit. Thrives in shade and spreads readily.",
+    "layerTypes": [
+      "shrub",
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "moderate",
+    "matureHeight": 4,
+    "matureSpread": 3,
+    "edible": true,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Turk's Cap Pink",
+    "scientificName": "Malvaviscus arboreus 'Pam Puryear'",
+    "description": "Pale pink cultivar of Texas native Turk's Cap selected by Texas horticulturist Pam Puryear. Same robust shade tolerance and hummingbird appeal as the red species, with softer color for garden contrast. Slightly more compact habit. Excellent in combination with the red form for extended bloom and layered color.",
+    "layerTypes": [
+      "shrub",
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b",
+      "10a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "low",
+    "matureHeight": 4,
+    "matureSpread": 4,
+    "edible": true,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "east-texas",
+      "south-texas",
+      "hill-country",
+      "gulf-coast"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Turmeric",
+    "scientificName": "Curcuma longa",
+    "description": "Anti-inflammatory root crop. Grows well with ginger in shaded, moist areas.",
+    "layerTypes": [
+      "rhizosphere"
+    ],
+    "guildFunctions": [],
+    "hardinessZones": [
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "high",
+    "matureHeight": 3,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false
+  },
+  {
+    "commonName": "Watermelon",
+    "scientificName": "Citrullus lanatus",
+    "description": "Classic summer fruit. Needs lots of space and heat. Small 'icebox' and large 'picnic' varieties. Texas favorite.",
+    "layerTypes": [
+      "groundcover",
+      "vine"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 1,
+    "matureSpread": 10,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "White Clover",
+    "scientificName": "Trifolium repens",
+    "description": "Nitrogen-fixing groundcover. Tolerates mowing and foot traffic. Flowers attract pollinators. Enriches soil.",
+    "layerTypes": [
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "nitrogen-fixer",
+      "insectary"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 0.5,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Wine Cap Mushroom",
+    "scientificName": "Stropharia rugosoannulata",
+    "description": "Garden giant mushroom growing in wood chip mulch. Burgundy cap. Easy to establish in mulch paths. Self-propagates.",
+    "layerTypes": [
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "dynamic-accumulator",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "high",
+    "matureHeight": 0.8,
+    "matureSpread": 0.5,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "all-regions"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Wolfberry (Goji)",
+    "scientificName": "Lycium barbarum",
+    "description": "Extremely heat and drought-tolerant shrub producing superfoods berries. Native relatives (Lycium carolinianum) are present in Texas. Thorny arching canes make it a wildlife refuge. Berries are edible fresh or dried. Can be coppiced. Tolerates alkaline and poor soils — one of the most resilient shrubs for Texas conditions.",
+    "layerTypes": [
+      "shrub"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "5a",
+      "5b",
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 8,
+    "matureSpread": 6,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "south-texas",
+      "west-texas",
+      "north-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Yarrow",
+    "scientificName": "Achillea millefolium",
+    "description": "Medicinal herb for wound healing and fever reduction. White flowers attract beneficial insects. Spreads to form groundcover.",
+    "layerTypes": [
+      "herbaceous",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "dynamic-accumulator"
+    ],
+    "hardinessZones": [
+      "3a",
+      "4a",
+      "5a",
+      "6a",
+      "7a",
+      "7b",
+      "8a",
+      "8b"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 2,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": false,
+    "regions": [
+      "central-texas",
+      "northwest",
+      "northeast",
+      "southwest"
+    ],
+    "toxicityWarning": "Can cause skin irritation in sensitive individuals. Avoid during pregnancy."
+  },
+  {
+    "commonName": "Yaupon Holly",
+    "scientificName": "Ilex vomitoria",
+    "description": "Evergreen with red berries. Leaves make caffeinated tea. Extremely drought-tolerant. Birds love the berries.",
+    "layerTypes": [
+      "understory",
+      "shrub"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "partial-shade",
+    "waterRequirement": "low",
+    "matureHeight": 15,
+    "matureSpread": 10,
+    "edible": true,
+    "nativeToTexas": true,
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "Zexmenia",
+    "scientificName": "Wedelia texana",
+    "description": "Native yellow daisy blooming most of the year. Spreads to form groundcover. Excellent pollinator magnet.",
+    "layerTypes": [
+      "herbaceous",
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "insectary",
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 1,
+    "matureSpread": 3,
+    "edible": false,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "south-texas"
+    ],
+    "toxicityWarning": null
+  }
+]

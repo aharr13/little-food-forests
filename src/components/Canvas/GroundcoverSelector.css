@@ -1,0 +1,164 @@
+/* src/components/Canvas/GroundcoverSelector.css */
+
+.groundcover-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.groundcover-intro {
+  display: flex;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  border-radius: 8px;
+  border: 1px solid #d1fae5;
+}
+
+.groundcover-intro p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #065f46;
+  line-height: 1.5;
+}
+
+.species-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.species-item {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.species-item:hover {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+}
+
+.species-item.selected {
+  background: #f0fdf4;
+  border-color: #86efac;
+}
+
+.species-checkbox {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border: 2px solid #cbd5e1;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  transition: all 0.2s;
+}
+
+.species-item.selected .species-checkbox {
+  background: #059669;
+  border-color: #059669;
+}
+
+.checkmark {
+  color: white;
+  font-weight: bold;
+  font-size: 0.875rem;
+}
+
+.species-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.species-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.species-name {
+  font-weight: 600;
+  color: #0f172a;
+  font-size: 0.9rem;
+}
+
+.edible-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  background: #fef3c7;
+  color: #92400e;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.species-scientific {
+  display: block;
+  font-size: 0.75rem;
+  color: #64748b;
+  font-style: italic;
+  margin-bottom: 0.25rem;
+}
+
+.species-description {
+  margin: 0.25rem 0 0.5rem;
+  font-size: 0.8rem;
+  color: #475569;
+  line-height: 1.4;
+}
+
+.species-traits {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.trait {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.7rem;
+  color: #64748b;
+  text-transform: capitalize;
+}
+
+.trait svg {
+  color: #f59e0b;
+}
+
+.spread-fast {
+  color: #ef4444 !important;
+}
+
+.spread-moderate {
+  color: #f59e0b !important;
+}
+
+.spread-slow {
+  color: #22c55e !important;
+}
+
+.selected-summary {
+  padding: 0.75rem;
+  background: #059669;
+  color: white;
+  border-radius: 6px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.selected-summary strong {
+  font-weight: 700;
+}

@@ -1,0 +1,206 @@
+/* src/components/Planning/PhotoSessionPanel.css */
+
+.photo-session-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.photo-session-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.photo-session-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.photo-session-count {
+  background: #f3f4f6;
+  color: #4b5563;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+}
+
+.photo-session-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 1rem;
+  color: #9ca3af;
+  text-align: center;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px dashed #e5e7eb;
+}
+
+.photo-session-empty p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+.photo-session-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.photo-session-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.photo-session-card.overdue {
+  border-color: #ef4444;
+  background: #fef2f2;
+}
+
+.photo-session-card.today {
+  border-color: #f59e0b;
+  background: #fffbeb;
+}
+
+.photo-session-card.soon {
+  border-color: #3b82f6;
+  background: #eff6ff;
+}
+
+.photo-session-card.future {
+  border-color: #e5e7eb;
+  background: white;
+}
+
+.photo-session-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.photo-session-card-header:hover {
+  background: #f9fafb;
+}
+
+.photo-session-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.photo-session-title {
+  margin: 0;
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 0.95rem;
+}
+
+.photo-session-location {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: #6b7280;
+  font-family: monospace;
+}
+
+.photo-session-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 60px;
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: white;
+}
+
+.photo-session-badge[data-status="overdue"] {
+  background: #ef4444;
+}
+
+.photo-session-badge[data-status="today"] {
+  background: #f59e0b;
+}
+
+.photo-session-badge[data-status="soon"] {
+  background: #3b82f6;
+}
+
+.photo-session-badge[data-status="future"] {
+  background: #9ca3af;
+}
+
+.photo-session-expanded {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 1rem 1rem;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 0.5rem;
+}
+
+.photo-session-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.photo-session-details p {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.photo-session-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.photo-session-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.photo-session-btn-primary {
+  background: #059669;
+  color: white;
+}
+
+.photo-session-btn-primary:hover {
+  background: #047857;
+}
+
+.photo-session-btn-secondary {
+  background: #f3f4f6;
+  color: #1f2937;
+  border: 1px solid #e5e7eb;
+}
+
+.photo-session-btn-secondary:hover {
+  background: #e5e7eb;
+}

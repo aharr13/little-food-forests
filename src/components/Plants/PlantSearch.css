@@ -1,0 +1,398 @@
+/* src/components/Plants/PlantSearch.css */
+
+.plant-search {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: white;
+}
+
+.plant-search-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.plant-search-header h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+.plant-search-header .close-btn {
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  cursor: pointer;
+  color: #6b7280;
+  border-radius: 4px;
+}
+
+.plant-search-header .close-btn:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.plant-search-input {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.plant-search-input input {
+  flex: 1;
+  border: none;
+  background: none;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.plant-search-input .clear-btn {
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  cursor: pointer;
+  color: #9ca3af;
+}
+
+.plant-search-input .clear-btn:hover {
+  color: #6b7280;
+}
+
+.guild-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.guild-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.5rem;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.guild-filter:hover {
+  background: #e5e7eb;
+}
+
+.guild-filter.active {
+  background: #dcfce7;
+  border-color: #86efac;
+  color: #166534;
+}
+
+.guild-icon {
+  font-size: 0.85rem;
+}
+
+.guild-name {
+  font-weight: 500;
+}
+
+.plant-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.plant-loading,
+.plant-error,
+.plant-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 2rem;
+  color: #6b7280;
+  text-align: center;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.plant-count {
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+/* Plant Card Styles */
+.plant-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.75rem;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.plant-card:hover {
+  border-color: #86efac;
+  background: #f0fdf4;
+}
+
+.plant-card.selected {
+  border-color: #22c55e;
+  background: #dcfce7;
+}
+
+.plant-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.plant-names {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.plant-name {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 0.9rem;
+}
+
+.plant-scientific {
+  font-style: italic;
+  color: #6b7280;
+  font-size: 0.75rem;
+}
+
+.plant-icons {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.icon-sun { color: #f59e0b; }
+.icon-partial { color: #6b7280; }
+.icon-shade { color: #22c55e; }
+.icon-low { color: #93c5fd; }
+.icon-moderate { color: #3b82f6; }
+.icon-high { color: #1d4ed8; }
+
+.plant-description {
+  font-size: 0.8rem;
+  color: #4b5563;
+  margin: 0.25rem 0;
+  line-height: 1.4;
+}
+
+.plant-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.25rem;
+}
+
+.plant-guilds {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.guild-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+.plant-size {
+  font-size: 0.7rem;
+  color: #9ca3af;
+}
+
+.edible-badge,
+.native-badge {
+  display: inline-block;
+  padding: 0.125rem 0.375rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  border-radius: 4px;
+  margin-right: 0.25rem;
+}
+
+.edible-badge {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.native-badge {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+/* Compact Plant Card */
+.plant-card.compact {
+  padding: 0.5rem 0.75rem;
+}
+
+.plant-card.compact .plant-card-header {
+  align-items: center;
+}
+
+.plant-card.compact .plant-name {
+  font-size: 0.85rem;
+}
+
+.plant-card.compact .plant-scientific {
+  margin-top: 0.125rem;
+}
+
+.plant-card.compact .plant-guilds {
+  margin-top: 0.25rem;
+}
+
+/* Selected Shape Plant Info */
+.selected-plant-info {
+  padding: 1rem;
+  background: #f0fdf4;
+  border: 1px solid #86efac;
+  border-radius: 8px;
+  margin: 0.5rem 0;
+}
+
+.selected-plant-info h4 {
+  margin: 0 0 0.25rem 0;
+  font-size: 1rem;
+  color: #166534;
+}
+
+.selected-plant-info .scientific {
+  font-style: italic;
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+
+.selected-plant-info .description {
+  font-size: 0.85rem;
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+}
+
+.selected-plant-info .requirements {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+.plant-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.plant-actions button {
+  flex: 1;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-change {
+  background: white;
+  border: 1px solid #d1d5db;
+  color: #374151;
+}
+
+.btn-change:hover {
+  background: #f3f4f6;
+}
+
+.btn-remove {
+  background: white;
+  border: 1px solid #fca5a5;
+  color: #dc2626;
+}
+
+.btn-remove:hover {
+  background: #fef2f2;
+}
+
+/* Cross-layer suggestions */
+.other-layer-section {
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed #d1d5db;
+}
+
+.other-layer-header {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.other-layer-plant {
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.other-layer-plant .plant-card {
+  opacity: 0.85;
+  border-style: dashed;
+}
+
+.switch-layer-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  width: 100%;
+  padding: 0.375rem;
+  margin-top: 0.25rem;
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  border-radius: 4px;
+  color: #1d4ed8;
+  font-size: 0.7rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.switch-layer-btn:hover {
+  background: #dbeafe;
+  border-color: #93c5fd;
+}

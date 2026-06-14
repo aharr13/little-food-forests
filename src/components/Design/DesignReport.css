@@ -1,0 +1,425 @@
+/* src/components/Design/DesignReport.css */
+
+.design-report {
+  padding: 2rem;
+  background: white;
+  color: #1f2937;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Header */
+.report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.report-title-section {
+  flex: 1;
+}
+
+.report-title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #059669;
+}
+
+.report-address {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.report-date {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.report-actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.report-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #059669;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.report-btn:hover {
+  background: #047857;
+}
+
+/* Stats */
+.report-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-box {
+  background: #f0fdf4;
+  border: 1px solid #dcfce7;
+  border-radius: 8px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #059669;
+}
+
+/* Sections */
+.report-section {
+  margin-bottom: 2.5rem;
+  page-break-inside: avoid;
+}
+
+.report-section-title {
+  margin: 0 0 1.25rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1f2937;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.75rem;
+}
+
+/* Order Groups */
+.report-order-group {
+  margin-bottom: 1.5rem;
+  page-break-inside: avoid;
+}
+
+.report-group-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: #f3f4f6;
+  border-left: 4px solid;
+  border-radius: 4px;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.report-group-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Plants List */
+.report-plants-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.report-plant-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0.75rem;
+  background: #fafafa;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  page-break-inside: avoid;
+}
+
+.report-plant-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.report-plant-name {
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.4rem;
+}
+
+.report-plant-sci {
+  display: block;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #6b7280;
+  font-weight: normal;
+}
+
+.report-plant-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  color: #4b5563;
+  margin-bottom: 0.4rem;
+}
+
+.report-detail {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.report-layer-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.report-guild {
+  font-size: 0.8rem;
+  color: #6b7280;
+  font-style: italic;
+}
+
+.report-difficulty {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  color: #f59e0b;
+}
+
+/* Layer Care */
+.report-layer-care {
+  margin-bottom: 1.5rem;
+  page-break-inside: avoid;
+}
+
+.report-layer-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: #f0fdf4;
+  border-radius: 4px;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.report-phase-group {
+  margin-bottom: 1rem;
+  margin-left: 1rem;
+}
+
+.report-phase-label {
+  font-weight: 600;
+  color: #059669;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.report-care-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.report-care-list li {
+  padding: 0.25rem 0;
+  line-height: 1.4;
+}
+
+.report-care-more {
+  color: #9ca3af;
+  font-style: italic;
+}
+
+/* Shopping Table */
+.report-shopping-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  page-break-inside: avoid;
+}
+
+.report-shopping-table thead {
+  background: #f3f4f6;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.report-shopping-table th {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.report-shopping-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.report-shopping-table tbody tr:nth-child(even) {
+  background: #fafafa;
+}
+
+.report-table-name {
+  font-weight: 600;
+}
+
+.report-table-sci {
+  font-size: 0.8rem;
+  font-style: italic;
+  color: #6b7280;
+  margin-top: 0.25rem;
+}
+
+.report-table-qty {
+  text-align: center;
+  font-weight: 600;
+}
+
+.report-table-layer {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.report-table-spacing {
+  text-align: center;
+}
+
+.report-table-window {
+  font-size: 0.85rem;
+}
+
+/* Footer */
+.report-footer {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.85rem;
+  color: #6b7280;
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.report-footer p {
+  margin: 0.5rem 0;
+  line-height: 1.5;
+}
+
+/* Print Styles */
+@media print {
+  .design-report {
+    max-width: 100%;
+    padding: 0;
+    background: white;
+  }
+
+  .report-header {
+    page-break-after: avoid;
+  }
+
+  .report-actions {
+    display: none;
+  }
+
+  .report-section {
+    page-break-inside: avoid;
+  }
+
+  .report-order-group {
+    page-break-inside: avoid;
+  }
+
+  .report-plants-list {
+    page-break-inside: avoid;
+  }
+
+  .report-layer-care {
+    page-break-inside: avoid;
+  }
+
+  .report-shopping-table {
+    page-break-inside: avoid;
+  }
+
+  @page {
+    margin: 0.5in;
+    size: letter;
+  }
+
+  body {
+    font-size: 10pt;
+  }
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .design-report {
+    padding: 1rem;
+  }
+
+  .report-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .report-actions {
+    width: 100%;
+  }
+
+  .report-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .report-plant-details {
+    gap: 0.5rem 1rem;
+  }
+
+  .report-plant-row {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .report-difficulty {
+    margin-top: 0.5rem;
+  }
+
+  .report-shopping-table {
+    font-size: 0.8rem;
+  }
+
+  .report-shopping-table th,
+  .report-shopping-table td {
+    padding: 0.5rem;
+  }
+}

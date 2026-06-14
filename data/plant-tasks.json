@@ -1,0 +1,1386 @@
+[
+  {
+    "commonName": "Live Oak",
+    "guildRole": "Canopy anchor — the structural heart of your food forest. Everything else is planted in relation to this tree.",
+    "bestPlantingWindow": "October through February",
+    "difficulty": 2,
+    "xpReward": 200,
+    "tags": ["canopy", "native", "wildlife-habitat", "long-lived"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Choose and clear your planting spot",
+        "description": "Mark a circle 3ft in diameter around your intended planting spot. Remove any grass or weeds inside this circle down to bare soil. Live Oaks develop wide root systems — make sure there are no utilities, foundations, or septic lines within 15ft.",
+        "tips": ["Avoid planting within 15ft of structures or underground lines", "Morning shade from a building to the east is OK; south or west shade will stunt growth"],
+        "estimatedMinutes": 20
+      },
+      {
+        "phase": "preparation",
+        "title": "Dig the planting hole",
+        "description": "Dig a hole 2–3× the width of the root ball but only as deep as the root ball height. The top of the root flare (where trunk meets roots) must sit 1–2 inches ABOVE grade when finished — Live Oaks planted too deep decline over years.",
+        "tips": ["Rough up the sides of the hole with your shovel — smooth walls create a 'pot' effect that traps roots", "In heavy clay, make the hole even wider to help roots escape into better soil"],
+        "estimatedMinutes": 40
+      },
+      {
+        "phase": "preparation",
+        "title": "Prepare your backfill",
+        "description": "Do NOT amend the backfill soil with compost or fertilizer for native oaks. Use the same native soil you dug out. Adding rich amendments creates a 'bathtub effect' where roots stay inside the amended zone instead of exploring outward. A small handful of native mycorrhizal inoculant on the root ball is the one beneficial addition.",
+        "tips": ["Native soil = strong roots. Amended soil = coddled roots that never explore"],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "planting-day",
+        "title": "Set the tree and check root flare",
+        "description": "Place the root ball in the hole and check depth — the root flare should be 1–2 inches above the surrounding soil level. Remove any burlap, wire, or container. Straighten the tree so the best-looking side faces your main viewing direction.",
+        "tips": ["If you can't see the root flare, it may be buried in the container soil — carefully expose it before planting"],
+        "estimatedMinutes": 20
+      },
+      {
+        "phase": "planting-day",
+        "title": "Backfill and water-in",
+        "description": "Fill the hole halfway with native soil and water thoroughly to settle it. Then fill the rest and water again. Tamp gently with your foot — do not pack hard. You're trying to eliminate air pockets, not compress the soil.",
+        "tips": ["Water slowly so it soaks in rather than running off", "If soil sinks after the first watering, add more to level it out"],
+        "estimatedMinutes": 30
+      },
+      {
+        "phase": "planting-day",
+        "title": "Apply mulch ring",
+        "description": "Spread 3–4 inches of coarse wood chip mulch in a ring from 6 inches away from the trunk out to 3–4ft diameter. Never pile mulch against the trunk — this causes rot and invites pests. This mulch ring is one of the single most important things you can do for long-term tree health.",
+        "tips": ["Keep mulch 6 inches clear of the trunk — 'mulch volcanoes' kill trees over years", "Arborist wood chips are ideal — avoid dyed or treated bark mulch"],
+        "estimatedMinutes": 20
+      },
+      {
+        "phase": "first-30-days",
+        "title": "First-month watering schedule",
+        "description": "Week 1–2: Water deeply every 2–3 days. Week 3–4: Water every 4–5 days if no rain. Water at the drip line (edge of canopy), not the trunk. Give 5–10 gallons per watering — a slow trickle for 20 minutes is better than a quick splash.",
+        "tips": ["Stick a finger 3 inches into the soil — if it's dry, water. If moist, wait.", "Yellow leaves in first month = too much water. Wilting and brown edges = too little."],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "first-30-days",
+        "title": "Check for establishment stress",
+        "description": "Some leaf drop in the first 2–4 weeks is normal — the tree is adjusting. Watch for: crispy brown leaf edges (underwatering), yellowing leaves (overwatering or wet feet), or weeping/drooping for more than a week (needs water immediately). Do NOT fertilize during this period.",
+        "tips": ["Resist the urge to fertilize — it pushes top growth before the roots are ready"],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "year-one",
+        "title": "Year-one watering and weaning",
+        "description": "Months 2–6: Gradually reduce watering frequency to weekly deep waterings. Months 7–12: Water every 2 weeks unless drought conditions. By year two, a healthy Live Oak should be largely self-sufficient in Texas. Do not water in winter unless there's a prolonged dry spell.",
+        "tips": ["Every time you reduce watering frequency, you force deeper root growth — this is good", "Expand the mulch ring outward as the tree grows"],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "year-one",
+        "title": "First-year pruning restraint",
+        "description": "Do NOT prune in the first growing season except to remove dead wood or branches rubbing the trunk. The tree needs all its leaves to fuel root establishment. In Texas, avoid pruning oaks February through June (oak wilt season). If pruning is necessary, paint cuts immediately with latex paint to prevent oak wilt infection.",
+        "tips": ["Oak wilt is a serious disease spread by beetles attracted to fresh pruning cuts", "Always use clean, sharp tools"],
+        "estimatedMinutes": 15
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Deep watering check",
+        "description": "Water deeply at the drip line — 5 to 10 gallons delivered slowly. Check soil moisture 3 inches down before watering; skip if still moist from rain.",
+        "tips": ["Water at the drip line, not the trunk", "A slow trickle for 20 minutes beats a quick splash"],
+        "intervalDays": 3,
+        "estimatedMinutes": 15,
+        "xpPerCompletion": 5
+      },
+      {
+        "phase": "year-one",
+        "title": "Bi-weekly deep watering",
+        "description": "Give a slow, deep watering at the expanding drip line. Reduce frequency as the tree roots in — the goal is pushing roots deeper, not keeping soil constantly moist.",
+        "tips": ["If there was meaningful rain (0.5+ inches) in the past week, skip this watering", "Expand the mulch ring outward a few inches every couple of months"],
+        "intervalDays": 14,
+        "estimatedMinutes": 15,
+        "xpPerCompletion": 8
+      },
+      {
+        "phase": "ongoing",
+        "title": "Refresh mulch ring",
+        "description": "Top up the mulch ring to 3–4 inches depth, keeping it 6 inches clear of the trunk. Arborist wood chips are ideal. Extend the ring outward to match the expanding canopy drip line.",
+        "tips": ["Never pile mulch against the trunk", "Expanding the ring every 6 months gives the root zone more buffer"],
+        "intervalDays": 180,
+        "estimatedMinutes": 20,
+        "xpPerCompletion": 15
+      }
+    ]
+  },
+  {
+    "commonName": "Pecan",
+    "guildRole": "Dominant canopy producer — the pecan is the traditional Texas food forest crown. Provides deep shade, heavy mast, and deep taproot that mines water and minerals.",
+    "bestPlantingWindow": "December through February (bare-root season)",
+    "difficulty": 3,
+    "xpReward": 220,
+    "tags": ["canopy", "native", "food-producer", "long-lived", "large-tree"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Select your variety carefully",
+        "description": "Pecans require two different varieties for cross-pollination. Choose one Type I pollen-shedder (Cheyenne, Wichita, Pawnee) and one Type II (Desirable, Kiowa, Mohawk). Plant at least 30–40ft apart. Single-variety plantings produce little to no nuts.",
+        "tips": ["Wichita + Desirable is the classic Central Texas pairing", "Container trees vs bare root: bare root in winter establishes faster and costs less"],
+        "estimatedMinutes": 30
+      },
+      {
+        "phase": "preparation",
+        "title": "Dig a deep planting hole",
+        "description": "Pecans have long taproots — dig a hole at least 3ft deep and 2ft wide. Break up compacted layers with a digging bar if needed. The taproot must be able to grow straight down without obstruction. If you hit caliche (white limestone layer), break through it.",
+        "tips": ["Hitting a caliche layer? Drive a steel rod through to create a drainage channel", "Never bend or 'J-root' a bare root pecan — cut it rather than curve it"],
+        "estimatedMinutes": 60
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant at correct depth",
+        "description": "The bud union (the slight bend or scar near the base) should be 2–3 inches above ground. Spread roots outward naturally — never bend them. Backfill with native soil in layers, firming each layer to eliminate air pockets. Water thoroughly after each layer.",
+        "tips": ["If planting a bare-root tree, soak the roots in water 12–24 hours before planting"],
+        "estimatedMinutes": 45
+      },
+      {
+        "phase": "planting-day",
+        "title": "Cut the tree back at planting",
+        "description": "For bare-root trees: cut the top back to 24–30 inches above the bud union immediately after planting. This seems drastic but it's critical — you're balancing top growth with the reduced root system. Container trees do not require this cutback.",
+        "tips": ["This single step is what separates successful pecan plantings from failures with bare-root stock"],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "first-30-days",
+        "title": "First-season watering",
+        "description": "Water deeply immediately after planting and then every 5–7 days for the first month. Pecans are drought-tolerant once established but require consistent moisture in year one to develop deep roots. Apply 10–15 gallons per watering.",
+        "tips": ["A slow drip at the drip line for 30–45 minutes is ideal"],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "year-one",
+        "title": "Manage the central leader",
+        "description": "Pecans should develop a strong single central trunk. Remove any competing leaders (upright branches trying to become a second trunk) in the first and second winter. Keep the lowest permanent scaffold branches at 6–8ft above ground to allow mowing or access beneath.",
+        "tips": ["Do not prune more than 25% of the canopy in any single year"],
+        "estimatedMinutes": 30
+      },
+      {
+        "phase": "year-one",
+        "title": "Zinc application",
+        "description": "Pecan zinc deficiency is the most common nutrient problem in Texas. Look for rosette (bunched, small leaves at branch tips) — this is zinc deficiency. Apply a zinc foliar spray in spring when leaves are emerging. Use chelated zinc products designed for pecans.",
+        "tips": ["Zinc deficiency does not mean bad soil — pecans just need exceptional zinc levels", "One spray in early spring is usually sufficient for young trees"],
+        "estimatedMinutes": 20
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Deep watering",
+        "description": "Apply 10–15 gallons at the drip line slowly. The taproot needs deep moisture to grow down — shallow watering produces shallow roots.",
+        "tips": ["A slow drip for 45 minutes at the drip line is ideal", "Skip if there was 1+ inch of rain in the past 5 days"],
+        "intervalDays": 6,
+        "estimatedMinutes": 15,
+        "xpPerCompletion": 5
+      },
+      {
+        "phase": "year-one",
+        "title": "Zinc deficiency check",
+        "description": "Look at the newest leaves at branch tips. Rosetting (small, bunched leaves) or yellowing with green veins = zinc deficiency. Apply chelated zinc foliar spray in spring if you see these symptoms.",
+        "tips": ["One spring spray is usually enough for young trees", "Healthy new leaves are large and uniformly green"],
+        "intervalDays": 30,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 8
+      },
+      {
+        "phase": "ongoing",
+        "title": "Mulch ring and sucker removal",
+        "description": "Refresh the mulch ring to 3–4 inches and remove any suckers growing from the base of the trunk. Also remove any low branches competing to become secondary leaders.",
+        "tips": ["Keep mulch 6 inches from the trunk", "Cut suckers flush with the trunk — do not leave stubs"],
+        "intervalDays": 180,
+        "estimatedMinutes": 25,
+        "xpPerCompletion": 15
+      }
+    ]
+  },
+  {
+    "commonName": "Loquat",
+    "guildRole": "Early-fruiting understory anchor. Produces fruit in winter when little else does. Dense evergreen canopy creates year-round shade for shade guild below.",
+    "bestPlantingWindow": "March through April or October through November",
+    "difficulty": 1,
+    "xpReward": 120,
+    "tags": ["understory", "food-producer", "evergreen", "easy"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Pick the right site",
+        "description": "Loquats thrive in full sun to partial shade in Central Texas. They're one of the most cold-hardy subtropical fruit trees — tolerant to about 12°F once established. Avoid low spots that collect frost, as the flowers bloom in fall/winter and late frosts can destroy the crop.",
+        "tips": ["A south-facing wall or fence gives extra warmth in freeze events", "Established loquats bounce back from hard freezes — the fruit crop is what gets damaged"],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "preparation",
+        "title": "Prepare the planting hole",
+        "description": "Dig a hole 2× the width of the root ball and the same depth. Loquats aren't picky about soil — they tolerate clay, sand, and caliche with equal ease. Mix a generous amount of compost into the backfill (loquats respond well to amendment unlike native oaks).",
+        "tips": ["Adding 1/3 compost to backfill soil is ideal for loquats"],
+        "estimatedMinutes": 30
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant and stake if needed",
+        "description": "Plant at the same depth as in the container. Loquats have dense canopies that catch wind — stake loosely with two stakes and soft ties if your site is exposed. Remove stakes after one year. Mulch well with 3–4 inches of wood chips, keeping clear of the trunk.",
+        "tips": ["Loose staking (allowing slight movement) develops stronger trunk wood than rigid staking"],
+        "estimatedMinutes": 30
+      },
+      {
+        "phase": "first-30-days",
+        "title": "Watering schedule",
+        "description": "Water deeply every 3–4 days for the first month. Loquats establish quickly and reliably — they're among the least finicky of the fruit trees for Texas. After month one, water weekly through the first summer.",
+        "tips": ["If you plant in fall, watering demands are much lower — cool weather does the work for you"],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "year-one",
+        "title": "First-year fertilizing",
+        "description": "In spring of the first year, apply a balanced citrus/fruit tree fertilizer (or a 10-10-10) at half the label rate. Loquats in Texas rarely have serious nutrient issues once established. Avoid high-nitrogen fertilizers that push growth at the expense of fruiting.",
+        "tips": ["Compost mulch top-dressing is usually sufficient for established trees"],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "year-one",
+        "title": "Fruit thinning in year 2–3",
+        "description": "Loquats produce large clusters of 10–20 fruit. Thinning clusters to 4–6 fruit each in late fall/early winter produces larger, sweeter fruit. Young trees (under 3 years) should have all fruit removed in the first two seasons to direct energy to root and canopy development.",
+        "tips": ["The temptation to harvest the first fruits is strong — resist it for bigger rewards in year 3+"],
+        "estimatedMinutes": 30
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Establishment watering",
+        "description": "Water deeply every 3–4 days. Loquats establish quickly — you should see new leaf growth within a few weeks. Reduce watering once the tree is actively pushing growth.",
+        "tips": ["Plant in fall and rainfall does most of the work for you", "Check soil moisture 2 inches down before watering"],
+        "intervalDays": 4,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 5
+      },
+      {
+        "phase": "year-one",
+        "title": "Spring fertilizer application",
+        "description": "Apply half the label rate of a balanced fruit tree fertilizer (10-10-10 or citrus formula) as new growth emerges in spring. Water in thoroughly after applying.",
+        "tips": ["Too much nitrogen = lush growth, fewer flowers", "Compost mulch top-dressing can substitute for synthetic fertilizer"],
+        "intervalDays": 90,
+        "estimatedMinutes": 15,
+        "xpPerCompletion": 10
+      },
+      {
+        "phase": "ongoing",
+        "title": "Cluster thinning",
+        "description": "In late fall or early winter, thin each fruit cluster to 4–6 individual fruits. Remove the smallest fruits and any that are damaged. This produces larger, sweeter fruit and reduces branch breakage from heavy loads.",
+        "tips": ["Thinning feels wrong but the remaining fruit will be noticeably larger and sweeter", "Young trees should have all fruit removed — save your first harvest for year 3+"],
+        "intervalDays": 365,
+        "estimatedMinutes": 30,
+        "xpPerCompletion": 20
+      }
+    ]
+  },
+  {
+    "commonName": "Fig",
+    "guildRole": "High-yield understory producer. Among the most reliable fruit trees for Texas. Provides dense summer shade and exceptionally sweet fruit with minimal care.",
+    "bestPlantingWindow": "March through April (after last frost)",
+    "difficulty": 1,
+    "xpReward": 100,
+    "tags": ["understory", "food-producer", "drought-tolerant", "easy", "fast-growing"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Choose your variety for Texas",
+        "description": "Texas Brown Turkey and Celeste are the most cold-hardy and productive for Central Texas. LSU Purple and Alma are also excellent. Avoid varieties bred for Pacific Northwest climates. Figs need full sun (6+ hours) — partial shade dramatically reduces fruit production.",
+        "tips": ["A south or southeast facing spot next to a wall or fence extends the season and buffers cold snaps"],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "preparation",
+        "title": "Prepare well-drained soil",
+        "description": "Figs are extremely adaptable but cannot tolerate waterlogged soil — root rot will kill them. If your soil is clay-heavy, plant on a slight mound (6–8 inches high) or amend a large area with coarse compost and sand. Dig a hole 2× the container width.",
+        "tips": ["If water stands in the hole for more than 30 minutes after rain, build up a mound before planting"],
+        "estimatedMinutes": 30
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant and establish",
+        "description": "Plant at container depth — no need to plant high like oaks. Mix compost generously into backfill (1/3 compost to 2/3 native soil). Water in deeply. Figs establish so readily they rarely need staking. Apply 4-inch mulch ring immediately.",
+        "tips": ["Figs planted in warm soil (spring) establish noticeably faster than fall-planted figs"],
+        "estimatedMinutes": 30
+      },
+      {
+        "phase": "first-30-days",
+        "title": "Minimal watering needed",
+        "description": "Water every 3–4 days for the first two weeks, then reduce to weekly. Figs are surprisingly drought-tolerant once they push new growth. Overwatering causes root problems — when in doubt, water less.",
+        "tips": ["New leaf growth is your sign the tree is establishing well — you should see it within 2–4 weeks of spring planting"],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "year-one",
+        "title": "Winter freeze management",
+        "description": "Young figs are vulnerable to hard freezes (below 15°F) in their first two winters. Wrap the trunk and main branches with frost cloth or burlap if temps below 20°F are forecast. Remove wrapping once temps are reliably above freezing. Established figs often die back to the ground but resprout vigorously.",
+        "tips": ["Even if frozen to the ground, a fig with an intact root system will regrow to full size in 2–3 seasons"],
+        "estimatedMinutes": 30
+      },
+      {
+        "phase": "year-one",
+        "title": "First summer fruit harvest",
+        "description": "Most figs produce a light 'breba crop' in early summer on last year's wood, then the main crop on new growth in late summer. First-year figs are usually allowed to fruit lightly. Harvest figs when they are soft, slightly drooping, and easily pulled from the branch — immature figs have a milky, irritating sap.",
+        "tips": ["Wear gloves when harvesting — fig sap can cause skin irritation", "Birds love figs — net or harvest daily when ripening begins"],
+        "estimatedMinutes": 20
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Establishment watering",
+        "description": "Water every 3–4 days for the first two weeks. Once you see new leaf growth, reduce to weekly. Figs are more drought-tolerant than most fruit trees — when in doubt, water less.",
+        "tips": ["New leaf growth within 2–4 weeks of spring planting is your confirmation of good establishment", "Overwatering causes more fig failures than underwatering"],
+        "intervalDays": 4,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 5
+      },
+      {
+        "phase": "year-one",
+        "title": "Harvest check",
+        "description": "Check ripening figs every few days during summer. Harvest when fruits are soft, slightly drooping, and pull away easily. Ripe figs don't hold long on the tree — birds will find them the same day.",
+        "tips": ["Wear gloves — fig sap is a skin irritant", "A ripe fig pulls away with almost no resistance"],
+        "intervalDays": 3,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 8
+      },
+      {
+        "phase": "ongoing",
+        "title": "Winter freeze protection check",
+        "description": "When freezes below 20°F are forecast, wrap the trunk and main scaffold branches with frost cloth. Remove wrapping as soon as temperatures recover above freezing. Even established figs benefit from trunk wrapping in severe cold events.",
+        "tips": ["Established figs that freeze to the ground almost always resprout from the roots", "Unwrap promptly after the freeze event — leaving wrap on in warm weather causes problems"],
+        "intervalDays": 180,
+        "estimatedMinutes": 20,
+        "xpPerCompletion": 10
+      }
+    ]
+  },
+  {
+    "commonName": "Pomegranate",
+    "guildRole": "Drought-tolerant understory or large shrub. One of the most reliable food producers for Central Texas — handles extreme heat, alkaline soil, and mild droughts with ease.",
+    "bestPlantingWindow": "March through May",
+    "difficulty": 1,
+    "xpReward": 100,
+    "tags": ["understory", "shrub", "food-producer", "drought-tolerant", "easy"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Select a hot, sunny location",
+        "description": "Pomegranates thrive in Texas heat — they want the hottest spot in your garden. Full sun (8+ hours) is essential for fruit production. They are exceptionally tolerant of alkaline and caliche soils that defeat many other fruit trees.",
+        "tips": ["South-facing beds against a wall or fence are ideal — the reflected heat accelerates ripening"],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant with minimal amendment",
+        "description": "Pomegranates need no special soil preparation. Dig a hole twice the container width. Backfill with native soil — no amendments needed unless your soil is pure sand. Plant at container depth and water thoroughly.",
+        "tips": ["Pomegranates planted in 'too good' soil produce lush growth but less fruit — lean soil means more flowers"],
+        "estimatedMinutes": 30
+      },
+      {
+        "phase": "first-30-days",
+        "title": "Establish with moderate watering",
+        "description": "Water deeply every 3–4 days for the first month. Once established (new leaf growth visible), reduce to weekly. Pomegranates are very forgiving — they bounce back from both over- and under-watering better than most fruit trees.",
+        "tips": [],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "year-one",
+        "title": "Train to single or multi-trunk form",
+        "description": "Pomegranates naturally grow as multi-stem shrubs. For a tree form: select 1–3 main trunks and remove all suckers from the base through the first year. For a shrub form: allow 4–6 stems and remove the rest. Choose your form in year one — switching later is difficult.",
+        "tips": ["Multi-trunk forms are more wind-resistant and produce more fruit surface area"],
+        "estimatedMinutes": 20
+      },
+      {
+        "phase": "year-one",
+        "title": "First fruit harvest timing",
+        "description": "Pomegranates are ready when they make a metallic sound when tapped, the skin starts to turn slightly flat-sided, and the color deepens. Do not pick early — they don't ripen off the tree. Wonderfully, pomegranates don't need to be picked immediately when ripe — they hold on the tree for weeks.",
+        "tips": ["Fruits that split open are overripe or received a heavy rain after drought — harvest anything that splits immediately"],
+        "estimatedMinutes": 15
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Establishment watering",
+        "description": "Water deeply every 3–4 days. Pomegranates are forgiving — they bounce back from both over- and under-watering. Once you see new leaf growth pushing, reduce to weekly watering.",
+        "tips": ["Pomegranates actually fruit better in lean soil — resist the urge to fertilize heavily"],
+        "intervalDays": 4,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 5
+      },
+      {
+        "phase": "year-one",
+        "title": "Sucker removal",
+        "description": "Remove any suckers growing from the base or below the soil line. If training to a tree form, remove everything except your chosen 1–3 main trunks. For shrub form, keep 4–6 strong stems and remove any extras.",
+        "tips": ["Cut suckers flush with the root — leaving stubs encourages more suckering", "Sucker removal is ongoing — check every few weeks through the growing season"],
+        "intervalDays": 21,
+        "estimatedMinutes": 15,
+        "xpPerCompletion": 8
+      },
+      {
+        "phase": "ongoing",
+        "title": "Harvest timing check",
+        "description": "Tap ripe pomegranates — a metallic sound means ready. Check that the skin is showing flat facets and the color has deepened. Pomegranates hold on the tree well, but split fruits should be harvested immediately.",
+        "tips": ["Split fruits indicate rain after drought — harvest immediately and process", "Pomegranates don't ripen off the tree, so timing matters"],
+        "intervalDays": 7,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 8
+      }
+    ]
+  },
+  {
+    "commonName": "Pawpaw",
+    "guildRole": "Native understory fruiter for shade positions. The only tropical-tasting fruit native to North America. Thrives in the shade of canopy trees — ideal north-of-canopy placement.",
+    "bestPlantingWindow": "March through April",
+    "difficulty": 3,
+    "xpReward": 150,
+    "tags": ["understory", "native", "food-producer", "shade-tolerant"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Understand pawpaw's needs",
+        "description": "Pawpaws are different from most fruit trees: they prefer shade in their first 1–2 years (mimicking forest floor seedlings), want consistent moisture (never drought), and require two genetically different plants for cross-pollination. They will NOT produce fruit alone.",
+        "tips": ["Plant at least 2 different pawpaw varieties — self-pollination is unreliable", "Sunflower, Shenandoah, and Susquehanna are excellent varieties for Texas"],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "preparation",
+        "title": "Prepare rich, moist, well-drained soil",
+        "description": "Pawpaws want the opposite of most Texas-adapted plants — they prefer rich, deep, slightly acidic soil with consistent moisture. Amend generously with compost. If your soil is alkaline (most of Central Texas is), add a cup of sulfur to the planting hole and mix well.",
+        "tips": ["A spot near your water source makes the required consistent watering much more manageable"],
+        "estimatedMinutes": 30
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant carefully — taproot sensitive",
+        "description": "Pawpaws have fragile taproots and strongly dislike root disturbance. Handle the root ball gently. Plant at container depth. Provide shade for the first full growing season — place a shade cloth or temporary shade structure. Remove shade in year two.",
+        "tips": ["A 50% shade cloth over a wire frame is ideal for first-year pawpaws", "Never let the root ball dry out between planting and establishment"],
+        "estimatedMinutes": 40
+      },
+      {
+        "phase": "first-30-days",
+        "title": "Consistent moisture is non-negotiable",
+        "description": "Pawpaws must have consistent moisture — unlike most Texas plants, letting them dry out even briefly in year one can set them back months. Water every 2–3 days. A thick mulch layer (4–6 inches) is especially important to retain soil moisture.",
+        "tips": ["Drip irrigation set to run every other day is ideal for pawpaws"],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "year-one",
+        "title": "Patience with slow establishment",
+        "description": "Pawpaws are notorious for appearing to do nothing in year one — all the action is underground as they develop roots. This is normal. Do not assume the tree is dead and give up. By year two, most pawpaws suddenly push 12–24 inches of new growth. Fruit typically begins in year 3–5.",
+        "tips": ["A pawpaw 'doing nothing' above ground is usually developing an extensive root system — this is good"],
+        "estimatedMinutes": 10
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Consistent moisture watering",
+        "description": "Water every 2 days — pawpaws cannot tolerate drying out during establishment. Check the soil 2 inches down; it should feel damp but not soggy. The thick mulch layer is your ally here.",
+        "tips": ["Drip irrigation every other day is ideal — pawpaws need the most consistent moisture of any plant in your forest", "If the soil feels dry at 2 inches, water immediately regardless of the schedule"],
+        "intervalDays": 2,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 8
+      },
+      {
+        "phase": "year-one",
+        "title": "Shade cloth and moisture check",
+        "description": "Check the shade cloth is still in place and securely covering the plant. Check soil moisture — pawpaws in year one need consistent moisture more than any other Texas food forest plant. Look for any new leaf growth as a sign of root establishment progress.",
+        "tips": ["Seeing new growth is cause for celebration — the pawpaw is establishing", "Remove shade cloth in year two once the plant is actively growing"],
+        "intervalDays": 7,
+        "estimatedMinutes": 5,
+        "xpPerCompletion": 5
+      },
+      {
+        "phase": "ongoing",
+        "title": "Bi-weekly deep watering",
+        "description": "Unlike most established food forest plants, pawpaws retain a preference for consistent moisture. Water deeply every 2 weeks during dry periods. Keep the mulch layer topped up to 4–6 inches to retain soil moisture between waterings.",
+        "tips": ["Even established pawpaws prefer not to dry out — they are the exception to the 'once established, drought tolerant' rule", "Top up mulch to 4–6 inches each spring"],
+        "intervalDays": 14,
+        "estimatedMinutes": 15,
+        "xpPerCompletion": 8
+      }
+    ]
+  },
+  {
+    "commonName": "Mexican Plum",
+    "guildRole": "Native understory anchor. First tree to bloom in spring — critical early nectar source for pollinators before other plants wake up. Tart fruits beloved by wildlife and for jelly.",
+    "bestPlantingWindow": "November through February",
+    "difficulty": 1,
+    "xpReward": 110,
+    "tags": ["understory", "native", "food-producer", "wildlife-habitat", "easy"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Choose a well-drained site",
+        "description": "Mexican Plums are native to Central Texas limestone hills — they want sun to partial shade and excellent drainage. They perform beautifully on slopes and rocky areas where other trees struggle. Avoid any spot with standing water after rain.",
+        "tips": ["Mexican Plums are one of the most carefree native trees once established"],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant in native soil",
+        "description": "Like other Texas natives, Mexican Plum does best in unamended native soil. Dig hole twice the container width. Plant at container depth. Water well and mulch. No staking required — these trees develop strong root systems quickly.",
+        "tips": [],
+        "estimatedMinutes": 30
+      },
+      {
+        "phase": "first-30-days",
+        "title": "Minimal care needed",
+        "description": "Water deeply every 4–5 days for the first month, then weekly through the first summer. Once established, Mexican Plum is highly drought tolerant and essentially self-sufficient. No fertilizer needed.",
+        "tips": ["If planted in fall/winter, rainfall will do most of the watering work for you"],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "year-one",
+        "title": "Enjoy the spring bloom",
+        "description": "Even in its first spring, Mexican Plum will produce its spectacular white flower display before any leaves appear (usually late February in Austin). This early bloom is critical for queen bumblebees and native bees emerging from winter dormancy. Fruit develops in summer — small, tart, and beloved by mockingbirds.",
+        "tips": ["Resist harvesting all the fruit — wildlife rely heavily on this native plum"],
+        "estimatedMinutes": 10
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Establishment watering",
+        "description": "Water deeply every 4–5 days for the first month. Mexican Plum is one of the easiest native trees to establish — just don't let it completely dry out in its first summer.",
+        "tips": ["Fall and winter planting means rainfall handles most of the work", "No fertilizer needed — ever"],
+        "intervalDays": 5,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 3
+      },
+      {
+        "phase": "year-one",
+        "title": "Spring bloom and fruit check",
+        "description": "Watch for the spectacular white bloom in late February — one of the first signs of spring. After bloom, small fruits develop through summer. Leave most for mockingbirds, cedar waxwings, and other wildlife. Harvest a few for jam if you like.",
+        "tips": ["The wildlife value of this tree is enormous — it is one of the earliest food sources each year", "No pruning or fertilizing needed"],
+        "intervalDays": 30,
+        "estimatedMinutes": 5,
+        "xpPerCompletion": 5
+      },
+      {
+        "phase": "ongoing",
+        "title": "Annual mulch refresh",
+        "description": "Top up the mulch ring to 3 inches around the base of the tree, keeping it 6 inches clear of the trunk. This is the only regular care this tree needs once established.",
+        "tips": ["Mexican Plum is one of the most self-sufficient trees in the Texas landscape", "Expand the mulch ring as the tree grows"],
+        "intervalDays": 180,
+        "estimatedMinutes": 15,
+        "xpPerCompletion": 10
+      }
+    ]
+  },
+  {
+    "commonName": "Texas Persimmon",
+    "guildRole": "Hardy native understory tree. Extremely drought tolerant once established. Black fruits are sweet and prized by wildlife. Slow-growing but indestructible in Central Texas conditions.",
+    "bestPlantingWindow": "October through March",
+    "difficulty": 1,
+    "xpReward": 110,
+    "tags": ["understory", "native", "food-producer", "wildlife-habitat", "drought-tolerant"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Choose rocky, well-drained soil",
+        "description": "Texas Persimmon is native to limestone hills and rocky terrain — it actually prefers poor, rocky soil over rich garden beds. Full sun to partial shade. An ideal candidate for the 'tough spots' other plants avoid.",
+        "tips": ["If you have a rocky slope or caliche problem area, this is your tree"],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant in native soil — no amendments",
+        "description": "Plant in native rocky soil without any amendment. Dig hole twice the container width, plant at container depth. Water thoroughly. Mulch lightly — a 2-inch layer is sufficient (heavy mulch in rocky well-drained spots can hold too much moisture).",
+        "tips": [],
+        "estimatedMinutes": 30
+      },
+      {
+        "phase": "first-30-days",
+        "title": "Minimal establishment watering",
+        "description": "Water every 4–5 days for the first month, then reduce quickly to every 7–10 days. Texas Persimmon's strength is drought tolerance — over-coddling with water delays the development of its deep root system.",
+        "tips": [],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "year-one",
+        "title": "Patience with slow growth",
+        "description": "Texas Persimmon is one of the slowest-growing native trees — 6–12 inches per year is typical. Don't mistake slow top growth for failure. The first 2–3 years are spent developing a deep taproot. Once established, it is virtually indestructible under Texas conditions.",
+        "tips": ["Female trees produce the black fruits — if your tree flowers but produces no fruit, you have a male tree (still valuable for habitat)"],
+        "estimatedMinutes": 10
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Light establishment watering",
+        "description": "Water every 5 days for the first month, then stretch quickly to every 10 days. Texas Persimmon builds drought tolerance by being allowed to experience some dryness — over-watering delays deep root development.",
+        "tips": ["This is the most drought-tolerant plant in your food forest — resist the urge to water more than necessary"],
+        "intervalDays": 5,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 3
+      },
+      {
+        "phase": "year-one",
+        "title": "Growth and health check",
+        "description": "Check for new growth every month or so. Growth is slow (6–12 inches per year) but steady. Look for any dead branches or signs of pest damage. This tree requires almost no intervention — just observation.",
+        "tips": ["Slow top growth is normal — the tree is investing in its deep taproot", "Female trees flower and fruit; males flower but don't fruit — both are ecologically valuable"],
+        "intervalDays": 30,
+        "estimatedMinutes": 5,
+        "xpPerCompletion": 3
+      },
+      {
+        "phase": "ongoing",
+        "title": "Annual inspection",
+        "description": "Once a year, check for dead wood, crossing branches, or any structural issues. Texas Persimmon requires almost no care once established — this is simply a wellness check.",
+        "tips": ["Truly one of the lowest-maintenance trees you can plant in Texas", "The peeling bark revealing white wood underneath is normal and beautiful"],
+        "intervalDays": 365,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 15
+      }
+    ]
+  },
+  {
+    "commonName": "Turk's Cap Red",
+    "aliases": ["Red Turk's Cap", "Turks Cap Red", "Red Turks Cap", "Turk's Cap (Red)", "Turks Cap (Red)"],
+    "guildRole": "Dry-shade anchor and hummingbird fuel stop. In Central Texas, Turk's Cap fills the niche almost nothing else will — heavy flowering in dry shade under established trees, June through November, perfectly timed for fall hummingbird migration. One of the most ecologically valuable native shrubs you can plant.",
+    "bestPlantingWindow": "March through May or September through October",
+    "difficulty": 1,
+    "xpReward": 80,
+    "tags": ["shrub", "native", "insectary", "shade-tolerant", "easy"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Clear and prep the planting area",
+        "description": "Turk's Cap naturally grows at woodland edges and creek margins across the Texas Hill Country — it's adapted to the same filtered light, dry summers, and limestone-influenced soils you're working with. Clear grass and weeds in a 2–3 foot circle around the planting point. The roots spread outward via underground runners over time, so loosening the surrounding soil is more valuable here than digging deep.",
+        "tips": [
+          "If you clear a wider area (4–5 ft), you're making room for what this plant will become in year 2–3",
+          "No heavy soil amendment needed — it adapts equally well to clay, sandy loam, and limestone caliche"
+        ],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "preparation",
+        "title": "Dig the hole and prep backfill",
+        "description": "Dig a hole twice the width of the container and the same depth — Turk's Cap is a shallow-rooted shrub, not a deep digger. Unlike native oaks, it responds well to a light amendment: mix 1/4 to 1/3 compost into your backfill. This helps retain moisture through the first summer without over-enriching a plant that prefers lean conditions long-term.",
+        "tips": [
+          "If you hit hardpan caliche within 12 inches, break through it — drainage matters even for drought-tolerant plants",
+          "Save the removed native soil — you'll use most of it in the backfill mix"
+        ],
+        "estimatedMinutes": 20
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant at container depth and water in",
+        "description": "Set the root ball so the top of the container soil sits at or slightly above grade — planting too deep is the most common mistake with this species. Backfill in layers, firming gently with your hands (not your foot — the shallow roots don't benefit from compaction). Water slowly and deeply right after planting to soak both the root ball and the surrounding native soil.",
+        "tips": [
+          "If the plant looks wilted in the first week, it hasn't accessed native soil moisture yet — water more frequently for a few days",
+          "Hold off on fertilizer until you see new leaf growth pushing"
+        ],
+        "estimatedMinutes": 20
+      },
+      {
+        "phase": "planting-day",
+        "title": "Apply mulch ring",
+        "description": "Apply 3 inches of wood chip mulch in a ring from 3 inches away from the base of the plant out to 2–3 feet. In Central Texas summers, mulch is the highest-leverage thing you can do to carry this plant through establishment — it slows moisture loss dramatically in the critical first summer. Turk's Cap is drought tolerant once established but needs consistent moisture while its runner system develops.",
+        "tips": [
+          "Keep mulch off the crown (base of stems) — direct contact can cause rot at the soil line",
+          "Arborist wood chips are ideal — they break down slowly and improve soil biology as they do"
+        ],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "first-30-days",
+        "title": "First-month watering",
+        "description": "Spring planting: water deeply every 2–3 days through June, then every 4–5 days through July–August as the plant roots in. Fall planting: every 4–5 days for the first month, then let fall rains carry it. Expect the plant to look stressed during peak July–August heat even when well-watered — afternoon leaf droop and curling is a normal response to heat load, not a sign of failure.",
+        "tips": [
+          "A plant wilted at 3pm that recovers by the next morning is doing fine. One that doesn't recover overnight needs water immediately.",
+          "Water at the base, not overhead — this plant is forgiving but there's no need to invite fungal issues"
+        ],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "year-one",
+        "title": "Winter dieback is normal — don't cut too early",
+        "description": "After the first hard freeze (typically mid-November through December in Austin), the above-ground stems will die back. This is completely normal — Turk's Cap is root-hardy in Central Texas and the root system overwinters safely. Leave the dead stems in place through winter: they protect the crown in freeze events and provide habitat for overwintering insects. Cut back to 6–8 inches in late February when you see new buds forming at the base.",
+        "tips": [
+          "Cutting back in January feels right but exposes the crown to late freezes — wait until late February",
+          "If you're not sure whether it survived, scratch a stem near the base in March — green tissue means it's alive and coming"
+        ],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "year-one",
+        "title": "First blooms and spread",
+        "description": "Expect first blooms in late summer or early fall of the planting year. The flowers never fully open — this is deliberate: only hummingbirds have the bill geometry to reach the nectar deep inside the swirled tube. By the end of year one, underground runners will have started extending the plant's footprint. By year 2–3 it will have colonized a natural drift that fills the shade layer beautifully.",
+        "tips": [
+          "The small red fruits that follow flowers are edible — mildly sweet, mostly seed. Mockingbirds will compete for them.",
+          "To limit spread, cut back runners with a shovel once a year in early spring before new growth starts"
+        ],
+        "estimatedMinutes": 10
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Establishment watering",
+        "description": "Water deeply every 2–3 days through the first month. Afternoon leaf droop and curling is normal heat-load behavior — check if it recovers by next morning. If it does not recover overnight, water immediately.",
+        "tips": ["Water at the base, not overhead", "A plant wilted at 3pm that recovers by morning is doing fine"],
+        "intervalDays": 3,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 5
+      },
+      {
+        "phase": "year-one",
+        "title": "Late winter cutback",
+        "description": "In late February, cut all above-ground stems back to 6–8 inches. Look for buds forming at the base before cutting — this confirms the root system survived winter. Leave dead stems through winter for crown protection and insect habitat.",
+        "tips": ["Wait until late February — late freezes can still occur in Austin through mid-March", "Scratch a stem near the base to check for green tissue if you are unsure whether it survived"],
+        "intervalDays": 365,
+        "estimatedMinutes": 15,
+        "xpPerCompletion": 12
+      },
+      {
+        "phase": "ongoing",
+        "title": "Runner management",
+        "description": "In early spring before new growth starts, use a flat spade to sever any underground runners that have extended beyond the area you want this plant to occupy. Turk's Cap spreads by runners and will colonize a wide area over time — which is usually desirable under canopy trees.",
+        "tips": ["Severed runners can be transplanted elsewhere or given away", "If you want it to spread freely, skip this task entirely"],
+        "intervalDays": 365,
+        "estimatedMinutes": 20,
+        "xpPerCompletion": 10
+      }
+    ]
+  },
+  {
+    "commonName": "Turk's Cap Pink",
+    "aliases": ["Pink Turk's Cap", "Turks Cap Pink", "Pink Turks Cap"],
+    "guildRole": "Shade-layer color accent with identical ecological value to its red cousin. The pink Turk's Cap offers continuous summer–fall bloom in partial to dappled shade, with slightly softer heat preferences that make it well-suited to spots with filtered afternoon light.",
+    "bestPlantingWindow": "March through May or September through October",
+    "difficulty": 1,
+    "xpReward": 80,
+    "tags": ["shrub", "native", "insectary", "shade-tolerant", "easy"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Clear and prep the planting area",
+        "description": "Pink Turk's Cap shares the same woodland-edge ecology as the red variety but benefits a bit more from afternoon shade protection. In Central Texas, that means your spot should ideally have dappled or indirect light during the 2–6pm window — morning sun is fine and actually encourages flowering. Clear grass and weeds in a 2–3 foot circle around the planting point.",
+        "tips": [
+          "More sensitive to baking afternoon sun than the red variety — if your spot gets intense west sun, a taller neighboring plant to the west is a plus",
+          "Soil adaptability is high — clay, sandy loam, and limestone soils all work"
+        ],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "preparation",
+        "title": "Dig the hole and prep backfill",
+        "description": "Dig a hole twice the width of the container and the same depth. Mix 1/4 to 1/3 compost into your backfill — a light amendment helps moisture retention through the first summer without over-enriching the soil long-term. Pink Turk's Cap, like the red, prefers lean conditions once established.",
+        "tips": [
+          "Break through any caliche layer within 12 inches — standing water in the root zone is the biggest risk for this plant",
+          "No need to go deep — this is a shallow, spreading root system"
+        ],
+        "estimatedMinutes": 20
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant at container depth and water in",
+        "description": "Set the root ball so the top of the container soil is at or slightly above grade. Backfill in layers, firming gently with your hands. Water slowly and deeply immediately after planting. The pink variety may take a few extra days to show new growth compared to the red — this is normal, not a sign of failure.",
+        "tips": [
+          "Plant in the morning or on a cloudy day if temperatures are above 90°F — heat stress at planting can slow establishment",
+          "Hold fertilizer until you see active new leaf growth"
+        ],
+        "estimatedMinutes": 20
+      },
+      {
+        "phase": "planting-day",
+        "title": "Apply mulch ring",
+        "description": "Apply 3 inches of wood chip mulch from 3 inches away from the base of the plant out to 2–3 feet. The pink variety appreciates slightly more consistent moisture than the red, making mulch even more important here. Keep the crown (base of stems) clear of mulch contact.",
+        "tips": [
+          "Top up mulch each fall — it breaks down and needs replenishing annually",
+          "Arborist wood chips are ideal; avoid fine bark products that can mat and shed water"
+        ],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "first-30-days",
+        "title": "First-month watering",
+        "description": "Spring planting: water deeply every 2–3 days for the first month. The pink variety benefits from slightly more attentive watering than the red through the hottest part of its first summer (July–August) — aim for every 3–4 days during heat waves rather than stretching to 5. Fall planting: every 4–5 days for the first month, then transition to rainfall.",
+        "tips": [
+          "Afternoon wilt followed by overnight recovery is normal heat-load behavior — not a watering emergency",
+          "If leaves are yellowing (not just wilting), you may be overwatering — let the soil dry slightly between waterings"
+        ],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "year-one",
+        "title": "Winter dieback and spring return",
+        "description": "Like the red variety, pink Turk's Cap dies back to its roots after the first hard freeze. Leave dead stems in place through winter for crown protection and insect habitat. Cut to 6–8 inches in late February when buds begin forming at the base. The root system is reliably hardy through Central Texas winters.",
+        "tips": [
+          "Don't cut back before late February — late-season freeze events are still possible in Austin through mid-March",
+          "Year-two regrowth is typically more vigorous than the planting year — the root system is established"
+        ],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "year-one",
+        "title": "Blooms and underground spread",
+        "description": "First-year blooms typically appear in late summer or early fall — pink-rose colored swirled tubes identical in form to the red, with the same hummingbird-adapted geometry. The plant will begin spreading via underground runners by the end of year one. The pink and red Turk's Cap can be planted near each other — they don't cross-pollinate problematically and create a nice color mix in the shade layer.",
+        "tips": [
+          "The small fruits that follow flowers are edible — birds will find them before you do",
+          "To slow spread, sever runners with a flat spade in early spring before growth starts"
+        ],
+        "estimatedMinutes": 10
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Establishment watering",
+        "description": "Water deeply every 2–3 days. The pink variety appreciates slightly more consistent moisture than the red during establishment — aim for every 3 days during heat waves rather than stretching to 5.",
+        "tips": ["Afternoon wilt that recovers overnight is normal heat behavior, not underwatering", "Yellowing (not wilting) leaves = possible overwatering"],
+        "intervalDays": 3,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 5
+      },
+      {
+        "phase": "year-one",
+        "title": "Late winter cutback",
+        "description": "In late February, cut all above-ground stems to 6–8 inches. Wait for buds at the base before cutting. Dead stems left through winter protect the crown and shelter overwintering insects.",
+        "tips": ["Do not cut before late February — late freezes can still hit Austin through mid-March", "Year-two regrowth will be more vigorous than the first year"],
+        "intervalDays": 365,
+        "estimatedMinutes": 15,
+        "xpPerCompletion": 12
+      },
+      {
+        "phase": "ongoing",
+        "title": "Runner management",
+        "description": "In early spring, use a flat spade to sever runners that have spread beyond your intended area. The pink variety spreads more slowly than the red — you may only need to do this every other year.",
+        "tips": ["Severed runner sections can be replanted or shared", "If you want it to fill a wider area, simply leave runners alone"],
+        "intervalDays": 365,
+        "estimatedMinutes": 15,
+        "xpPerCompletion": 10
+      }
+    ]
+  },
+  {
+    "commonName": "Mexican Honeysuckle",
+    "aliases": ["Justicia spicigera", "Mexican honeysuckle"],
+    "guildRole": "Hummingbird-priority shrub with near-year-round bloom. Mexican Honeysuckle's orange tubular flowers peak in spring and fall — timed precisely for hummingbird migration through Central Texas. It bridges the gap between other bloomers and provides consistent nectar when your food forest needs it most.",
+    "bestPlantingWindow": "March through April or September through October",
+    "difficulty": 1,
+    "xpReward": 75,
+    "tags": ["shrub", "insectary", "hummingbird", "semi-evergreen", "easy"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Clear and prep the planting area",
+        "description": "Mexican Honeysuckle (Justicia spicigera) originates from the semi-arid scrub of northeastern Mexico and has naturalized beautifully in Central Texas limestone soils. It prefers morning sun with some relief from the intense 3–6pm afternoon heat — particularly important in its first summer. Clear grass and weeds in a 2–3 foot circle. This plant doesn't spread aggressively, so you're prepping for its permanent footprint rather than future expansion.",
+        "tips": [
+          "If your spot gets more than 5–6 hours of direct afternoon sun, a temporary shade cloth through the first summer improves establishment noticeably",
+          "Unlike purely native Texas shrubs, Mexican Honeysuckle benefits from light soil amendment at planting"
+        ],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "preparation",
+        "title": "Dig the hole and prep backfill",
+        "description": "Dig a hole twice the width of the container and the same depth. Mexican Honeysuckle is not a poor-soil specialist — it responds well to organic matter. Mix 1/3 compost into your backfill. Check drainage: pour water into the empty hole and watch it drain. If water sits for more than 20 minutes after a good rain, consider raising the planting level by 4–6 inches. The roots need reasonable drainage — standing water is one of the few things that will reliably kill this plant.",
+        "tips": [
+          "Central Texas's near-neutral to slightly alkaline soil pH is ideal for this plant — no adjustment needed",
+          "If soil is heavy clay, a raised planting with extra compost gives the root zone a better start"
+        ],
+        "estimatedMinutes": 20
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant and water in deeply",
+        "description": "Plant at container depth with the crown at or very slightly above grade — not below. Backfill in layers with your amended soil, firming gently. Water deeply and slowly after planting, saturating both the root ball and 12+ inches of surrounding soil. In favorable spring conditions you'll often see new growth within 2–3 weeks — this plant establishes relatively quickly compared to most shrubs.",
+        "tips": [
+          "A flattened or slightly wilted plant in the first week is normal — it's adjusting to root disturbance and will perk up quickly",
+          "Hold fertilizer until active new growth is visible — early feeding pushes top growth before roots are ready"
+        ],
+        "estimatedMinutes": 20
+      },
+      {
+        "phase": "planting-day",
+        "title": "Mulch well",
+        "description": "Apply 3 inches of wood chip mulch in a ring from 3 inches away from the base out to 2–3 feet. Mexican Honeysuckle is more moisture-sensitive than fully native Central Texas shrubs — it needs more consistent soil moisture through its first summer. Mulch is the key tool for maintaining this without constant watering. Keep the crown clear of direct mulch contact.",
+        "tips": [
+          "Mulch breaks down over time — top it up each fall to maintain the 3-inch layer",
+          "The base of the plant (where stems meet soil) should always be visible and uncovered"
+        ],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "first-30-days",
+        "title": "First-month watering",
+        "description": "Water every 2–3 days for the first month. This is more frequent than a fully native Texas shrub would need — Mexican Honeysuckle has moderate drought tolerance but requires consistent moisture to establish a strong root system. Once it has pushed strong new growth (typically 4–6 weeks after planting), reduce to every 4–5 days, then to weekly through the rest of summer.",
+        "tips": [
+          "Signs of underwatering: leaf curl, flower drop, brown leaf edges. Signs of overwatering: yellowing lower leaves, mushy base. Both are easy to correct if caught early.",
+          "Morning watering is ideal — soil dries through the day, reducing fungal pressure"
+        ],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "first-30-days",
+        "title": "First blooms during establishment",
+        "description": "Mexican Honeysuckle often begins blooming within the first few weeks after spring planting — clusters of orange tubular flowers that hummingbirds find quickly. You may see a brief pause in blooming while the plant focuses on root establishment, then a strong flush in fall. Don't deadhead spent clusters — removing them can interrupt the next bloom cycle and the plant self-manages well.",
+        "tips": [
+          "Hummingbirds use orange as a key foraging signal — your plant will likely be found within days of its first bloom",
+          "The blooms attract hummingbirds, orioles, and several native bee species — it earns its spot fast"
+        ],
+        "estimatedMinutes": 5
+      },
+      {
+        "phase": "year-one",
+        "title": "Winter freeze response",
+        "description": "In a typical Central Texas winter (lows staying mostly above 20°F), Mexican Honeysuckle retains most of its foliage and may keep blooming through December. In harder freeze years, foliage dies and stems may die back to the crown — but the root system is reliably hardy. Regrowth from the crown in spring is vigorous. If a hard freeze below 18°F is forecast in the first winter, a loose layer of frost cloth over the crown buys extra insurance.",
+        "tips": [
+          "Don't cut back freeze-damaged stems until mid-March — the dead growth provides insulation and the plant isn't actually dead",
+          "After a freeze dieback, the spring regrowth is often more vigorous and fuller than the original plant"
+        ],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "year-one",
+        "title": "Late-winter pruning for better bloom",
+        "description": "In late February or early March, cut the plant back by 1/3 to 1/2 of its height. Mexican Honeysuckle blooms on new wood — late-winter pruning directly produces a denser plant and heavier flower production in spring. Without regular pruning it becomes open and leggy. If it has reached 5+ feet without pruning, a hard cutback to 18–24 inches will rejuvenate it completely.",
+        "tips": [
+          "Pruning clippings root readily in moist soil — press 4-inch stem sections into amended soil for free new plants",
+          "The more you prune in late winter, the fuller and more floriferous the plant through summer"
+        ],
+        "estimatedMinutes": 20
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Establishment watering",
+        "description": "Water every 2–3 days for the first month — more frequent than a purely native shrub would need. Once new growth is visibly pushing (4–6 weeks), reduce to every 4–5 days, then weekly.",
+        "tips": ["Morning watering is ideal", "Leaf curl and flower drop = underwatering. Yellowing lower leaves = overwatering."],
+        "intervalDays": 3,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 5
+      },
+      {
+        "phase": "year-one",
+        "title": "Late winter pruning",
+        "description": "Cut the plant back by 1/3 to 1/2 of its height in late February or early March. Mexican Honeysuckle blooms on new wood — this pruning directly produces denser growth and heavier flowering in spring and fall.",
+        "tips": ["Pruning clippings can be rooted in moist soil for free new plants", "The more you prune in late winter, the better the bloom display"],
+        "intervalDays": 365,
+        "estimatedMinutes": 20,
+        "xpPerCompletion": 15
+      },
+      {
+        "phase": "ongoing",
+        "title": "Annual mulch refresh and pruning",
+        "description": "Each late February, cut back by 1/3 to keep the plant dense and floriferous. Top up mulch to 3 inches. This is the main annual care task for established Mexican Honeysuckle.",
+        "tips": ["Without annual pruning the plant becomes leggy and blooms less", "A hard cutback to 18–24 inches every few years rejuvenates an overgrown plant completely"],
+        "intervalDays": 180,
+        "estimatedMinutes": 20,
+        "xpPerCompletion": 12
+      }
+    ]
+  },
+  {
+    "commonName": "Gold Star Esperanza",
+    "guildRole": "Fast-growing shrub insectary. One of the longest-blooming plants in Texas — yellow trumpet flowers summer through frost attract hummingbirds and butterflies.",
+    "bestPlantingWindow": "April through June",
+    "difficulty": 1,
+    "xpReward": 70,
+    "tags": ["shrub", "native", "insectary", "drought-tolerant", "fast-growing"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Choose a hot, sunny spot",
+        "description": "Esperanza wants full sun and heat — it's happiest in the baking spots of your landscape that challenge other plants. Well-drained or rocky soil is ideal. Tolerates poor, alkaline, caliche soils very well.",
+        "tips": ["Against a south-facing wall is an excellent spot — the heat reflection can extend bloom into December"],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant after last frost",
+        "description": "Wait until soil temperatures are consistently above 65°F (mid-April in Austin). Esperanza freezes back to the roots in most Central Texas winters — this is normal. Plant with minimal amendment in native soil at container depth. Water in well.",
+        "tips": [],
+        "estimatedMinutes": 20
+      },
+      {
+        "phase": "first-30-days",
+        "title": "Fast establishment",
+        "description": "Water every 3–4 days for the first month. Esperanza establishes quickly in warm weather — you should see vigorous growth within 2–3 weeks. Reduce watering to weekly once growing strongly.",
+        "tips": ["Esperanza can reach 4–6ft in a single season if planted in spring"],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "year-one",
+        "title": "Winter cutback and spring return",
+        "description": "After the first hard freeze, Esperanza will die back to its roots. Leave the dead stems as frost protection for the root crown until late February. Cut back to 6 inches in late February/early March. New growth emerges from the base and the plant regrows to full size by June.",
+        "tips": ["Do NOT cut back before late February — the dead stems protect roots in freeze events"],
+        "estimatedMinutes": 20
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Establishment watering",
+        "description": "Water every 3–4 days for the first month. Esperanza establishes quickly in heat — you should see vigorous new growth within 2–3 weeks. Once actively growing, reduce to weekly.",
+        "tips": ["Esperanza can grow 4–6 feet in a single season when planted in spring", "This is one of the fastest-establishing shrubs in the Texas food forest"],
+        "intervalDays": 4,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 5
+      },
+      {
+        "phase": "year-one",
+        "title": "Late February cutback",
+        "description": "Cut all above-ground stems back to 6 inches in late February or early March. New growth emerges from the base and the plant regrows to full size by June. Do not cut back before late February — dead stems protect the root crown through freeze events.",
+        "tips": ["Even dead-looking stems protect the root crown during late freezes", "New growth from the base in spring is fast and vigorous"],
+        "intervalDays": 365,
+        "estimatedMinutes": 20,
+        "xpPerCompletion": 10
+      },
+      {
+        "phase": "ongoing",
+        "title": "Annual cutback and check",
+        "description": "Each late February, cut back to 6 inches above ground. This is the only regular maintenance Esperanza needs once established. It will regrow to full size with months of bloom before the next freeze.",
+        "tips": ["South-facing walls extend the bloom season deep into December in mild years", "Established Esperanza requires no fertilizer and very little water"],
+        "intervalDays": 365,
+        "estimatedMinutes": 20,
+        "xpPerCompletion": 10
+      }
+    ]
+  },
+  {
+    "commonName": "Comfrey",
+    "guildRole": "Dynamic accumulator and mulch producer. Deep taproot mines calcium, potassium, and phosphorus from subsoil and stores them in fast-decomposing leaves. Essential guild support plant.",
+    "bestPlantingWindow": "October through April",
+    "difficulty": 1,
+    "xpReward": 60,
+    "tags": ["herbaceous", "dynamic-accumulator", "mulch-producer", "medicinal", "easy"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Decide placement strategically",
+        "description": "Plant comfrey near the drip line of your canopy or understory trees where its chop-and-drop leaves can feed the tree roots directly. Partial shade is fine — comfrey is one of the few nutrient-accumulating plants that tolerates shade. Space 2–3 feet apart as they spread by root division.",
+        "tips": ["Bocking 14 (sterile variety) won't self-seed invasively — recommended for food forests", "Planting under or near fruit trees is the ideal position"],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant from root divisions or transplants",
+        "description": "Plant root sections 2–4 inches deep, flat side up if they have one. Space 2–3 feet apart. Cover with 1–2 inches of soil and water well. Comfrey from root cuttings usually shows growth within 10–14 days. Transplants from containers establish even faster.",
+        "tips": ["Any root piece will grow — even a small section produces a new plant"],
+        "estimatedMinutes": 20
+      },
+      {
+        "phase": "first-30-days",
+        "title": "Water weekly and watch it grow",
+        "description": "Water every 4–5 days for the first month. Comfrey establishes rapidly and is very drought tolerant once it has a root system. By summer of the first year, most plants will be large enough to harvest leaves.",
+        "tips": [],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "year-one",
+        "title": "Begin chop-and-drop harvesting",
+        "description": "Once the plant reaches 18–24 inches tall, cut the leaves and stems to 6 inches and drop them directly under nearby fruit trees as mulch. Do this 3–4 times per season. The leaves decompose rapidly (within 1–2 weeks) releasing concentrated minerals directly to the root zone of your trees.",
+        "tips": ["Wear gloves — comfrey leaves have tiny hairs that irritate skin", "The more you cut, the more it grows — aggressive harvesting increases productivity over time"],
+        "estimatedMinutes": 20
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Establishment watering",
+        "description": "Water every 4–5 days for the first month. Comfrey establishes quickly — root cuttings typically show growth within 10–14 days. Once actively growing, it becomes very drought tolerant.",
+        "tips": ["Any root piece will grow — comfrey is extremely resilient", "By summer of year one, plants will be large enough to harvest"],
+        "intervalDays": 5,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 3
+      },
+      {
+        "phase": "year-one",
+        "title": "Chop-and-drop harvest",
+        "description": "When plants reach 18–24 inches tall, cut stems to 6 inches and drop leaves under nearby fruit trees as mulch. Leaves decompose in 1–2 weeks releasing concentrated calcium, potassium, and phosphorus. Do this 3–4 times per growing season.",
+        "tips": ["Wear gloves — the tiny leaf hairs irritate skin", "The more aggressively you chop, the more productive the plant becomes"],
+        "intervalDays": 21,
+        "estimatedMinutes": 20,
+        "xpPerCompletion": 10
+      },
+      {
+        "phase": "ongoing",
+        "title": "Chop-and-drop",
+        "description": "Cut to 6 inches and drop all leaf material under the nearest trees. This is one of the most productive recurring tasks in your food forest — each harvest feeds your trees a concentrated dose of minerals from deep subsoil.",
+        "tips": ["Wear gloves for the leaf hairs", "Cutting 3–4 times per season is ideal — more cuts = more biomass and more mineral cycling"],
+        "intervalDays": 21,
+        "estimatedMinutes": 20,
+        "xpPerCompletion": 10
+      }
+    ]
+  },
+  {
+    "commonName": "Asparagus",
+    "guildRole": "Perennial rhizosphere crop. Once established, produces for 15–20+ years with almost no maintenance. Ferny summer foliage creates habitat and fixes soil structure.",
+    "bestPlantingWindow": "January through March (bare-root crowns)",
+    "difficulty": 2,
+    "xpReward": 120,
+    "tags": ["rhizosphere", "food-producer", "perennial", "long-lived"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Prepare a dedicated long-term bed",
+        "description": "Asparagus will occupy the same spot for 20+ years — site selection and initial soil prep are critical. Choose full sun (8+ hours). Prepare a bed 2 feet deep by adding 6 inches of compost and digging it in thoroughly. Remove all perennial weed roots — they cannot be managed once asparagus is established.",
+        "tips": ["Asparagus beds are an investment — the first two years are patience, years 3–20+ are rewards", "A raised bed or mounded row helps in Texas clay soils"],
+        "estimatedMinutes": 90
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant crowns in trenches",
+        "description": "Dig trenches 8–10 inches deep and 12 inches wide. Set crowns in the trench with roots spread out like an octopus, crown bud facing up. Space crowns 12–18 inches apart. Cover with 2–3 inches of soil and water. As shoots grow, fill in the trench gradually over 3–4 weeks.",
+        "tips": ["Jersey Knight and Mary Washington are reliable varieties for Texas", "Do not bury all at once — fill the trench gradually as shoots grow upward"],
+        "estimatedMinutes": 60
+      },
+      {
+        "phase": "first-30-days",
+        "title": "Feed and do not harvest — ever in year one",
+        "description": "Water every 4–5 days. Apply a balanced fertilizer (10-10-10) at half rate. DO NOT harvest any spears in year one, no matter how tempting. The fern growth that follows spears feeds the crown for next year. Harvesting in year one permanently weakens the plant.",
+        "tips": ["Year one = zero harvest. Year two = harvest for 2 weeks only. Year three+ = full harvest season"],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "year-one",
+        "title": "Summer fern management",
+        "description": "Allow the ferny foliage to grow all summer — this is the plant fueling its crown for next year's harvest. Keep weeds out of the bed carefully. In late fall when fronds yellow and die back, cut to the ground and apply 2–3 inches of compost over the entire bed.",
+        "tips": ["Mulch the bed well each winter — asparagus responds dramatically to annual top-dressings of compost"],
+        "estimatedMinutes": 30
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Establishment watering and weed control",
+        "description": "Water every 4–5 days. Critically, keep the bed weed-free by hand-weeding carefully — asparagus crowns can't compete with weeds and the bed is permanent, so getting ahead of weeds now saves years of struggle.",
+        "tips": ["Do not harvest any spears in year one — the fern that follows feeds the crown for next year", "Apply half-rate balanced fertilizer every 30 days through the first growing season"],
+        "intervalDays": 5,
+        "estimatedMinutes": 15,
+        "xpPerCompletion": 8
+      },
+      {
+        "phase": "year-one",
+        "title": "Weed control and fern care",
+        "description": "Hand-weed the bed carefully every two weeks. Allow all ferny foliage to grow through summer — do not cut it. The fern is the plant investing in next year's harvest. In late fall, cut all fern to the ground and top-dress the entire bed with 2–3 inches of compost.",
+        "tips": ["Asparagus beds that are kept weed-free in year one produce for 20+ years", "The annual compost top-dressing is one of the most productive things you can do for this bed"],
+        "intervalDays": 14,
+        "estimatedMinutes": 30,
+        "xpPerCompletion": 10
+      },
+      {
+        "phase": "ongoing",
+        "title": "Harvest check",
+        "description": "During harvest season (spring, starting year 3), check the bed every 3 days for spears. Harvest when spears are 6–8 inches tall with tight tips. Spears left too long become woody and signal the plant to stop producing.",
+        "tips": ["Harvest year 2 for 2 weeks only; year 3+ harvest for the full 6–8 week season", "Tight tips = harvest now. Open fern tips = already past harvest stage"],
+        "intervalDays": 3,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 8
+      }
+    ]
+  },
+  {
+    "commonName": "Passionflower",
+    "aliases": ["Passionvine"],
+    "guildRole": "Native vine insectary and wildlife magnet. Host plant for Gulf Fritillary and Zebra Longwing butterflies. Passion fruit edible. Rampant grower — use vertical space efficiently.",
+    "bestPlantingWindow": "March through May",
+    "difficulty": 1,
+    "xpReward": 60,
+    "tags": ["vine", "native", "insectary", "food-producer", "butterfly-host"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Provide strong trellis or structure",
+        "description": "Passionvine grows vigorously — 10–15 feet in a season. It needs a sturdy trellis, fence, or tree trunk to climb. Plant at the base of a trellis or on the fence line. Full sun to partial shade both work well.",
+        "tips": ["Passionvine on a fence creates a butterfly nursery — expect Gulf Fritillary caterpillars to strip it periodically — this is success, not failure"],
+        "estimatedMinutes": 20
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant with light amendment",
+        "description": "Dig a hole twice the container width, mix in a small amount of compost, and plant at container depth. Guide the initial stems toward your trellis or structure. Water in well.",
+        "tips": [],
+        "estimatedMinutes": 20
+      },
+      {
+        "phase": "first-30-days",
+        "title": "Train and water",
+        "description": "Water every 3–4 days for the first month. Gently tie new growth toward your trellis as it grows. Passionvine establishes quickly in warm weather. Once growing, it needs only weekly watering.",
+        "tips": [],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "year-one",
+        "title": "Welcome butterfly caterpillars",
+        "description": "Gulf Fritillary butterflies will find your passionvine within days of it leafing out. They will lay eggs and caterpillars will strip the leaves — this looks alarming but the vine regrows rapidly and the butterflies are the point. The vine dies back to roots in winter and returns more vigorously in spring.",
+        "tips": ["Do not spray caterpillars — they are the intended inhabitants of this plant", "After winter dieback, cut back only lightly and let the vine re-establish from roots"],
+        "estimatedMinutes": 10
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Water and train new growth",
+        "description": "Water every 3–4 days. Gently tie new growth toward your trellis as it extends. Passionvine grows fast in warm weather — you may need to redirect it weekly in peak summer.",
+        "tips": ["Once actively climbing, passionvine needs only weekly watering", "Never spray caterpillars — Gulf Fritillaries finding your vine is a sign of success"],
+        "intervalDays": 4,
+        "estimatedMinutes": 15,
+        "xpPerCompletion": 5
+      },
+      {
+        "phase": "year-one",
+        "title": "Butterfly check",
+        "description": "Look for Gulf Fritillary eggs (small yellow ovals on leaves and stems) and caterpillars (orange with black spines). Caterpillars that strip all leaves are normal — the vine regrows rapidly. This is the whole point.",
+        "tips": ["Do not spray or remove caterpillars", "The vine regrows within 2–3 weeks of being stripped"],
+        "intervalDays": 7,
+        "estimatedMinutes": 5,
+        "xpPerCompletion": 3
+      },
+      {
+        "phase": "ongoing",
+        "title": "Annual light cutback",
+        "description": "In late winter, cut the vine back by 1/3 to keep it manageable. Passionvine dies back to roots after hard freezes and returns vigorously — it rarely needs heavy intervention. Remove any dead canes and redirect new growth to your structure.",
+        "tips": ["Passionvine in year 3+ can be quite rampant — cutting back to the main stems keeps it in bounds", "The root system is reliably hardy through Central Texas winters"],
+        "intervalDays": 365,
+        "estimatedMinutes": 15,
+        "xpPerCompletion": 8
+      }
+    ]
+  },
+  {
+    "commonName": "Mealy Blue Sage",
+    "guildRole": "Insectary and pest confuser. Long-blooming native sage essential for bumblebees and sulphur butterflies. Self-seeds reliably — a permanent presence once established.",
+    "bestPlantingWindow": "October through March",
+    "difficulty": 1,
+    "xpReward": 50,
+    "tags": ["herbaceous", "native", "insectary", "pest-confuser", "drought-tolerant"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Choose full sun in well-drained soil",
+        "description": "Mealy Blue Sage wants full sun and excellent drainage. It will grow in partial shade but blooms much less. Thrives in poor, rocky, alkaline soils — rich beds with heavy irrigation are counterproductive and produce leggy plants.",
+        "tips": [],
+        "estimatedMinutes": 5
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant in native soil",
+        "description": "No amendment needed — plant directly in native soil at container depth. Space 18–24 inches apart (they spread). Water in well. Apply a light 2-inch mulch layer.",
+        "tips": [],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "first-30-days",
+        "title": "Minimal care",
+        "description": "Water every 4–5 days for the first month. Once established — typically by end of first summer — Mealy Blue Sage requires almost no supplemental irrigation in Central Texas.",
+        "tips": [],
+        "estimatedMinutes": 5
+      },
+      {
+        "phase": "year-one",
+        "title": "Cut back in late winter",
+        "description": "In February, cut plants back to 6–8 inches above the ground. This promotes dense, bushy regrowth and heavy flowering. Allow some plants to set seed — they self-sow reliably and will naturalize in your garden over time.",
+        "tips": ["Self-seeded plants are more drought-tolerant than transplants — cherish them"],
+        "estimatedMinutes": 15
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Establishment watering",
+        "description": "Water every 4–5 days for the first month. Mealy Blue Sage establishes quickly in lean conditions — rich soil and heavy watering actually produce worse plants than lean soil and moderate watering.",
+        "tips": ["This plant thrives on neglect once established — do not over-water or fertilize"],
+        "intervalDays": 5,
+        "estimatedMinutes": 5,
+        "xpPerCompletion": 3
+      },
+      {
+        "phase": "year-one",
+        "title": "Deadhead for extended bloom",
+        "description": "Remove spent flower spikes by cutting them back to the next set of leaves. This triggers another flush of bloom. Leave some spikes to set seed — self-sown plants naturalize beautifully and are more drought tolerant than transplants.",
+        "tips": ["Self-seeded volunteers are valuable — mark them so you don't weed them out", "Blooms spring through fall with regular deadheading"],
+        "intervalDays": 14,
+        "estimatedMinutes": 10,
+        "xpPerCompletion": 5
+      },
+      {
+        "phase": "ongoing",
+        "title": "Annual cutback",
+        "description": "In February, cut all stems back to 6–8 inches above the ground. This is the only regular care this plant needs. Dense, bushy regrowth follows with heavy flowering from spring through fall.",
+        "tips": ["Self-seeded plants around the parent plant are a bonus — let some naturalize", "Established Mealy Blue Sage needs no irrigation or fertilizer in Central Texas"],
+        "intervalDays": 365,
+        "estimatedMinutes": 15,
+        "xpPerCompletion": 8
+      }
+    ]
+  },
+  {
+    "commonName": "Little Bluestem",
+    "guildRole": "Native prairie grass providing year-round structure, winter bird food, and ground-nesting bee habitat. Spectacular copper-orange color in fall and winter.",
+    "bestPlantingWindow": "October through April",
+    "difficulty": 1,
+    "xpReward": 50,
+    "tags": ["groundcover", "native", "insectary", "mulch-producer", "wildlife-habitat"],
+    "steps": [
+      {
+        "phase": "preparation",
+        "title": "Choose a dry, sunny spot",
+        "description": "Little Bluestem thrives in full sun and dry to medium soils. It excels in rocky, alkaline soils where other grasses fail. It does NOT like clay soils that stay wet — if your soil is heavy clay, plant in a raised area or mound. Do not plant in irrigated lawn areas.",
+        "tips": ["The #1 killer of Little Bluestem is too much water — plant it dry and lean"],
+        "estimatedMinutes": 10
+      },
+      {
+        "phase": "planting-day",
+        "title": "Plant in native soil without amendment",
+        "description": "Plant in unamended native soil at container depth. Space 18–24 inches apart. Water in well. A very light mulch is fine but leave the crown (base of the plant) exposed.",
+        "tips": [],
+        "estimatedMinutes": 15
+      },
+      {
+        "phase": "first-30-days",
+        "title": "Establish with minimal water",
+        "description": "Water once per week for the first month. After that, natural rainfall in Central Texas is usually sufficient except during extended drought. The less you water, the better the fall color.",
+        "tips": [],
+        "estimatedMinutes": 5
+      },
+      {
+        "phase": "year-one",
+        "title": "Leave standing through winter",
+        "description": "Do NOT cut Little Bluestem back in fall. The fluffy white seed heads and copper stems provide winter bird food, visual structure, and ground-nesting bee habitat. Cut to 4–6 inches in late February before new growth begins. Clumps expand slowly and can be divided every 3–4 years.",
+        "tips": ["The winter form of Little Bluestem — coppery orange in full sun — is one of the most beautiful plants in the Texas landscape"],
+        "estimatedMinutes": 15
+      }
+    ],
+    "careSchedule": [
+      {
+        "phase": "first-30-days",
+        "title": "Minimal establishment watering",
+        "description": "Water once a week for the first month only. After that, rely on rainfall. The less you water Little Bluestem, the better its fall color and drought performance.",
+        "tips": ["Over-watering and rich soil are the two things that ruin this grass", "Do not plant in irrigated areas"],
+        "intervalDays": 7,
+        "estimatedMinutes": 5,
+        "xpPerCompletion": 3
+      },
+      {
+        "phase": "year-one",
+        "title": "Winter structure check",
+        "description": "Observe the grass through winter — the copper-orange stems and fluffy white seed heads are one of the most beautiful sights in the Texas landscape. Leave it standing for birds (they eat the seeds) and ground-nesting bees. Cut to 4–6 inches in late February.",
+        "tips": ["Do not cut back in fall or early winter — the winter form is ecologically valuable", "Birds actively forage the seed heads through winter"],
+        "intervalDays": 30,
+        "estimatedMinutes": 5,
+        "xpPerCompletion": 3
+      },
+      {
+        "phase": "ongoing",
+        "title": "Annual late-February cutback",
+        "description": "Cut all stems to 4–6 inches in late February before new growth begins. This is the only care Little Bluestem needs. Once established, it requires no irrigation, no fertilizer, and no other maintenance.",
+        "tips": ["Established clumps can be divided every 3–4 years to make new plants", "The coppery winter color is better in lean, dry conditions — resist irrigating"],
+        "intervalDays": 365,
+        "estimatedMinutes": 15,
+        "xpPerCompletion": 8
+      }
+    ]
+  }
+]
