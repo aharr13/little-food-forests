@@ -1,17 +1,23 @@
 // src/components/Consultation/ConsultationScreen.tsx
 import { useState, useEffect, useRef, useCallback } from 'react';
-import Anthropic from '@anthropic-ai/sdk';
+import { httpsCallable } from 'firebase/functions';
 import { X, Send, Map, Loader, ChevronRight, Sparkles, Save } from 'lucide-react';
 import { Shape, Plant, FOOD_FOREST_LAYERS, GUILD_FUNCTIONS, GuildFunction, ConversationMessage, RejectedPlant } from '../../types';
 import { buildSkillContext, formatWikiContext } from './skillContext';
 import type { WikiArticleSlim } from '../../hooks/useWikiArticles';
 import type { UserProfile } from '../../hooks/useUserProfile';
+import { functions } from '../../firebase';
 import './ConsultationScreen.css';
 
-const client = new Anthropic({
-  apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY,
-  dangerouslyAllowBrowser: true,
-});
+// Calls the server-side Cloud Function that holds the Anthropic API key.
+// The key is never present in the browser bundle.
+type ClaudeRequest = {
+  model: string;
+  max_tokens: number;
+  system?: string;
+  messages: { role: 'user' | 'assistant'; content: string }[];
+};
+const claudeProxy = httpsCallable<ClaudeRequest, { text: string }>(functions, 'claudeProxy');
 
 interface Message {
   role: 'user' | 'assistant';
@@ -329,20 +335,14 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
 
     setLoading(true);
     try {
-      const stream = client.messages.stream({
+      const res = await claudeProxy({
         model: 'claude-opus-4-6',
         max_tokens: 1024,
         system: systemPrompt.current,
         messages: [{ role: 'user', content: 'Hello! I\'m ready to get some help with my food forest design.' }],
       });
 
-      let fullText = '';
-
-      for await (const event of stream) {
-        if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
-          fullText += event.delta.text;
-        }
-      }
+      const fullText = res.data.text;
 
       const newMessages: Message[] = [{ role: 'assistant', content: fullText }];
       setMessages(newMessages);
@@ -389,27 +389,14 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
     extractProfileFacts(userMessage).catch(() => {});
 
     try {
-      const abortController = new AbortController();
-      const timeout = setTimeout(() => abortController.abort(), 30000); // 30s timeout
-
-      const stream = client.messages.stream({
+      const res = await claudeProxy({
         model: 'claude-opus-4-6',
         max_tokens: 2048,
         system: systemPrompt.current,
         messages: newMessages.map(m => ({ role: m.role, content: m.content })),
       });
 
-      let fullText = '';
-
-      try {
-        for await (const event of stream) {
-          if (event.type === 'content_block_delta' && event.delta.type === 'text_delta') {
-            fullText += event.delta.text;
-          }
-        }
-      } finally {
-        clearTimeout(timeout);
-      }
+      const fullText = res.data.text;
 
       // Check for recommendations
       const recs = parseRecommendations(fullText);
@@ -436,10 +423,7 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
       onSaveConsultationHistory?.(conversationMessages);
     } catch (err) {
       console.error('Error sending message:', err);
-      const errorMsg = err instanceof Error && err.name === 'AbortError'
-        ? 'Request timed out. Please try again.'
-        : 'Sorry, something went wrong. Please try again.';
-      const errorMessages: Message[] = [...newMessages, { role: 'assistant', content: errorMsg }];
+      const errorMessages: Message[] = [...newMessages, { role: 'assistant', content: 'Sorry, something went wrong. Please try again.' }];
       setMessages(errorMessages);
 
       // Still save even if there was an error
@@ -459,7 +443,7 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
   async function extractProfileFacts(userMessage: string) {
     if (!onProfileUpdate) return;
     try {
-      const result = await client.messages.create({
+      const res = await claudeProxy({
         model: 'claude-haiku-4-5-20251001',
         max_tokens: 256,
         system: `You extract gardening profile facts from a user message. Return ONLY a valid JSON object — no markdown, no explanation.
@@ -468,7 +452,7 @@ Available fields: goals, experience, timeAvailable, soilType, waterSource, const
 Example output: {"experience":"intermediate","goals":"food for family and wildlife habitat"}`,
         messages: [{ role: 'user', content: userMessage }],
       });
-      const text = result.content[0].type === 'text' ? result.content[0].text.trim() : '';
+      const text = res.data.text.trim();
       if (!text || text === '{}') return;
       const updates = JSON.parse(text) as Partial<UserProfile>;
       if (Object.keys(updates).length > 0) {
