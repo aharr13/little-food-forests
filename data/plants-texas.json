@@ -4763,5 +4763,73 @@
       "south-texas"
     ],
     "toxicityWarning": null
+  },
+  {
+    "commonName": "Silver Ponyfoot",
+    "scientificName": "Dichondra argentea",
+    "description": "Low, fast-spreading silver groundcover native to Texas. Forms a dense living mulch that suppresses weeds, shades soil, and conserves moisture. Extremely drought and heat tolerant once established. Tolerates foot traffic and looks striking cascading over edges.",
+    "layerTypes": [
+      "groundcover"
+    ],
+    "guildFunctions": [
+      "mulch-producer"
+    ],
+    "hardinessZones": [
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "low",
+    "matureHeight": 1,
+    "matureSpread": 3,
+    "edible": false,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "south-texas",
+      "west-texas"
+    ],
+    "toxicityWarning": null
+  },
+  {
+    "commonName": "American Black Nightshade",
+    "scientificName": "Solanum americanum",
+    "description": "Native herbaceous annual/short-lived perennial. Small white star flowers attract pollinators; ripe black berries and cooked young greens are edible and used traditionally. Self-seeds readily and fills herbaceous gaps quickly.",
+    "layerTypes": [
+      "herbaceous"
+    ],
+    "guildFunctions": [
+      "insectary"
+    ],
+    "hardinessZones": [
+      "6a",
+      "6b",
+      "7a",
+      "7b",
+      "8a",
+      "8b",
+      "9a",
+      "9b",
+      "10a"
+    ],
+    "sunRequirement": "full-sun",
+    "waterRequirement": "moderate",
+    "matureHeight": 3,
+    "matureSpread": 2,
+    "edible": true,
+    "nativeToTexas": true,
+    "regions": [
+      "central-texas",
+      "north-texas",
+      "east-texas",
+      "south-texas",
+      "west-texas"
+    ],
+    "toxicityWarning": "Unripe GREEN berries and raw foliage contain solanine and are toxic. Only fully ripe black berries and thoroughly cooked young greens are safe to eat."
   }
 ]

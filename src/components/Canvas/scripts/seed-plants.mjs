@@ -3,6 +3,7 @@
 
 import { initializeApp } from 'firebase/app';
 import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc } from 'firebase/firestore';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -23,6 +24,21 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
+const auth = getAuth(app);
+
+// Sign in as the admin user. Firestore rules only allow the admin to write the
+// `plants` collection, so the seed script must authenticate first.
+// Run with:  SEED_EMAIL=you@example.com SEED_PASSWORD=yourpassword node ...seed-plants.mjs
+async function signInAsAdmin() {
+  const email = process.env.SEED_EMAIL;
+  const password = process.env.SEED_PASSWORD;
+  if (!email || !password) {
+    console.error('❌ Set SEED_EMAIL and SEED_PASSWORD env vars (the admin account) before running.');
+    process.exit(1);
+  }
+  await signInWithEmailAndPassword(auth, email, password);
+  console.log(`🔐 Signed in as ${email}`);
+}
 
 async function clearExistingPlants() {
   console.log('\n🗑️ Clearing existing plants...');
@@ -51,6 +67,9 @@ async function seedPlants() {
   const plants = JSON.parse(plantsRaw);
 
   console.log(`Found ${plants.length} plants to import\n`);
+
+  // Authenticate before any writes (admin-only under Firestore rules)
+  await signInAsAdmin();
 
   // Clear existing plants
   await clearExistingPlants();
