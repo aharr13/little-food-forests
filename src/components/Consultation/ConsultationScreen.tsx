@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { httpsCallable } from 'firebase/functions';
 import { X, Send, Map, Loader, ChevronRight, Sparkles, Save } from 'lucide-react';
-import { Shape, Plant, FOOD_FOREST_LAYERS, GUILD_FUNCTIONS, GuildFunction, ConversationMessage, RejectedPlant } from '../../types';
+import { Shape, Plant, Point, WaterFeature, FOOD_FOREST_LAYERS, GUILD_FUNCTIONS, GuildFunction, ConversationMessage, RejectedPlant } from '../../types';
 import { buildSkillContext, formatWikiContext } from './skillContext';
 import type { WikiArticleSlim } from '../../hooks/useWikiArticles';
 import type { UserProfile } from '../../hooks/useUserProfile';
@@ -63,6 +63,10 @@ interface ConsultationScreenProps {
   onSaveConsultationHistory?: (messages: ConversationMessage[]) => void;
   rejectedPlants?: RejectedPlant[];
   onSaveRejectedPlants?: (rejected: RejectedPlant[]) => void;
+  // Auto-layout: advisor places a whole plant list onto the map as editable shapes
+  waterFeatures?: WaterFeature[];
+  boundary?: Point[];
+  onApplyLayout?: (shapes: Shape[]) => void;
 }
 
 // Build a summary of what's on the map for the system prompt, including coordinates
@@ -269,7 +273,7 @@ const EFFORT_COLORS: Record<number, string> = {
   1: '#059669', 2: '#10b981', 3: '#f59e0b', 4: '#f97316', 5: '#dc2626',
 };
 
-export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, onSavePlan, onPlacementSuggestion, savedPlan, isVisible, followUpPlantName, onFollowUpConsumed, userProfile = {}, onProfileUpdate, consultationHistory = [], onSaveConsultationHistory, rejectedPlants = [], onSaveRejectedPlants }: ConsultationScreenProps) {
+export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, onSavePlan, onPlacementSuggestion, savedPlan, isVisible, followUpPlantName, onFollowUpConsumed, userProfile = {}, onProfileUpdate, consultationHistory = [], onSaveConsultationHistory, rejectedPlants = [], onSaveRejectedPlants, waterFeatures = [], boundary = [], onApplyLayout }: ConsultationScreenProps) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -513,9 +517,163 @@ Example output: {"experience":"intermediate","goals":"food for family and wildli
     return order[a.priority] - order[b.priority];
   });
 
+  // ---- Auto-layout: place a whole plant list onto the map -------------------
+  const [showLayout, setShowLayout] = useState(false);
+  const [layoutInput, setLayoutInput] = useState('');
+  const [layoutBusy, setLayoutBusy] = useState(false);
+  const [layoutError, setLayoutError] = useState<string | null>(null);
+
+  function defaultRadiusFt(layer: string): number {
+    const map: Record<string, number> = { canopy: 15, understory: 10, shrub: 5, herbaceous: 2, groundcover: 2, rhizosphere: 2, vine: 3 };
+    return map[layer] ?? 3;
+  }
+
+  function computeBBox() {
+    const pts: Point[] = [];
+    boundary.forEach(p => pts.push(p));
+    if (pts.length === 0) shapes.forEach(s => { if (s.center) pts.push(s.center); });
+    if (pts.length === 0) return null;
+    const lats = pts.map(p => p.lat);
+    const lngs = pts.map(p => p.lng);
+    return { minLat: Math.min(...lats), maxLat: Math.max(...lats), minLng: Math.min(...lngs), maxLng: Math.max(...lngs) };
+  }
+
+  function parseLayoutJSON(text: string): any[] {
+    let t = text.trim();
+    t = t.replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();
+    const start = t.indexOf('[');
+    const end = t.lastIndexOf(']');
+    if (start >= 0 && end > start) t = t.slice(start, end + 1);
+    try {
+      const arr = JSON.parse(t);
+      return Array.isArray(arr) ? arr : [];
+    } catch {
+      return [];
+    }
+  }
+
+  async function generateLayout() {
+    const names = layoutInput.split(/[\n,]+/).map(s => s.trim()).filter(Boolean);
+    if (names.length === 0) { setLayoutError('Add at least one plant.'); return; }
+
+    const bbox = computeBBox();
+    if (!bbox) { setLayoutError('Trace your property boundary first so I know where to place plants.'); return; }
+
+    setLayoutBusy(true);
+    setLayoutError(null);
+    try {
+      const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
+      const waterText = waterFeatures.length
+        ? waterFeatures.map(w => `  - ${w.type} at ${w.position.lat.toFixed(5)}, ${w.position.lng.toFixed(5)}`).join('\n')
+        : '  (none marked)';
+
+      const sys = `You are a permaculture designer placing plants on a real satellite map for a Texas food forest.
+
+SITE bounding box (place every plant INSIDE this box):
+  latitude:  ${bbox.minLat.toFixed(6)} to ${bbox.maxLat.toFixed(6)}
+  longitude: ${bbox.minLng.toFixed(6)} to ${bbox.maxLng.toFixed(6)}
+
+WATER FEATURES:
+${waterText}
+
+EXISTING PLANTS (already on the map — do NOT move or duplicate these; place the new plants around them):
+${buildMapSummary(shapes)}
+
+Place EVERY plant in the user's list. Apply permaculture principles:
+- In Texas (Northern Hemisphere) the south side gets the most sun; tall plants shade what's north of them.
+- Respect mature spread — don't overlap canopies; space by size.
+- Group guild members near anchor trees; put water-lovers nearer water features.
+- Spread plants sensibly across the whole site, inside the bounding box.
+
+Return ONLY a JSON array — no prose, no markdown fences. Each element:
+{"commonName": string, "scientificName": string, "layer": one of ["canopy","understory","shrub","herbaceous","groundcover","rhizosphere","vine"], "lat": number inside the bbox, "lng": number inside the bbox, "radiusFt": number (mature canopy/spread radius in feet), "reason": short string}`;
+
+      const res = await claudeProxy({
+        model: 'claude-opus-4-6',
+        max_tokens: 8192,
+        system: sys,
+        messages: [{ role: 'user', content: `Plants to place:\n${names.join('\n')}` }],
+      });
+
+      const validLayers = new Set(FOOD_FOREST_LAYERS.map(l => l.id));
+      const placements = parseLayoutJSON(res.data.text);
+      const newShapes: Shape[] = placements
+        .filter(p => p && typeof p.lat === 'number' && typeof p.lng === 'number')
+        .map(p => {
+          const layer = validLayers.has(p.layer) ? p.layer : 'herbaceous';
+          const isTree = layer === 'canopy' || layer === 'understory';
+          const r = Number(p.radiusFt) || defaultRadiusFt(layer);
+          return {
+            id: `shape_${Date.now()}_${Math.random().toString(36).slice(2)}`,
+            layerId: layer,
+            type: 'circle' as const,
+            center: { lat: clamp(p.lat, bbox.minLat, bbox.maxLat), lng: clamp(p.lng, bbox.minLng, bbox.maxLng) },
+            radius: isTree ? Math.max(1, Math.round(r * 0.15)) : 0,
+            canopyRadius: r,
+            plantName: String(p.commonName || 'Plant'),
+            plantScientificName: p.scientificName ? String(p.scientificName) : undefined,
+            status: 'planned' as const,
+          };
+        });
+
+      if (newShapes.length === 0) {
+        setLayoutError('The advisor did not return a usable layout. Please try again.');
+      } else {
+        onApplyLayout?.(newShapes);
+        setShowLayout(false);
+        setLayoutInput('');
+      }
+    } catch (err) {
+      console.error('Layout generation failed:', err);
+      setLayoutError('Layout generation failed. Please try again.');
+    } finally {
+      setLayoutBusy(false);
+    }
+  }
+
   return (
     <div className="consultation-overlay" style={{ display: isVisible ? 'flex' : 'none' }}>
       <div className="consultation-screen">
+
+        {/* Auto-Layout panel */}
+        {showLayout && (
+          <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.45)', zIndex: 50, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ background: '#fff', borderRadius: 12, padding: 24, width: 'min(520px, 92%)', maxHeight: '88%', overflow: 'auto', boxShadow: '0 12px 40px rgba(0,0,0,0.3)' }}>
+              <h3 style={{ margin: '0 0 8px', color: '#064e3b' }}>🌱 Auto-Layout your plants</h3>
+              <p style={{ margin: '0 0 12px', fontSize: 14, color: '#475569', lineHeight: 1.5 }}>
+                List the plants you have or want — one per line, or comma-separated. I'll read your boundary, water markers, and existing plants, then place them all on the map as editable shapes you can drag and resize.
+              </p>
+              <textarea
+                value={layoutInput}
+                onChange={(e) => setLayoutInput(e.target.value)}
+                placeholder={'Silver Ponyfoot\nRock Penstemon\nAmerican Black Nightshade'}
+                rows={7}
+                style={{ width: '100%', boxSizing: 'border-box', padding: 10, borderRadius: 8, border: '1px solid #cbd5e1', fontFamily: 'inherit', fontSize: 14, resize: 'vertical' }}
+                disabled={layoutBusy}
+              />
+              {savedPlan.length > 0 && (
+                <button
+                  onClick={() => setLayoutInput(savedPlan.map(p => p.commonName).join('\n'))}
+                  disabled={layoutBusy}
+                  style={{ marginTop: 8, background: 'none', border: '1px solid #059669', color: '#059669', padding: '6px 12px', borderRadius: 8, cursor: 'pointer', fontSize: 13 }}
+                >
+                  Use my {savedPlan.length} recommended plant{savedPlan.length !== 1 ? 's' : ''}
+                </button>
+              )}
+              {layoutError && (
+                <div style={{ marginTop: 10, color: '#b91c1c', fontSize: 13 }}>{layoutError}</div>
+              )}
+              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8, marginTop: 16 }}>
+                <button onClick={() => setShowLayout(false)} disabled={layoutBusy} style={{ background: '#f1f5f9', border: 'none', padding: '10px 16px', borderRadius: 8, cursor: 'pointer' }}>
+                  Cancel
+                </button>
+                <button onClick={generateLayout} disabled={layoutBusy} style={{ background: '#059669', color: '#fff', border: 'none', padding: '10px 16px', borderRadius: 8, cursor: layoutBusy ? 'wait' : 'pointer', fontWeight: 600 }}>
+                  {layoutBusy ? 'Designing…' : 'Design layout & place on map'}
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Header */}
         <div className="consultation-header">
@@ -529,6 +687,10 @@ Example output: {"experience":"intermediate","goals":"food for family and wildli
             </div>
           </div>
           <div className="consultation-header-actions">
+            <button className="consultation-map-btn" onClick={() => { setLayoutError(null); setShowLayout(true); }}>
+              <Sparkles size={16} />
+              Auto-Layout
+            </button>
             <button className="consultation-map-btn" onClick={onClose}>
               <Map size={16} />
               Back to Map

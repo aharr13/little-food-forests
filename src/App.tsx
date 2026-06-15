@@ -679,6 +679,12 @@ const DesignFlow = () => {
             onSaveConsultationHistory={setConsultationHistory}
             rejectedPlants={rejectedPlants}
             onSaveRejectedPlants={setRejectedPlants}
+            waterFeatures={waterFeatures}
+            boundary={boundaryPoints}
+            onApplyLayout={(newShapes) => {
+              setShapes(prev => [...prev, ...newShapes]);
+              setShowConsultation(false); // jump to the map to see the placed plants
+            }}
           />
         )}
       </>
