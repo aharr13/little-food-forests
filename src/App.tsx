@@ -79,6 +79,7 @@ const DesignFlow = () => {
 
   // AI Consultation
   const [showConsultation, setShowConsultation] = useState(false);
+  const [consultationDocked, setConsultationDocked] = useState(true); // open as a side panel beside the map by default
   const [hasOpenedConsultation, setHasOpenedConsultation] = useState(false);
   const [pendingRecommendations, setPendingRecommendations] = useState<PlantRecommendation[]>([]);
   const [savedPlan, setSavedPlan] = useState<PlantRecommendation[]>([]);
@@ -683,8 +684,12 @@ const DesignFlow = () => {
             boundary={boundaryPoints}
             onApplyLayout={(newShapes) => {
               setShapes(prev => [...prev, ...newShapes]);
-              setShowConsultation(false); // jump to the map to see the placed plants
+              // When docked, stay open so the advisor keeps the new plants in
+              // context; when full-screen, drop to the map to see them.
+              if (!consultationDocked) setShowConsultation(false);
             }}
+            docked={consultationDocked}
+            onToggleDock={() => setConsultationDocked(d => !d)}
           />
         )}
       </>
