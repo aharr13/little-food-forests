@@ -20,7 +20,8 @@ const ALLOWED_MODELS = new Set([
 ]);
 
 // Hard ceiling on output tokens regardless of what the client asks for.
-const MAX_TOKENS_CAP = 4096;
+// Generous enough for a full multi-plant layout returned as JSON.
+const MAX_TOKENS_CAP = 8192;
 
 exports.claudeProxy = onCall(
   { secrets: [ANTHROPIC_API_KEY], region: 'us-central1' },

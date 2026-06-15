@@ -1392,7 +1392,7 @@ export function LayersScreen({
                       </div>
                     </div>
                     <div className="layer-list">
-                      {layerShapeCounts.filter(l => l.id !== 'groundcover' && l.id !== 'infrastructure').map(layer => {
+                      {layerShapeCounts.filter(l => l.id !== 'infrastructure').map(layer => {
                         const Icon = layer.icon;
                         const isActive = layer.id === selectedLayerId;
                         const isVisible = layerVisibility[layer.id] !== false;
