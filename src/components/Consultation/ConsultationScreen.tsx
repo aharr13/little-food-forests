@@ -7,6 +7,7 @@ import { buildSkillContext, formatWikiContext } from './skillContext';
 import type { WikiArticleSlim } from '../../hooks/useWikiArticles';
 import type { UserProfile } from '../../hooks/useUserProfile';
 import { functions } from '../../firebase';
+import { usePlants } from '../../hooks/usePlants';
 import './ConsultationScreen.css';
 
 // Calls the server-side Cloud Function that holds the Anthropic API key.
@@ -95,22 +96,6 @@ function buildMapSummary(shapes: Shape[]): string {
   return `Current plants on the map (coordinates in decimal degrees — Texas is ~30°N, 97-100°W):\n${lines.join('\n')}${note}\n\nNote: In Texas (Northern Hemisphere), south-facing sides get more sun. North of a canopy tree = shaded. South = sunny.`;
 }
 
-// Build guild coverage summary
-function buildGuildSummary(shapes: Shape[]): string {
-  const plantedFunctions = new Set<string>();
-  shapes.forEach(s => {
-    // We don't have guild functions per shape here, just note what layers are covered
-  });
-
-  const coveredLayers = [...new Set(shapes.map(s => s.layerId))];
-  const missingLayers = FOOD_FOREST_LAYERS
-    .filter(l => !coveredLayers.includes(l.id) && l.id !== 'infrastructure')
-    .map(l => l.name);
-
-  if (missingLayers.length === 0) return 'All food forest layers have plants.';
-  return `Layers not yet planted: ${missingLayers.join(', ')}`;
-}
-
 function buildSavedPlanSummary(plan: PlantRecommendation[]): string {
   if (plan.length === 0) return '';
   const lines = plan.map(p => `  - ${p.commonName} (${p.layer}, ${p.priority} priority): ${p.reason.slice(0, 80)}...`);
@@ -149,10 +134,63 @@ function buildWaterSummary(waterFeatures: WaterFeature[] = []): string {
   return `WATER & TOPOGRAPHY (the user has ALREADY marked these on the map — use them; do NOT ask where moisture/water/low spots are):\n${lines.join('\n')}\n\nGuidance: water pools at low points and below downspouts; high points are drier. Put water-loving plants near low/pooling areas and drought-tolerant plants on high/dry areas.`;
 }
 
-function buildSystemPrompt(shapes: Shape[], savedPlan: PlantRecommendation[] = [], wikiArticles: WikiArticleSlim[] = [], messages: { role: string; content: string }[] = [], userProfile: UserProfile = {}, rejectedPlants: RejectedPlant[] = [], waterFeatures: WaterFeature[] = []): string {
+// Distance between two lat/lng points, in feet
+function distanceFeet(p1: Point, p2: Point): number {
+  const R = 20925524.9; // earth radius in feet
+  const dLat = (p2.lat - p1.lat) * Math.PI / 180;
+  const dLng = (p2.lng - p1.lng) * Math.PI / 180;
+  const a = Math.sin(dLat / 2) ** 2 + Math.cos(p1.lat * Math.PI / 180) * Math.cos(p2.lat * Math.PI / 180) * Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+// Real guild-coverage analysis fed to the advisor: for each anchor tree, which
+// of the 5 guild functions are covered by nearby plants and which are missing.
+function buildGuildAnalysisSummary(shapes: Shape[], plants: Plant[]): string {
+  const byId = new Map<string, Plant>();
+  const bySci = new Map<string, Plant>();
+  const byName = new Map<string, Plant>();
+  plants.forEach(p => {
+    byId.set(p.id, p);
+    if (p.scientificName) bySci.set(p.scientificName.toLowerCase(), p);
+    if (p.commonName) byName.set(p.commonName.toLowerCase(), p);
+  });
+  const plantFor = (s: Shape): Plant | null =>
+    (s.plantId && byId.get(s.plantId)) ||
+    (s.plantScientificName && bySci.get(s.plantScientificName.toLowerCase())) ||
+    (s.plantName && byName.get(s.plantName.toLowerCase())) || null;
+  const centerOf = (s: Shape): Point | null => s.center || s.points?.[0] || null;
+
+  const anchors = shapes.filter(s => (s.layerId === 'canopy' || s.layerId === 'understory') && centerOf(s));
+  if (anchors.length === 0) {
+    return 'GUILD STATUS: No canopy/understory anchor trees placed yet. Guilds form around anchor trees — each should be surrounded by plants covering nitrogen-fixer, dynamic-accumulator, insectary, mulch-producer, and pest-confuser roles.';
+  }
+
+  const lines = anchors.map(a => {
+    const ac = centerOf(a)!;
+    const ap = plantFor(a);
+    const radius = (a.canopyRadius || 15) * 2;
+    const covered = new Set<string>();
+    ap?.guildFunctions?.forEach(f => covered.add(f));
+    shapes.forEach(s => {
+      if (s.id === a.id) return;
+      const c = centerOf(s);
+      if (c && distanceFeet(ac, c) <= radius) {
+        plantFor(s)?.guildFunctions?.forEach(f => covered.add(f));
+      }
+    });
+    const missing = GUILD_FUNCTIONS.filter(g => !covered.has(g.id)).map(g => g.name);
+    const name = a.plantName || ap?.commonName || 'unnamed tree';
+    const coveredNames = GUILD_FUNCTIONS.filter(g => covered.has(g.id)).map(g => g.name);
+    return `  - ${name}: covered [${coveredNames.join(', ') || 'none'}]; MISSING [${missing.join(', ') || 'none — complete guild!'}]`;
+  });
+
+  return `GUILD STATUS (per anchor tree, within 2× its canopy radius — the 5 functions are nitrogen-fixer, dynamic-accumulator, insectary, mulch-producer, pest-confuser):\n${lines.join('\n')}\n\nWhen recommending or placing plants, PRIORITIZE filling the MISSING functions near each anchor.`;
+}
+
+function buildSystemPrompt(shapes: Shape[], savedPlan: PlantRecommendation[] = [], wikiArticles: WikiArticleSlim[] = [], messages: { role: string; content: string }[] = [], userProfile: UserProfile = {}, rejectedPlants: RejectedPlant[] = [], waterFeatures: WaterFeature[] = [], plants: Plant[] = []): string {
   const mapSummary = buildMapSummary(shapes);
   const waterSummary = buildWaterSummary(waterFeatures);
-  const guildSummary = buildGuildSummary(shapes);
+  const guildSummary = buildGuildAnalysisSummary(shapes, plants);
   const planSummary = buildSavedPlanSummary(savedPlan);
   const skillContext = buildSkillContext();
   // Pass recent conversation text so tag-based filtering can surface relevant articles
@@ -290,6 +328,7 @@ const EFFORT_COLORS: Record<number, string> = {
 };
 
 export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, onSavePlan, onPlacementSuggestion, savedPlan, isVisible, followUpPlantName, onFollowUpConsumed, userProfile = {}, onProfileUpdate, consultationHistory = [], onSaveConsultationHistory, rejectedPlants = [], onSaveRejectedPlants, waterFeatures = [], boundary = [], onApplyLayout }: ConsultationScreenProps) {
+  const { plants } = usePlants(); // for live guild analysis fed to the advisor
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -297,7 +336,7 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
   const [approved, setApproved] = useState<Set<number>>(new Set(savedPlan.map((_, i) => i)));
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const systemPrompt = useRef(buildSystemPrompt(shapes, savedPlan, wikiArticles, [], userProfile, rejectedPlants, waterFeatures));
+  const systemPrompt = useRef(buildSystemPrompt(shapes, savedPlan, wikiArticles, [], userProfile, rejectedPlants, waterFeatures, plants));
   const pendingFollowUp = useRef<string | null>(null);
 
   // Load consultation history on mount
@@ -315,8 +354,8 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
   // Keep the system prompt fresh as the map state loads/changes — including
   // water features and shapes, which may arrive from Firestore after mount.
   useEffect(() => {
-    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, messages, userProfile, rejectedPlants, waterFeatures);
-  }, [wikiArticles, userProfile, rejectedPlants, waterFeatures, shapes, savedPlan]);
+    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, messages, userProfile, rejectedPlants, waterFeatures, plants);
+  }, [wikiArticles, userProfile, rejectedPlants, waterFeatures, shapes, savedPlan, plants]);
 
 
   // Auto-scroll to bottom
@@ -356,7 +395,7 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
     setRecommendations([]);
     setApproved(new Set());
     onSaveConsultationHistory?.([]);
-    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, [], userProfile, rejectedPlants, waterFeatures);
+    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, [], userProfile, rejectedPlants, waterFeatures, plants);
     await startConversation(true);
   }
 
@@ -414,7 +453,7 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
     setLoading(true);
 
     // Always rebuild system prompt with current conversation + latest profile + rejected plants
-    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, newMessages, userProfile, rejectedPlants, waterFeatures);
+    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, newMessages, userProfile, rejectedPlants, waterFeatures, plants);
 
     // Extract profile facts asynchronously (don't await/block main chat)
     extractProfileFacts(userMessage).catch(() => {});
