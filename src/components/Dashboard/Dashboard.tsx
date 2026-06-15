@@ -1,9 +1,10 @@
 // src/components/Dashboard/Dashboard.tsx
 import React, { useState, useEffect } from 'react';
-import { Plus, MapPin, Calendar, LogOut, User, Book, Settings } from 'lucide-react';
+import { Plus, MapPin, Calendar, LogOut, User, Book, Settings, Sprout } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import { collection, query, where, getDocs, orderBy } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { syncPlantDatabase } from '../../utils/seedPlantsBrowser';
 import './Dashboard.css';
 
 interface Project {
@@ -28,8 +29,25 @@ export function Dashboard({ onCreateProject, onOpenProject, onOpenWiki, onOpenWi
   const { currentUser, logout } = useAuth();
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const [syncing, setSyncing] = useState(false);
+  const [syncMsg, setSyncMsg] = useState<string | null>(null);
 
   const isAdmin = currentUser?.email && ADMIN_EMAILS.includes(currentUser.email);
+
+  async function handleSyncPlants() {
+    setSyncing(true);
+    setSyncMsg('Starting…');
+    try {
+      const r = await syncPlantDatabase(m => setSyncMsg(m));
+      alert(`Plant database synced ✅\n\nAdded ${r.added} new plant${r.added !== 1 ? 's' : ''}.\n${r.alreadyPresent} were already in the database.`);
+    } catch (err) {
+      console.error('Plant sync failed:', err);
+      alert('Sync failed: ' + (err instanceof Error ? err.message : 'unknown error') + '\n\nMake sure you are signed in as the admin account.');
+    } finally {
+      setSyncing(false);
+      setSyncMsg(null);
+    }
+  }
 
   useEffect(() => {
     loadProjects();
@@ -93,6 +111,12 @@ export function Dashboard({ onCreateProject, onOpenProject, onOpenWiki, onOpenWi
             <button onClick={onOpenWikiAdmin} className="dashboard-action-btn admin-btn">
               <Settings size={18} />
               Wiki Admin
+            </button>
+          )}
+          {isAdmin && (
+            <button onClick={handleSyncPlants} disabled={syncing} className="dashboard-action-btn admin-btn">
+              <Sprout size={18} />
+              {syncing ? (syncMsg || 'Syncing…') : 'Sync Plants'}
             </button>
           )}
         </div>
