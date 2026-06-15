@@ -312,12 +312,11 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
     }
   }, []);
 
-  // Rebuild system prompt when wiki articles, profile, or rejected plants change
+  // Keep the system prompt fresh as the map state loads/changes — including
+  // water features and shapes, which may arrive from Firestore after mount.
   useEffect(() => {
-    if (wikiArticles.length > 0) {
-      systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, messages, userProfile, rejectedPlants, waterFeatures);
-    }
-  }, [wikiArticles, userProfile, rejectedPlants]);
+    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, messages, userProfile, rejectedPlants, waterFeatures);
+  }, [wikiArticles, userProfile, rejectedPlants, waterFeatures, shapes, savedPlan]);
 
 
   // Auto-scroll to bottom
@@ -349,9 +348,21 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
     }
   }, []);
 
-  async function startConversation() {
-    // Only start if we don't have history
-    if (messages.length > 0) return;
+  // Clear the (persisted) conversation and start a fresh greeting with the
+  // current map state — used when the saved history is stale.
+  async function startFresh() {
+    if (loading) return;
+    setMessages([]);
+    setRecommendations([]);
+    setApproved(new Set());
+    onSaveConsultationHistory?.([]);
+    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, [], userProfile, rejectedPlants, waterFeatures);
+    await startConversation(true);
+  }
+
+  async function startConversation(force = false) {
+    // Only start if we don't have history (unless forced via "Start over")
+    if (!force && messages.length > 0) return;
 
     setLoading(true);
     try {
@@ -717,6 +728,9 @@ Return ONLY a JSON array — no prose, no markdown fences. Each element:
             </div>
           </div>
           <div className="consultation-header-actions">
+            <button className="consultation-map-btn" onClick={startFresh} disabled={loading} title="Clear this conversation and start fresh with the current map">
+              Start over
+            </button>
             <button className="consultation-map-btn" onClick={() => { setLayoutError(null); setShowLayout(true); }}>
               <Sparkles size={16} />
               Auto-Layout
