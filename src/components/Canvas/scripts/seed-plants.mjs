@@ -55,8 +55,8 @@ async function seedPlants() {
   console.log('🌱 Plant Database Seed Script');
   console.log('=============================\n');
 
-  // Read plants data
-  const plantsPath = path.join(__dirname, '..', 'data', 'plants-texas.json');
+  // Read plants data (data/ lives at the project root, four levels up from this script)
+  const plantsPath = path.resolve(__dirname, '..', '..', '..', '..', 'data', 'plants-texas.json');
 
   if (!fs.existsSync(plantsPath)) {
     console.error('❌ plants-texas.json not found at:', plantsPath);
