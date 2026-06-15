@@ -137,8 +137,21 @@ function formatProfile(profile: UserProfile): string {
     : '  (no profile info yet — ask questions to learn about the user)';
 }
 
-function buildSystemPrompt(shapes: Shape[], savedPlan: PlantRecommendation[] = [], wikiArticles: WikiArticleSlim[] = [], messages: { role: string; content: string }[] = [], userProfile: UserProfile = {}, rejectedPlants: RejectedPlant[] = []): string {
+function buildWaterSummary(waterFeatures: WaterFeature[] = []): string {
+  if (waterFeatures.length === 0) {
+    return 'WATER & TOPOGRAPHY: The user has not marked any water or topography features yet.';
+  }
+  const lines = waterFeatures.map(w => {
+    const pos = `${w.position.lat.toFixed(5)}°N, ${Math.abs(w.position.lng).toFixed(5)}°W`;
+    const note = w.notes ? ` — ${w.notes}` : '';
+    return `  - ${w.type} at ${pos}${note}`;
+  });
+  return `WATER & TOPOGRAPHY (the user has ALREADY marked these on the map — use them; do NOT ask where moisture/water/low spots are):\n${lines.join('\n')}\n\nGuidance: water pools at low points and below downspouts; high points are drier. Put water-loving plants near low/pooling areas and drought-tolerant plants on high/dry areas.`;
+}
+
+function buildSystemPrompt(shapes: Shape[], savedPlan: PlantRecommendation[] = [], wikiArticles: WikiArticleSlim[] = [], messages: { role: string; content: string }[] = [], userProfile: UserProfile = {}, rejectedPlants: RejectedPlant[] = [], waterFeatures: WaterFeature[] = []): string {
   const mapSummary = buildMapSummary(shapes);
+  const waterSummary = buildWaterSummary(waterFeatures);
   const guildSummary = buildGuildSummary(shapes);
   const planSummary = buildSavedPlanSummary(savedPlan);
   const skillContext = buildSkillContext();
@@ -169,6 +182,8 @@ ${rejectedPlantsSection}
 
 CURRENT DESIGN STATE:
 ${mapSummary}
+
+${waterSummary}
 
 ${guildSummary}${planSummary}${wikiContext}
 
@@ -227,7 +242,8 @@ When a user asks "where should I plant X?", "best spot for X", "where does X go?
 
 Direction must be one of: north, south, east, west, northeast, northwest, southeast, southwest
 distanceFt: distance in feet from the center of the reference plant (typically 10-30ft)
-Only produce <placement> when asked specifically about where to put a single plant.
+Only produce <placement> when asked specifically about where to put ONE single plant.
+When the user wants to place several plants, their whole list, or a full design ("place them all", "lay out my garden", "design my layout", "where does everything go"), do NOT emit one-at-a-time <placement> blocks. Instead tell them to click the "Auto-Layout" button at the top of this screen — it reads their boundary, water, and existing plants and places the entire planting at once (and can design the whole guild for them if they leave the list blank).
 
 IMPORTANT RULES:
 - Prioritize plants that complete existing guild groupings (fill nitrogen-fixer, dynamic-accumulator, insectary, mulch-producer, pest-confuser roles near existing trees)
@@ -281,7 +297,7 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
   const [approved, setApproved] = useState<Set<number>>(new Set(savedPlan.map((_, i) => i)));
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const systemPrompt = useRef(buildSystemPrompt(shapes, savedPlan, wikiArticles, [], userProfile, rejectedPlants));
+  const systemPrompt = useRef(buildSystemPrompt(shapes, savedPlan, wikiArticles, [], userProfile, rejectedPlants, waterFeatures));
   const pendingFollowUp = useRef<string | null>(null);
 
   // Load consultation history on mount
@@ -299,7 +315,7 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
   // Rebuild system prompt when wiki articles, profile, or rejected plants change
   useEffect(() => {
     if (wikiArticles.length > 0) {
-      systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, messages, userProfile, rejectedPlants);
+      systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, messages, userProfile, rejectedPlants, waterFeatures);
     }
   }, [wikiArticles, userProfile, rejectedPlants]);
 
@@ -387,7 +403,7 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
     setLoading(true);
 
     // Always rebuild system prompt with current conversation + latest profile + rejected plants
-    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, newMessages, userProfile, rejectedPlants);
+    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, newMessages, userProfile, rejectedPlants, waterFeatures);
 
     // Extract profile facts asynchronously (don't await/block main chat)
     extractProfileFacts(userMessage).catch(() => {});
@@ -554,7 +570,7 @@ Example output: {"experience":"intermediate","goals":"food for family and wildli
 
   async function generateLayout() {
     const names = layoutInput.split(/[\n,]+/).map(s => s.trim()).filter(Boolean);
-    if (names.length === 0) { setLayoutError('Add at least one plant.'); return; }
+    const advisorChooses = names.length === 0; // empty list → advisor designs the planting
 
     const bbox = computeBBox();
     if (!bbox) { setLayoutError('Trace your property boundary first so I know where to place plants.'); return; }
@@ -579,10 +595,18 @@ ${waterText}
 EXISTING PLANTS (already on the map — do NOT move or duplicate these; place the new plants around them):
 ${buildMapSummary(shapes)}
 
-Place EVERY plant in the user's list. Apply permaculture principles:
+${advisorChooses
+  ? `YOUR TASK: Design a COMPLETE food-forest planting for this site. YOU decide which species to use — choose mostly Texas-native, climate-appropriate plants that complete guilds around the existing plants (cover nitrogen-fixer, dynamic-accumulator, insectary, mulch-producer, and pest-confuser roles), fill empty layers, and match the sun/water conditions above. Aim for a realistic, well-spaced planting of roughly 12–30 plants across the layers.`
+  : `YOUR TASK: Place EVERY plant in the user's list. You may also add a few companion species if they clearly complete a guild.`}
+
+USER'S GOALS & PROFILE (match your plant choices and placement to these):
+${formatProfile(userProfile)}
+
+Apply permaculture principles:
 - In Texas (Northern Hemisphere) the south side gets the most sun; tall plants shade what's north of them.
 - Respect mature spread — don't overlap canopies; space by size.
-- Group guild members near anchor trees; put water-lovers nearer water features.
+- Build complete guilds: cluster supporting species (nitrogen-fixers, accumulators, insectary, mulch, pest-confusers) around each canopy/understory anchor.
+- Put water-loving plants near low/pooling water markers; drought-tolerant plants on high/dry areas.
 - Spread plants sensibly across the whole site, inside the bounding box.
 
 Return ONLY a JSON array — no prose, no markdown fences. Each element:
@@ -592,7 +616,12 @@ Return ONLY a JSON array — no prose, no markdown fences. Each element:
         model: 'claude-opus-4-6',
         max_tokens: 8192,
         system: sys,
-        messages: [{ role: 'user', content: `Plants to place:\n${names.join('\n')}` }],
+        messages: [{
+          role: 'user',
+          content: advisorChooses
+            ? 'Design and place a complete food-forest planting for my site — you choose the species and build the guilds.'
+            : `Plants to place:\n${names.join('\n')}`,
+        }],
       });
 
       const validLayers = new Set(FOOD_FOREST_LAYERS.map(l => l.id));
@@ -641,7 +670,8 @@ Return ONLY a JSON array — no prose, no markdown fences. Each element:
             <div style={{ background: '#fff', borderRadius: 12, padding: 24, width: 'min(520px, 92%)', maxHeight: '88%', overflow: 'auto', boxShadow: '0 12px 40px rgba(0,0,0,0.3)' }}>
               <h3 style={{ margin: '0 0 8px', color: '#064e3b' }}>🌱 Auto-Layout your plants</h3>
               <p style={{ margin: '0 0 12px', fontSize: 14, color: '#475569', lineHeight: 1.5 }}>
-                List the plants you have or want — one per line, or comma-separated. I'll read your boundary, water markers, and existing plants, then place them all on the map as editable shapes you can drag and resize.
+                List the plants you have or want — one per line, or comma-separated — and I'll place them all.
+                <strong> Or leave it blank and I'll design a complete guild-based planting for you</strong>, choosing the species myself. Either way I read your boundary, water markers, and existing plants, then drop everything on the map as editable shapes.
               </p>
               <textarea
                 value={layoutInput}
@@ -668,7 +698,7 @@ Return ONLY a JSON array — no prose, no markdown fences. Each element:
                   Cancel
                 </button>
                 <button onClick={generateLayout} disabled={layoutBusy} style={{ background: '#059669', color: '#fff', border: 'none', padding: '10px 16px', borderRadius: 8, cursor: layoutBusy ? 'wait' : 'pointer', fontWeight: 600 }}>
-                  {layoutBusy ? 'Designing…' : 'Design layout & place on map'}
+                  {layoutBusy ? 'Designing…' : layoutInput.trim() ? 'Place my plants on the map' : 'Design a full plan for me'}
                 </button>
               </div>
             </div>
