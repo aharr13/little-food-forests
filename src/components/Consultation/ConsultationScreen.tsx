@@ -146,18 +146,20 @@ function distanceFeet(p1: Point, p2: Point): number {
 // Real guild-coverage analysis fed to the advisor: for each anchor tree, which
 // of the 5 guild functions are covered by nearby plants and which are missing.
 function buildGuildAnalysisSummary(shapes: Shape[], plants: Plant[]): string {
-  const byId = new Map<string, Plant>();
-  const bySci = new Map<string, Plant>();
-  const byName = new Map<string, Plant>();
+  // NOTE: `Map` is imported from lucide-react (an icon) in this file, which
+  // shadows the built-in Map constructor — so we use plain objects here.
+  const byId: Record<string, Plant> = {};
+  const bySci: Record<string, Plant> = {};
+  const byName: Record<string, Plant> = {};
   plants.forEach(p => {
-    byId.set(p.id, p);
-    if (p.scientificName) bySci.set(p.scientificName.toLowerCase(), p);
-    if (p.commonName) byName.set(p.commonName.toLowerCase(), p);
+    byId[p.id] = p;
+    if (p.scientificName) bySci[p.scientificName.toLowerCase()] = p;
+    if (p.commonName) byName[p.commonName.toLowerCase()] = p;
   });
   const plantFor = (s: Shape): Plant | null =>
-    (s.plantId && byId.get(s.plantId)) ||
-    (s.plantScientificName && bySci.get(s.plantScientificName.toLowerCase())) ||
-    (s.plantName && byName.get(s.plantName.toLowerCase())) || null;
+    (s.plantId ? byId[s.plantId] : undefined) ||
+    (s.plantScientificName ? bySci[s.plantScientificName.toLowerCase()] : undefined) ||
+    (s.plantName ? byName[s.plantName.toLowerCase()] : undefined) || null;
   const centerOf = (s: Shape): Point | null => s.center || s.points?.[0] || null;
 
   const anchors = shapes.filter(s => (s.layerId === 'canopy' || s.layerId === 'understory') && centerOf(s));
