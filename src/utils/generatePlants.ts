@@ -14,7 +14,7 @@ const claudeProxy = httpsCallable<
 
 const VALID_LAYERS = ['canopy', 'understory', 'shrub', 'herbaceous', 'groundcover', 'rhizosphere', 'vine'];
 
-export async function generatePlantsForRegion(region: string, count = 40): Promise<number> {
+export async function generatePlantsForRegion(region: string, count = 25): Promise<number> {
   const sys = `You are a permaculture plant-database expert. Generate ${count} real, region-appropriate food-forest plants for this region: ${region}.
 
 Requirements:

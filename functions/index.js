@@ -24,7 +24,9 @@ const ALLOWED_MODELS = new Set([
 const MAX_TOKENS_CAP = 8192;
 
 exports.claudeProxy = onCall(
-  { secrets: [ANTHROPIC_API_KEY], region: 'us-central1' },
+  // 5-min timeout + more memory so large generations (e.g. a full plant batch)
+  // don't hit the 60s default and fail with a misleading CORS error.
+  { secrets: [ANTHROPIC_API_KEY], region: 'us-central1', timeoutSeconds: 300, memory: '512MiB' },
   async (request) => {
     // 1. Require an authenticated Firebase user.
     if (!request.auth) {
