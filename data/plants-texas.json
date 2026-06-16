@@ -4084,7 +4084,10 @@
     "layerTypes": [
       "groundcover"
     ],
-    "guildFunctions": [],
+    "guildFunctions": [
+      "insectary",
+      "mulch-producer"
+    ],
     "hardinessZones": [
       "8a",
       "8b",
@@ -4523,7 +4526,9 @@
     "layerTypes": [
       "rhizosphere"
     ],
-    "guildFunctions": [],
+    "guildFunctions": [
+      "dynamic-accumulator"
+    ],
     "hardinessZones": [
       "8b",
       "9a",
