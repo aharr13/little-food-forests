@@ -19,7 +19,7 @@ type ClaudeRequest = {
   system?: string;
   messages: { role: 'user' | 'assistant'; content: string }[];
 };
-const claudeProxy = httpsCallable<ClaudeRequest, { text: string }>(functions, 'claudeProxy');
+const claudeProxy = httpsCallable<ClaudeRequest, { text: string }>(functions, 'claudeProxy', { timeout: 300000 }); // 5 min — layout/generation can be slow
 
 interface Message {
   role: 'user' | 'assistant';

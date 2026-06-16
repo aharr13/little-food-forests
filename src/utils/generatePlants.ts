@@ -10,7 +10,7 @@ import { addNewPlantsToDb, CandidatePlant } from './plantDbExpand';
 const claudeProxy = httpsCallable<
   { model: string; max_tokens: number; system?: string; messages: { role: 'user' | 'assistant'; content: string }[] },
   { text: string }
->(functions, 'claudeProxy');
+>(functions, 'claudeProxy', { timeout: 300000 }); // 5 min — generation can be slow
 
 const VALID_LAYERS = ['canopy', 'understory', 'shrub', 'herbaceous', 'groundcover', 'rhizosphere', 'vine'];
 

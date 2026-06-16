@@ -55,6 +55,11 @@ service cloud.firestore {
       allow create: if ownsIncoming();
     }
 
+    // User profile (gardenProfile). The doc id IS the user's uid.
+    match /users/{userId} {
+      allow read, write: if isSignedIn() && request.auth.uid == userId;
+    }
+
     // ---- Shared, read-only catalogs (admin-curated) --------------------
     // Any signed-in user can read; only the admin can modify.
     // NOTE: the Node seed scripts in src/components/Canvas/scripts use the
