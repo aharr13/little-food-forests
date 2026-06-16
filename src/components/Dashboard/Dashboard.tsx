@@ -39,7 +39,7 @@ export function Dashboard({ onCreateProject, onOpenProject, onOpenWiki, onOpenWi
     setSyncMsg('Starting…');
     try {
       const r = await syncPlantDatabase(m => setSyncMsg(m));
-      alert(`Plant database synced ✅ (now mirrors the master list of ${r.total} plants)\n\n• Added: ${r.added}\n• Updated existing: ${r.updated}\n• Removed stale/duplicate: ${r.removed}`);
+      alert(`Plant database synced ✅ (${r.total} seed plants ensured)\n\n• Added: ${r.added}\n• Updated existing: ${r.updated}\n• Duplicate seed copies cleaned: ${r.duplicatesRemoved}\n• Advisor-added plants kept: ${r.kept}`);
     } catch (err) {
       console.error('Plant sync failed:', err);
       alert('Sync failed: ' + (err instanceof Error ? err.message : 'unknown error') + '\n\nMake sure you are signed in as the admin account.');

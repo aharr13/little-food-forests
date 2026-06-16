@@ -3,19 +3,22 @@
 // admin-only Firestore write rule on `plants` is satisfied by the existing
 // browser session — no CLI or password needed.
 //
-// This is a full RECONCILE against the canonical data file (plants-texas.json):
-//   - plants in the file but not the DB  -> added
-//   - plants in both                     -> overwritten with the file's data
-//     (so corrected tags actually take effect)
-//   - plants in the DB but not the file  -> removed (stale / duplicate)
-// After it runs, the database is an exact mirror of the file.
+// Upserts the canonical seed file (plants-texas.json) into the DB WITHOUT
+// removing anything the advisor added:
+//   - seed plant missing from the DB        -> added
+//   - seed plant already in the DB           -> overwritten with the file's data
+//                                               (so corrected tags take effect)
+//   - duplicate copies of the SAME seed plant -> extras removed (kept one)
+//   - plants NOT in the seed file (advisor-added) -> LEFT ALONE
+// The database is a starting point that grows; this never deletes growth.
 import { collection, getDocs, addDoc, setDoc, deleteDoc, doc } from 'firebase/firestore';
 import { db } from '../firebase';
 
 export interface SyncResult {
   added: number;
   updated: number;
-  removed: number;
+  duplicatesRemoved: number;
+  kept: number; // advisor-added plants left untouched
   total: number;
 }
 
@@ -33,15 +36,15 @@ export async function syncPlantDatabase(
   onProgress?.('Reading current database…');
   const snapshot = await getDocs(collection(db, 'plants'));
   const docIdBySci: Record<string, string> = {};
-  const toRemove: string[] = [];
+  const duplicateSeedDocs: string[] = []; // extra copies of a seed plant
+  let kept = 0;
   snapshot.forEach(d => {
     const sci = String((d.data() as { scientificName?: string }).scientificName || '').toLowerCase();
-    // Keep the first doc that matches a file plant; everything else (no match,
-    // blank name, or a duplicate of an already-kept plant) is stale → remove.
-    if (sci && fileScis.has(sci) && !(sci in docIdBySci)) {
-      docIdBySci[sci] = d.id;
+    if (sci && fileScis.has(sci)) {
+      if (sci in docIdBySci) duplicateSeedDocs.push(d.id); // a 2nd copy of a seed plant
+      else docIdBySci[sci] = d.id;
     } else {
-      toRemove.push(d.id);
+      kept++; // not a seed plant -> advisor-added or custom -> never touch
     }
   });
 
@@ -51,7 +54,6 @@ export async function syncPlantDatabase(
     const sci = String(plant.scientificName || '').toLowerCase();
     const existingId = sci ? docIdBySci[sci] : undefined;
     if (existingId) {
-      // Full overwrite so corrected tags replace the stale version.
       await setDoc(doc(db, 'plants', existingId), { ...plant, updatedAt: new Date() });
       updated++;
     } else {
@@ -61,12 +63,13 @@ export async function syncPlantDatabase(
     onProgress?.(`Syncing plants… (${added + updated}/${plants.length})`);
   }
 
-  let removed = 0;
-  for (const id of toRemove) {
+  // Only remove duplicate copies of SEED plants — never advisor-added plants.
+  let duplicatesRemoved = 0;
+  for (const id of duplicateSeedDocs) {
     await deleteDoc(doc(db, 'plants', id));
-    removed++;
-    onProgress?.(`Removing stale entries… (${removed})`);
+    duplicatesRemoved++;
+    onProgress?.(`Cleaning duplicates… (${duplicatesRemoved})`);
   }
 
-  return { added, updated, removed, total: plants.length };
+  return { added, updated, duplicatesRemoved, kept, total: plants.length };
 }

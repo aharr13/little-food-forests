@@ -62,7 +62,11 @@ service cloud.firestore {
     // Re-seed via the Firebase Admin SDK, or temporarily relax `write`.
     match /plants/{plantId} {
       allow read: if isSignedIn();
-      allow write: if isAdmin();
+      // Any signed-in user (and the advisor acting on their behalf) can ADD new
+      // plants, so the database grows as plants are introduced. Only the admin
+      // can modify or delete existing/curated plants.
+      allow create: if isSignedIn();
+      allow update, delete: if isAdmin();
     }
 
     match /wiki/{articleId} {

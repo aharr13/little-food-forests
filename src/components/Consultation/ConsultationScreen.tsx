@@ -8,6 +8,7 @@ import type { WikiArticleSlim } from '../../hooks/useWikiArticles';
 import type { UserProfile } from '../../hooks/useUserProfile';
 import { functions } from '../../firebase';
 import { usePlants } from '../../hooks/usePlants';
+import { addNewPlantsToDb } from '../../utils/plantDbExpand';
 import './ConsultationScreen.css';
 
 // Calls the server-side Cloud Function that holds the Anthropic API key.
@@ -475,6 +476,13 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
       if (recs.length > 0) {
         setRecommendations(recs);
         setApproved(new Set(recs.map((_, i) => i)));
+        // Grow the database with any newly recommended plants (best-effort).
+        addNewPlantsToDb(recs.map(r => ({
+          commonName: r.commonName,
+          scientificName: r.scientificName,
+          layer: r.layer,
+          guildFunctions: r.fillsGuildFunctions,
+        }))).catch(() => {});
       }
 
       // Check for placement suggestion
@@ -662,7 +670,7 @@ Apply permaculture principles:
 - Spread plants sensibly across the whole site, inside the bounding box.
 
 Return ONLY a JSON array — no prose, no markdown fences. Each element:
-{"commonName": string, "scientificName": string, "layer": one of ["canopy","understory","shrub","herbaceous","groundcover","rhizosphere","vine"], "lat": number inside the bbox, "lng": number inside the bbox, "radiusFt": number (mature canopy/spread radius in feet), "reason": short string}`;
+{"commonName": string, "scientificName": string, "layer": one of ["canopy","understory","shrub","herbaceous","groundcover","rhizosphere","vine"], "lat": number inside the bbox, "lng": number inside the bbox, "radiusFt": number (mature canopy/spread radius in feet), "guildFunctions": array of any of ["nitrogen-fixer","dynamic-accumulator","insectary","mulch-producer","pest-confuser"], "sunRequirement": one of ["full-sun","partial-shade","full-shade"], "waterRequirement": one of ["low","moderate","high"], "edible": boolean, "nativeToTexas": boolean, "reason": short string}`;
 
       const res = await claudeProxy({
         model: 'claude-opus-4-6',
@@ -700,6 +708,17 @@ Return ONLY a JSON array — no prose, no markdown fences. Each element:
       if (newShapes.length === 0) {
         setLayoutError('The advisor did not return a usable layout. Please try again.');
       } else {
+        // Grow the database with any plants the advisor introduced (best-effort).
+        addNewPlantsToDb(placements.map(p => ({
+          commonName: String(p.commonName || ''),
+          scientificName: p.scientificName ? String(p.scientificName) : undefined,
+          layer: validLayers.has(p.layer) ? p.layer : 'herbaceous',
+          guildFunctions: Array.isArray(p.guildFunctions) ? p.guildFunctions : undefined,
+          sunRequirement: typeof p.sunRequirement === 'string' ? p.sunRequirement : undefined,
+          waterRequirement: typeof p.waterRequirement === 'string' ? p.waterRequirement : undefined,
+          edible: typeof p.edible === 'boolean' ? p.edible : undefined,
+          nativeToTexas: typeof p.nativeToTexas === 'boolean' ? p.nativeToTexas : undefined,
+        }))).catch(() => {});
         onApplyLayout?.(newShapes);
         setShowLayout(false);
         setLayoutInput('');
