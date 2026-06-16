@@ -5,6 +5,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import { collection, query, where, getDocs, orderBy } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { syncPlantDatabase } from '../../utils/seedPlantsBrowser';
+import { generatePlantsForRegion } from '../../utils/generatePlants';
 import './Dashboard.css';
 
 interface Project {
@@ -31,6 +32,25 @@ export function Dashboard({ onCreateProject, onOpenProject, onOpenWiki, onOpenWi
   const [loading, setLoading] = useState(true);
   const [syncing, setSyncing] = useState(false);
   const [syncMsg, setSyncMsg] = useState<string | null>(null);
+  const [generating, setGenerating] = useState(false);
+
+  async function handleGeneratePlants() {
+    const region = window.prompt(
+      'Generate food-forest plants for which region/climate?\n(e.g. "Central Texas, USDA zone 8b" or "Pacific Northwest, zone 8a")',
+      'Central Texas, USDA zone 8b'
+    );
+    if (!region || !region.trim()) return;
+    setGenerating(true);
+    try {
+      const added = await generatePlantsForRegion(region.trim());
+      alert(`Added ${added} new plant${added !== 1 ? 's' : ''} for "${region.trim()}" 🌱\n\nClick again to generate more — duplicates are skipped automatically.`);
+    } catch (err) {
+      console.error('AI plant generation failed:', err);
+      alert('Generation failed: ' + (err instanceof Error ? err.message : 'unknown error'));
+    } finally {
+      setGenerating(false);
+    }
+  }
 
   const isAdmin = currentUser?.email && ADMIN_EMAILS.includes(currentUser.email);
 
@@ -117,6 +137,12 @@ export function Dashboard({ onCreateProject, onOpenProject, onOpenWiki, onOpenWi
             <button onClick={handleSyncPlants} disabled={syncing} className="dashboard-action-btn admin-btn">
               <Sprout size={18} />
               {syncing ? (syncMsg || 'Syncing…') : 'Sync Plants'}
+            </button>
+          )}
+          {isAdmin && (
+            <button onClick={handleGeneratePlants} disabled={generating} className="dashboard-action-btn admin-btn">
+              <Sprout size={18} />
+              {generating ? 'Generating…' : 'Grow DB with AI'}
             </button>
           )}
         </div>
