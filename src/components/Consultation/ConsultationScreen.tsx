@@ -743,7 +743,7 @@ Return ONLY a JSON array — no prose, no markdown fences. Each element:
           : docked
             // Docked: panel pinned to the right; transparent click-through area on
             // the left so the map stays visible and interactive.
-            ? { display: 'flex', justifyContent: 'flex-end', background: 'transparent', pointerEvents: 'none' }
+            ? { display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', background: 'transparent', pointerEvents: 'none' }
             : { display: 'flex' }
       }
     >
