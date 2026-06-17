@@ -69,6 +69,9 @@ interface ConsultationScreenProps {
   waterFeatures?: WaterFeature[];
   boundary?: Point[];
   onApplyLayout?: (shapes: Shape[]) => void;
+  // Docked side-panel mode (vs full-screen overlay)
+  docked?: boolean;
+  onToggleDock?: () => void;
 }
 
 // Build a summary of what's on the map for the system prompt, including coordinates
@@ -330,7 +333,7 @@ const EFFORT_COLORS: Record<number, string> = {
   1: '#059669', 2: '#10b981', 3: '#f59e0b', 4: '#f97316', 5: '#dc2626',
 };
 
-export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, onSavePlan, onPlacementSuggestion, savedPlan, isVisible, followUpPlantName, onFollowUpConsumed, userProfile = {}, onProfileUpdate, consultationHistory = [], onSaveConsultationHistory, rejectedPlants = [], onSaveRejectedPlants, waterFeatures = [], boundary = [], onApplyLayout }: ConsultationScreenProps) {
+export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, onSavePlan, onPlacementSuggestion, savedPlan, isVisible, followUpPlantName, onFollowUpConsumed, userProfile = {}, onProfileUpdate, consultationHistory = [], onSaveConsultationHistory, rejectedPlants = [], onSaveRejectedPlants, waterFeatures = [], boundary = [], onApplyLayout, docked = false, onToggleDock }: ConsultationScreenProps) {
   const { plants } = usePlants(); // for live guild analysis fed to the advisor
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
@@ -732,8 +735,22 @@ Return ONLY a JSON array — no prose, no markdown fences. Each element:
   }
 
   return (
-    <div className="consultation-overlay" style={{ display: isVisible ? 'flex' : 'none' }}>
-      <div className="consultation-screen">
+    <div
+      className="consultation-overlay"
+      style={
+        !isVisible
+          ? { display: 'none' }
+          : docked
+            // Docked: panel pinned to the right; transparent click-through area on
+            // the left so the map stays visible and interactive.
+            ? { display: 'flex', justifyContent: 'flex-end', background: 'transparent', pointerEvents: 'none' }
+            : { display: 'flex' }
+      }
+    >
+      <div
+        className="consultation-screen"
+        style={docked ? { pointerEvents: 'auto', width: 'min(460px, 100%)', height: '100%', maxWidth: 'none', borderRadius: 0, boxShadow: '-8px 0 30px rgba(0,0,0,0.18)' } : undefined}
+      >
 
         {/* Auto-Layout panel */}
         {showLayout && (
@@ -795,6 +812,11 @@ Return ONLY a JSON array — no prose, no markdown fences. Each element:
               <Sparkles size={16} />
               Auto-Layout
             </button>
+            {onToggleDock && (
+              <button className="consultation-map-btn" onClick={onToggleDock} title={docked ? 'Expand to full screen' : 'Dock beside the map'}>
+                {docked ? 'Full screen' : 'Dock'}
+              </button>
+            )}
             <button className="consultation-map-btn" onClick={onClose}>
               <Map size={16} />
               Back to Map
