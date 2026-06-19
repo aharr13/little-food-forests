@@ -6,7 +6,7 @@ import {
   Circle, Minus as Line, Pentagon as PolygonIcon,
   Eye, EyeOff, Trash2, ZoomIn, ZoomOut, Maximize2,
   Camera, ArrowLeft, MousePointer2, Droplets, Layers, Home,
-  Leaf, X, Map, Satellite, Sparkles
+  Leaf, X, Map, Satellite, Sparkles, ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { FOOD_FOREST_LAYERS, Shape, DrawingTool, LayerVisibility, WaterFeature, WaterFeatureType, WATER_FEATURE_TYPES, Plant, Point, PlantStatus, ConversationMessage, RejectedPlant } from '../../types';
 import { PlantRecommendation, PlacementSuggestion } from '../Consultation/ConsultationScreen';
@@ -917,6 +917,19 @@ export function LayersScreen({
   const [showWizard, setShowWizard] = useState(true);
   const [wizardLayerIndex, setWizardLayerIndex] = useState(-1);
   const [localMap, setLocalMap] = useState<L.Map | null>(null);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+
+  // Leaflet renders gray after its container resizes unless told to recompute.
+  // Fire invalidateSize across a few frames so one definitely lands after the
+  // layout has settled (no CSS animation to fight with).
+  function toggleSidebar() {
+    setSidebarCollapsed(c => !c);
+    const refresh = () => localMap?.invalidateSize();
+    requestAnimationFrame(refresh);
+    setTimeout(refresh, 60);
+    setTimeout(refresh, 180);
+    setTimeout(refresh, 360);
+  }
   const [selectedShape, setSelectedShape] = useState<Shape | null>(null);
   const [activePlant, setActivePlant] = useState<Plant | null>(null);
   const [drawingState, setDrawingState] = useState<{ isDrawing: boolean; points: Point[] }>({ isDrawing: false, points: [] });
@@ -1325,9 +1338,28 @@ export function LayersScreen({
       )}
 
       {/* Main Content */}
-      <div className="layers-content">
+      <div
+        className="layers-content"
+        style={{
+          position: 'relative',
+          gridTemplateColumns: sidebarCollapsed ? '0px 1fr' : '350px 1fr',
+          gridTemplateRows: 'minmax(0, 1fr)', // fill height even when the sidebar is hidden
+        }}
+      >
+        {/* Collapse / expand the left controls sidebar */}
+        <button
+          onClick={toggleSidebar}
+          title={sidebarCollapsed ? 'Show controls' : 'Hide controls'}
+          style={{
+            position: 'absolute', top: 10, left: sidebarCollapsed ? 8 : 358, zIndex: 1100,
+            background: '#fff', border: '1px solid #e2e8f0', borderRadius: 8,
+            boxShadow: '0 2px 10px rgba(0,0,0,0.12)', padding: '8px 5px', cursor: 'pointer', color: '#064e3b',
+          }}
+        >
+          {sidebarCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+        </button>
         {/* Sidebar */}
-        <div className="layers-sidebar">
+        <div className="layers-sidebar" style={{ display: sidebarCollapsed ? 'none' : undefined }}>
           {showWizard && wizardLayerIndex >= 0 && (
             <LayerWizard
               currentLayerIndex={wizardLayerIndex}
