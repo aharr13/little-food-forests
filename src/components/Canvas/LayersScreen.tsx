@@ -1266,12 +1266,12 @@ export function LayersScreen({
           Dashboard
         </button>
         <h1>Design Your Food Forest</h1>
-        <div className="header-actions">
-          <button onClick={() => onOpenConsultation()} className="header-btn-primary" style={{ marginRight: '0.5rem' }}>
+        <div className="header-actions" style={{ display: 'flex', alignItems: 'center', gap: 6, background: '#f1f5f9', padding: 4, borderRadius: 10 }}>
+          <button onClick={() => onOpenConsultation()} className="header-btn-primary">
             <Sparkles size={18} />
             AI Advisor
           </button>
-          <button onClick={onOpenPlanning} className="header-btn-primary" style={{ marginRight: '0.5rem' }}>
+          <button onClick={onOpenPlanning} className="header-btn-primary">
             🌱 Grow Your Forest
           </button>
           <button onClick={() => setShowSnapshotGallery(true)} className="header-btn-primary">
