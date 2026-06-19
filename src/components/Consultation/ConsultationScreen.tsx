@@ -741,15 +741,16 @@ Return ONLY a JSON array — no prose, no markdown fences. Each element:
         !isVisible
           ? { display: 'none' }
           : docked
-            // Docked: panel pinned to the right; transparent click-through area on
-            // the left so the map stays visible and interactive.
-            ? { display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', background: 'transparent', pointerEvents: 'none' }
+            // Docked: panel pinned to the right, starting below the app header
+            // (so it's only the height of the map). The transparent click-through
+            // area on the left keeps the map visible and interactive.
+            ? { display: 'flex', flexDirection: 'row', justifyContent: 'flex-end', top: '64px', background: 'transparent', pointerEvents: 'none' }
             : { display: 'flex' }
       }
     >
       <div
         className="consultation-screen"
-        style={docked ? { pointerEvents: 'auto', width: 'min(460px, 100%)', height: '100%', maxWidth: 'none', borderRadius: 0, boxShadow: '-8px 0 30px rgba(0,0,0,0.18)' } : undefined}
+        style={docked ? { pointerEvents: 'auto', width: 'min(360px, 100%)', height: '100%', maxWidth: 'none', borderRadius: 0, boxShadow: '-8px 0 30px rgba(0,0,0,0.18)' } : undefined}
       >
 
         {/* Auto-Layout panel */}

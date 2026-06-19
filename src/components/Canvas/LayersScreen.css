@@ -538,7 +538,7 @@
 .map-controls {
   position: absolute;
   top: 1rem;
-  right: 1rem;
+  left: 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
