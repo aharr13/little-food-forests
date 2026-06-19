@@ -598,6 +598,7 @@ Example output: {"experience":"intermediate","goals":"food for family and wildli
 
   // ---- Auto-layout: place a whole plant list onto the map -------------------
   const [showLayout, setShowLayout] = useState(false);
+  const [collapsed, setCollapsed] = useState(false); // docked panel collapsed to a thin tab
   const [layoutInput, setLayoutInput] = useState('');
   const [layoutBusy, setLayoutBusy] = useState(false);
   const [layoutError, setLayoutError] = useState<string | null>(null);
@@ -748,9 +749,28 @@ Return ONLY a JSON array — no prose, no markdown fences. Each element:
             : { display: 'flex' }
       }
     >
+      {docked && (
+        <button
+          onClick={() => setCollapsed(c => !c)}
+          title={collapsed ? 'Expand advisor' : 'Collapse advisor'}
+          style={{
+            pointerEvents: 'auto', alignSelf: 'flex-start', marginTop: 10,
+            background: '#fff', border: 'none', borderRadius: '8px 0 0 8px',
+            boxShadow: '-4px 0 12px rgba(0,0,0,0.14)', padding: '12px 6px', cursor: 'pointer', color: '#064e3b',
+          }}
+        >
+          <ChevronRight size={20} style={{ transform: collapsed ? 'rotate(180deg)' : 'none' }} />
+        </button>
+      )}
       <div
         className="consultation-screen"
-        style={docked ? { pointerEvents: 'auto', width: 'min(360px, 100%)', height: '100%', maxWidth: 'none', borderRadius: 0, boxShadow: '-8px 0 30px rgba(0,0,0,0.18)' } : undefined}
+        style={
+          docked
+            ? (collapsed
+                ? { display: 'none' }
+                : { pointerEvents: 'auto', width: 'min(360px, 100%)', height: '100%', maxWidth: 'none', borderRadius: 0, boxShadow: '-8px 0 30px rgba(0,0,0,0.18)' })
+            : undefined
+        }
       >
 
         {/* Auto-Layout panel */}

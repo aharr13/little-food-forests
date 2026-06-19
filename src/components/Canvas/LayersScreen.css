@@ -537,10 +537,12 @@
 
 .map-controls {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
+  bottom: 0.75rem;         /* bottom-left: clear of the header (top) and advisor panel (right) */
+  left: 0.75rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;     /* flat horizontal bar instead of a tall floating stack */
+  align-items: center;
+  flex-wrap: wrap;
   gap: 0.5rem;
   z-index: 1000;
 }
