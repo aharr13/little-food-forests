@@ -1359,7 +1359,7 @@ export function LayersScreen({
           {sidebarCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
         </button>
         {/* Sidebar */}
-        <div className="layers-sidebar" style={{ display: sidebarCollapsed ? 'none' : undefined }}>
+        <div className="layers-sidebar" style={{ gridColumn: 1, display: sidebarCollapsed ? 'none' : undefined }}>
           {showWizard && wizardLayerIndex >= 0 && (
             <LayerWizard
               currentLayerIndex={wizardLayerIndex}
@@ -1649,7 +1649,7 @@ export function LayersScreen({
         </div>
 
         {/* Map */}
-        <div ref={layersMapRef} className={`layers-map${sidebarMode === 'layers' ? ' layers-mode' : ''}`}>
+        <div ref={layersMapRef} className={`layers-map${sidebarMode === 'layers' ? ' layers-mode' : ''}`} style={{ gridColumn: 2 }}>
           {/* Water Mode Toolbar */}
           {sidebarMode === 'water' && (
             <div className="drawing-toolbar water-toolbar">
