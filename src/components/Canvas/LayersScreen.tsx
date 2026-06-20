@@ -1465,7 +1465,7 @@ export function LayersScreen({
                   </div>
 
                   {/* Active Plant Brush Indicator */}
-                  {activePlant && selectedLayerId !== 'groundcover' && (
+                  {activePlant && (
                     <div className="active-plant-brush">
                       <div className="brush-header">
                         <Leaf size={14} />
@@ -1482,7 +1482,7 @@ export function LayersScreen({
                   )}
 
                   {/* Selected Shape Info */}
-                  {selectedShape && selectedLayerId !== 'groundcover' && (
+                  {selectedShape && (
                     <div className="sidebar-section selected-shape-section">
                       <div className="selected-shape-header">
                         <h3>{selectedShape.plantName || 'Unassigned'}</h3>
@@ -1533,7 +1533,7 @@ export function LayersScreen({
                   )}
 
                   {/* Plant Search */}
-                  {selectedLayerId !== 'groundcover' && (
+                  {(
                     <div className="plant-search-section">
                       <PlantSearch
                         layerId={selectedLayerId}
@@ -1558,7 +1558,7 @@ export function LayersScreen({
                   )}
 
                   <div className="sidebar-actions">
-                    {selectedLayerId !== 'groundcover' && shapes.filter(s => s.layerId === selectedLayerId).length > 0 && (
+                    {shapes.filter(s => s.layerId === selectedLayerId).length > 0 && (
                       <button
                         className="btn-danger"
                         onClick={() => clearLayer(selectedLayerId)}
@@ -1684,7 +1684,7 @@ export function LayersScreen({
           )}
 
           {/* Drawing Toolbar */}
-          {sidebarMode === 'layers' && selectedLayerId !== 'groundcover' && (
+          {sidebarMode === 'layers' && (
             <div className="drawing-toolbar">
               <div className="toolbar-group">
                 <button
