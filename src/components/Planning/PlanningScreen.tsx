@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { MapContainer, TileLayer, Circle as LeafletCircle, Polygon as LeafletPolygon, Tooltip } from 'react-leaflet';
 import { ChevronDown, ChevronRight, CheckCircle2, Circle, ArrowLeft, Trophy, Clock, CalendarDays, ListTodo, FileText, Camera, Image } from 'lucide-react';
 import { FOOD_FOREST_LAYERS, Shape, PlantingTask, TaskStep, CareItem, PhotoReminder } from '../../types';
+import { computeScheduledDate } from '../../utils/taskGenerator';
 import { CalendarView } from './CalendarView';
 import { DesignReport } from '../Design/DesignReport';
 import { PhotoSessionPanel } from './PhotoSessionPanel';
@@ -25,6 +26,25 @@ const ORDER_GROUPS: { label: string; min: number; max: number; color: string }[]
 
 function getOrderGroup(order: number) {
   return ORDER_GROUPS.find(g => order >= g.min && order <= g.max) ?? ORDER_GROUPS[3];
+}
+
+// Effective planting date: the task's scheduledDate, or a season-based default
+// for older tasks that predate scheduling.
+function effectiveDate(task: PlantingTask): Date {
+  return task.scheduledDate ?? computeScheduledDate(task.layerId, task.bestPlantingWindow);
+}
+
+function formatDate(d: Date): string {
+  return d.toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+function monthKey(d: Date): string {
+  return d.toLocaleDateString(undefined, { month: 'long', year: 'numeric' });
+}
+
+// yyyy-mm-dd for <input type="date">
+function dateInputValue(d: Date): string {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }
 
 function progressPercent(task: PlantingTask): number {
@@ -50,9 +70,10 @@ interface TaskCardProps {
   onSelect: () => void;
   onCompleteStep: (stepId: string) => void;
   onUncompleteStep: (stepId: string) => void;
+  onReschedule?: (date: Date) => void;
 }
 
-function TaskCard({ task, isActive, showPlantingBadge = true, onSelect, onCompleteStep, onUncompleteStep }: TaskCardProps) {
+function TaskCard({ task, isActive, showPlantingBadge = true, onSelect, onCompleteStep, onUncompleteStep, onReschedule }: TaskCardProps) {
   const layer = FOOD_FOREST_LAYERS.find(l => l.id === task.layerId);
   const group = getOrderGroup(task.establishmentOrder);
   const pct = progressPercent(task);
@@ -78,7 +99,21 @@ function TaskCard({ task, isActive, showPlantingBadge = true, onSelect, onComple
               {showPlantingBadge && (
                 <span className="task-order-badge" style={{ background: group.color }}>{group.label}</span>
               )}
-              <span className="task-window">🗓 {task.bestPlantingWindow}</span>
+              <span className="task-window" title={task.bestPlantingWindow}>🗓 {formatDate(effectiveDate(task))}</span>
+              {onReschedule && (
+                <input
+                  type="date"
+                  value={dateInputValue(effectiveDate(task))}
+                  onClick={(e) => e.stopPropagation()}
+                  onChange={(e) => {
+                    const [y, m, d] = e.target.value.split('-').map(Number);
+                    if (y && m && d) onReschedule(new Date(y, m - 1, d));
+                  }}
+                  className="task-date-input"
+                  style={{ marginLeft: 6, fontSize: 12, border: '1px solid #cbd5e1', borderRadius: 6, padding: '1px 4px', background: '#fff' }}
+                  title="Change planting date"
+                />
+              )}
             </div>
           </div>
         </div>
@@ -253,6 +288,7 @@ interface PlanningScreenProps {
   onSnoozeCareItem: (itemId: string, days: number) => Promise<void>;
   onCompletePhotoReminder?: (reminderId: string) => Promise<void>;
   onSnoozePhotoReminder?: (reminderId: string, days: number) => Promise<void>;
+  onRescheduleTask?: (taskId: string, date: Date) => void;
   onClose: () => void;
 }
 
@@ -273,12 +309,14 @@ export function PlanningScreen({
   onSnoozeCareItem,
   onCompletePhotoReminder,
   onSnoozePhotoReminder,
+  onRescheduleTask,
   onClose,
 }: PlanningScreenProps) {
   const [activeTaskId, setActiveTaskId] = useState<string | null>(null);
   const [activeCareId, setActiveCareId] = useState<string | null>(null);
   const [highlightShapeId, setHighlightShapeId] = useState<string | null>(null);
   const [view, setView] = useState<'tasks' | 'calendar' | 'report' | 'photos' | 'gallery'>('tasks');
+  const [sortMode, setSortMode] = useState<'date' | 'order' | 'layer'>('date');
 
   const shapeStatusMap = new Map(shapes.map(s => [s.id, s.status ?? 'planned']));
 
@@ -300,10 +338,32 @@ export function PlanningScreen({
   const careXp          = caringItems.reduce((n, c) => n + c.totalXpEarned, 0);
   const totalXp         = taskXp + careXp;
 
-  const plantGroups = ORDER_GROUPS.map(group => ({
-    ...group,
-    tasks: toPlantTasks.filter(t => t.establishmentOrder >= group.min && t.establishmentOrder <= group.max),
-  })).filter(g => g.tasks.length > 0);
+  const plantGroups: { label: string; color?: string; tasks: PlantingTask[] }[] = (() => {
+    if (sortMode === 'order') {
+      return ORDER_GROUPS.map(g => ({
+        label: g.label, color: g.color,
+        tasks: toPlantTasks.filter(t => t.establishmentOrder >= g.min && t.establishmentOrder <= g.max),
+      })).filter(g => g.tasks.length > 0);
+    }
+    if (sortMode === 'layer') {
+      return FOOD_FOREST_LAYERS.map(l => ({
+        label: l.name, color: l.color,
+        tasks: toPlantTasks.filter(t => t.layerId === l.id),
+      })).filter(g => g.tasks.length > 0);
+    }
+    // By date: chronological, grouped by month
+    const sorted = [...toPlantTasks].sort((a, b) => effectiveDate(a).getTime() - effectiveDate(b).getTime());
+    const byMonth = new Map<string, { date: Date; tasks: PlantingTask[] }>();
+    for (const t of sorted) {
+      const d = effectiveDate(t);
+      const key = monthKey(d);
+      if (!byMonth.has(key)) byMonth.set(key, { date: new Date(d.getFullYear(), d.getMonth(), 1), tasks: [] });
+      byMonth.get(key)!.tasks.push(t);
+    }
+    return [...byMonth.entries()]
+      .sort((a, b) => a[1].date.getTime() - b[1].date.getTime())
+      .map(([label, v]) => ({ label, tasks: v.tasks }));
+  })();
 
   function handleSelectTask(task: PlantingTask) {
     const next = activeTaskId === task.id ? null : task.id;
@@ -398,11 +458,29 @@ export function PlanningScreen({
               {/* To Plant */}
               {plantGroups.length > 0 && (
                 <div className="planning-section">
-                  <div className="planning-section-header">🌱 To Plant</div>
+                  <div className="planning-section-header" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 8 }}>
+                    <span>🌱 To Plant</span>
+                    <span style={{ display: 'inline-flex', gap: 4 }}>
+                      {(['date', 'order', 'layer'] as const).map(m => (
+                        <button
+                          key={m}
+                          onClick={() => setSortMode(m)}
+                          style={{
+                            fontSize: 12, padding: '3px 9px', borderRadius: 999, cursor: 'pointer',
+                            border: '1px solid ' + (sortMode === m ? '#059669' : '#cbd5e1'),
+                            background: sortMode === m ? '#059669' : '#fff',
+                            color: sortMode === m ? '#fff' : '#475569',
+                          }}
+                        >
+                          {m === 'date' ? 'By date' : m === 'order' ? 'By order' : 'By layer'}
+                        </button>
+                      ))}
+                    </span>
+                  </div>
                   {plantGroups.map(group => (
                     <div key={group.label} className="task-group">
-                      <div className="task-group-header" style={{ borderColor: group.color }}>
-                        <span className="task-group-dot" style={{ background: group.color }} />
+                      <div className="task-group-header" style={{ borderColor: group.color ?? '#059669' }}>
+                        <span className="task-group-dot" style={{ background: group.color ?? '#059669' }} />
                         {group.label}
                         <span className="task-group-count">{group.tasks.length} plant{group.tasks.length !== 1 ? 's' : ''}</span>
                       </div>
@@ -411,9 +489,11 @@ export function PlanningScreen({
                           key={task.id}
                           task={task}
                           isActive={activeTaskId === task.id}
+                          showPlantingBadge={sortMode !== 'order'}
                           onSelect={() => handleSelectTask(task)}
                           onCompleteStep={stepId => onCompleteStep(task.id, stepId)}
                           onUncompleteStep={stepId => onUncompleteStep(task.id, stepId)}
+                          onReschedule={onRescheduleTask ? (date) => onRescheduleTask(task.id, date) : undefined}
                         />
                       ))}
                     </div>

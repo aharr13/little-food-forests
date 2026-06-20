@@ -597,6 +597,10 @@ const DesignFlow = () => {
             photoReminders={photoReminders}
             onCompletePhotoReminder={completePhotoReminder}
             onSnoozePhotoReminder={snoozePhotoReminder}
+            onRescheduleTask={(taskId, date) => {
+              const t = plantingTasks.find(x => x.id === taskId);
+              if (t) upsertTask({ ...t, scheduledDate: date });
+            }}
             onClose={() => setShowPlanning(false)}
           />
         )}

@@ -426,6 +426,7 @@ export interface PlantingTask {
   layerId: string;
   guildRole: string;           // "Canopy anchor — plant this first"
   bestPlantingWindow: string;  // "October through February"
+  scheduledDate?: Date;        // concrete target planting date (auto-set by season, editable)
   establishmentOrder: number;  // 1 = first to plant; used for sorting
   steps: TaskStep[];
 

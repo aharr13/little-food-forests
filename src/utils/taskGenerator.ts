@@ -43,6 +43,28 @@ function getEstablishmentOrder(shape: Shape): number {
   return isNFixer ? base - 0.5 : base;
 }
 
+const MONTH_NAMES = ['january', 'february', 'march', 'april', 'may', 'june',
+  'july', 'august', 'september', 'october', 'november', 'december'];
+
+// Pick the target planting month from the window text, falling back to layer.
+function seasonMonthFor(layerId: string, window: string): number {
+  const w = (window || '').toLowerCase();
+  for (let i = 0; i < 12; i++) if (w.includes(MONTH_NAMES[i])) return i;
+  if (/fall|autumn|winter|dormant/.test(w)) return 9;  // October
+  if (/spring/.test(w)) return 2;                       // March
+  if (/summer/.test(w)) return 5;                       // June
+  // Woody plants & roots go in dormant fall; soft/green layers in spring.
+  if (['canopy', 'understory', 'shrub', 'vine', 'rhizosphere', 'infrastructure'].includes(layerId)) return 9;
+  return 2;
+}
+
+// Next occurrence of the planting month (this year if not yet past, else next year).
+export function computeScheduledDate(layerId: string, window: string, from: Date = new Date()): Date {
+  const month = seasonMonthFor(layerId, window);
+  const year = from.getMonth() > month ? from.getFullYear() + 1 : from.getFullYear();
+  return new Date(year, month, 1);
+}
+
 function matchesTemplate(t: TaskTemplate, plantName: string): boolean {
   const name = plantName.toLowerCase();
   const cn = t.commonName.toLowerCase();
@@ -103,6 +125,7 @@ export function generateTaskForShape(
     layerId:              shape.layerId,
     guildRole:            template?.guildRole ?? `${shape.layerId} layer plant`,
     bestPlantingWindow:   template?.bestPlantingWindow ?? 'Spring or Fall',
+    scheduledDate:        computeScheduledDate(shape.layerId, template?.bestPlantingWindow ?? 'Spring or Fall', now),
     establishmentOrder:   getEstablishmentOrder(shape),
     steps,
     status:               'pending',

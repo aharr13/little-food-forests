@@ -31,6 +31,8 @@ export function usePlantingTasks(projectId: string | null, userId: string | null
             createdAt: data.createdAt?.toDate?.() ?? new Date(),
             updatedAt: data.updatedAt?.toDate?.() ?? new Date(),
             completedAt: data.completedAt?.toDate?.() ?? undefined,
+            // scheduledDate may be a Firestore Timestamp or an ISO string
+            scheduledDate: data.scheduledDate?.toDate?.() ?? (data.scheduledDate ? new Date(data.scheduledDate) : undefined),
             steps: (data.steps ?? []).map((s: any) => ({
               ...s,
               completedAt: s.completedAt?.toDate?.() ?? undefined,
