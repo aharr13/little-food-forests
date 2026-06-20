@@ -104,7 +104,11 @@ export function generateTaskForShape(
   const template = templates.find(t => matchesTemplate(t, shape.plantName!));
 
   const now = new Date();
-  const steps: TaskStep[] = (template?.steps ?? buildGenericSteps(shape)).map((s, i) => ({
+  // The planting task is the one-time setup only: preparation + planting day.
+  // Ongoing watering/establishment is handled by recurring care items.
+  const steps: TaskStep[] = (template?.steps ?? buildGenericSteps(shape))
+    .filter(s => s.phase === 'preparation' || s.phase === 'planting-day')
+    .map((s, i) => ({
     id:                 `step_${shape.id}_${i}`,
     phase:              s.phase as TaskStep['phase'],
     order:              i,

@@ -32,32 +32,60 @@ function matchesTemplate(t: TaskTemplate, plantName: string): boolean {
 
 export function generateCareItemsForShape(shape: Shape, projectId: string, userId = ''): CareItem[] {
   if (!shape.plantName) return [];
-  const template = templates.find(t => matchesTemplate(t, shape.plantName!));
-  if (!template?.careSchedule?.length) return [];
-
   const now = new Date();
-  return template.careSchedule.map((cs, i) => {
-    const nextDueDate = new Date(now);
-    nextDueDate.setDate(nextDueDate.getDate() + cs.intervalDays);
+  const items: CareItem[] = [];
 
-    return {
-      id: `care_${shape.id}_${i}`,
-      projectId,
-      userId,
-      shapeId: shape.id,
-      plantName: shape.plantName!,
-      layerId: shape.layerId,
-      title: cs.title,
-      description: cs.description,
-      tips: cs.tips ?? [],
-      estimatedMinutes: cs.estimatedMinutes,
-      intervalDays: cs.intervalDays,
-      phase: cs.phase as CarePhase,
-      xpPerCompletion: cs.xpPerCompletion,
-      totalXpEarned: 0,
-      completionCount: 0,
-      nextDueDate,
-      createdAt: now,
-    };
+  // Every newly-planted plant gets a DAILY watering task for the first 30 days.
+  // After 30 days it automatically steps down to weekly (see useCareItems).
+  const waterDue = new Date(now);
+  waterDue.setDate(waterDue.getDate() + 1);
+  items.push({
+    id: `care_${shape.id}_watering`,
+    projectId,
+    userId,
+    shapeId: shape.id,
+    plantName: shape.plantName!,
+    layerId: shape.layerId,
+    title: `Water ${shape.plantName}`,
+    description: 'Water deeply every day for the first 30 days while roots establish. After that it steps down to about weekly through the first year.',
+    tips: ['Water at the drip line, not against the stem', 'Check soil ~3 inches down — water when dry, skip when still moist'],
+    estimatedMinutes: 5,
+    intervalDays: 1,
+    phase: 'first-30-days',
+    xpPerCompletion: 5,
+    totalXpEarned: 0,
+    completionCount: 0,
+    nextDueDate: waterDue,
+    createdAt: now,
   });
+
+  // Plus any NON-watering recurring care from the template (mulch, prune, feed…).
+  const template = templates.find(t => matchesTemplate(t, shape.plantName!));
+  (template?.careSchedule ?? [])
+    .filter(cs => !/water/i.test(cs.title) && !/water/i.test(cs.description))
+    .forEach((cs, i) => {
+      const nextDueDate = new Date(now);
+      nextDueDate.setDate(nextDueDate.getDate() + cs.intervalDays);
+      items.push({
+        id: `care_${shape.id}_${i}`,
+        projectId,
+        userId,
+        shapeId: shape.id,
+        plantName: shape.plantName!,
+        layerId: shape.layerId,
+        title: cs.title,
+        description: cs.description,
+        tips: cs.tips ?? [],
+        estimatedMinutes: cs.estimatedMinutes,
+        intervalDays: cs.intervalDays,
+        phase: cs.phase as CarePhase,
+        xpPerCompletion: cs.xpPerCompletion,
+        totalXpEarned: 0,
+        completionCount: 0,
+        nextDueDate,
+        createdAt: now,
+      });
+    });
+
+  return items;
 }
