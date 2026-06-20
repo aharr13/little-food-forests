@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#064e3b"/>
+  <!-- trunk -->
+  <rect x="244" y="300" width="24" height="120" rx="12" fill="#a16207"/>
+  <!-- canopy layers -->
+  <circle cx="256" cy="190" r="86" fill="#28594C"/>
+  <circle cx="200" cy="250" r="62" fill="#2A7A3C"/>
+  <circle cx="312" cy="250" r="62" fill="#2A7A3C"/>
+  <circle cx="256" cy="250" r="74" fill="#78C443"/>
+  <!-- groundline -->
+  <rect x="120" y="416" width="272" height="16" rx="8" fill="#B7EBD1"/>
+</svg>
