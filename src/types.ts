@@ -487,13 +487,25 @@ export interface PhotoReminder {
 
 export interface AnchorPointPhoto {
   id: string;
-  anchorPointId: string;
-  photoUrl: string;
-  capturedAt: Date;
-  notes?: string;
-  userId: string;
   projectId: string;
+  userId: string;
+  kind: 'anchor' | 'plant';        // anchor = fixed-position time-lapse; plant = a specific plant
+  photoUrl: string;
+  storagePath?: string;            // for deleting the underlying Storage file
+  capturedAt: Date;
   createdAt: Date;
+  notes?: string;
+  width?: number;                  // pixel dims (for ghost-overlay aspect + galleries)
+  height?: number;
+
+  // Anchor photos (kind === 'anchor')
+  anchorPointId: string;           // shape.id of the photo anchor ('' for plant photos)
+  anchorPositionLabel?: string;    // "1", "2", "3" — which station this is
+
+  // Plant photos (kind === 'plant') — tagged by BOTH instance and species
+  shapeId?: string;                // the specific plant on the map (instance)
+  plantName?: string;              // common name (species rollup)
+  plantScientificName?: string;
 }
 
 // ─── Consultation & AI interaction types ───────────────────────────────────
