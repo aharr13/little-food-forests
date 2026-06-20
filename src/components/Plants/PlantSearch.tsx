@@ -21,6 +21,7 @@ export function PlantSearch({
   onSelectPlant,
   onClose,
   selectedPlantId,
+  layerId,
 }: PlantSearchProps) {
   const [searchQuery, setSearchQuery] = useState('');
   const [activeGuildFilters, setActiveGuildFilters] = useState<GuildFunction[]>([]);
@@ -44,9 +45,11 @@ export function PlantSearch({
     return layer?.name || plant.layerTypes[0] || '';
   }
 
-  // Selecting a plant always switches to that plant's primary layer.
+  // Stay on the current layer if this plant can live there (e.g. Horseherb is
+  // both herbaceous and groundcover); otherwise switch to its primary layer.
   function selectPlant(plant: Plant) {
-    onSelectPlant(plant, plant.layerTypes[0]);
+    const target = layerId && plant.layerTypes.includes(layerId) ? layerId : plant.layerTypes[0];
+    onSelectPlant(plant, target);
   }
 
   return (

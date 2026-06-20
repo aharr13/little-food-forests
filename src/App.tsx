@@ -72,7 +72,7 @@ const DesignFlow = () => {
   // Planting tasks
   const { tasks: plantingTasks, upsertTask, completeStep, uncompleteStep } = usePlantingTasks(currentProjectId, currentUser?.uid ?? null);
   // Recurring care items
-  const { careItems, upsertCareItem, completeItem: completeCareItem, snoozeItem: snoozeCareItem } = useCareItems(currentProjectId, currentUser?.uid ?? null);
+  const { careItems, upsertCareItem, completeItem: completeCareItem, snoozeItem: snoozeCareItem, deleteCareItem } = useCareItems(currentProjectId, currentUser?.uid ?? null);
   // Photo reminders
   const { photoReminders, upsertPhotoReminder, completePhotoReminder, snoozePhotoReminder } = usePhotoReminders(currentProjectId, currentUser?.uid ?? null);
   const [showPlanning, setShowPlanning] = useState(false);
@@ -235,6 +235,12 @@ const DesignFlow = () => {
       if (shapeCare.length === 0 || !hasWatering) {
         generateCareItemsForShape(s, currentProjectId, currentUser.uid).forEach(upsertCareItem);
       }
+      // Remove stale/duplicate watering items (old ids) — keep the canonical one.
+      shapeCare.forEach(c => {
+        if (c.id !== `care_${s.id}_watering` && /water/i.test(c.title)) {
+          deleteCareItem(c.id);
+        }
+      });
     });
   }, [shapes, careItems, currentProjectId, currentUser]);
 

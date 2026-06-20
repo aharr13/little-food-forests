@@ -1,6 +1,6 @@
 // src/hooks/useCareItems.ts
 import { useState, useEffect } from 'react';
-import { collection, doc, getDocs, setDoc, query, where } from 'firebase/firestore';
+import { collection, doc, getDocs, setDoc, deleteDoc, query, where } from 'firebase/firestore';
 import { db } from '../firebase';
 import { CareItem } from '../types';
 
@@ -85,5 +85,10 @@ export function useCareItems(projectId: string | null, userId: string | null = n
     await upsertCareItem({ ...item, nextDueDate });
   }
 
-  return { careItems, loading, upsertCareItem, completeItem, snoozeItem };
+  async function deleteCareItem(itemId: string) {
+    await deleteDoc(doc(db, 'careItems', itemId));
+    setCareItems(prev => prev.filter(c => c.id !== itemId));
+  }
+
+  return { careItems, loading, upsertCareItem, completeItem, snoozeItem, deleteCareItem };
 }
