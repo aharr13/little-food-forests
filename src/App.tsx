@@ -637,7 +637,12 @@ const DesignFlow = () => {
                   const isGeneric = existing?.steps.some(st =>
                     st.description.includes('Select a spot appropriate for a')
                   );
-                  if (!existing || isGeneric) {
+                  // Migrate old-structure tasks (that still carry first-30-days /
+                  // year-one steps) to the new prep+plant-only structure.
+                  const isOldStructure = existing?.steps.some(st =>
+                    st.phase === 'first-30-days' || st.phase === 'year-one'
+                  );
+                  if (!existing || isGeneric || isOldStructure) {
                     const task = generateTaskForShape(s, currentProjectId, userProfile, currentUser?.uid ?? '');
                     if (task) upsertTask(task);
                   }
