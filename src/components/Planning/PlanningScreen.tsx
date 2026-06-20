@@ -104,13 +104,18 @@ function TaskCard({ task, isActive, showPlantingBadge = true, onSelect, onComple
                 <input
                   type="date"
                   value={dateInputValue(effectiveDate(task))}
-                  onClick={(e) => e.stopPropagation()}
+                  onMouseDown={(e) => e.stopPropagation()}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    const el = e.currentTarget as HTMLInputElement & { showPicker?: () => void };
+                    el.showPicker?.();
+                  }}
                   onChange={(e) => {
                     const [y, m, d] = e.target.value.split('-').map(Number);
                     if (y && m && d) onReschedule(new Date(y, m - 1, d));
                   }}
                   className="task-date-input"
-                  style={{ marginLeft: 6, fontSize: 12, border: '1px solid #cbd5e1', borderRadius: 6, padding: '1px 4px', background: '#fff' }}
+                  style={{ marginLeft: 8, fontSize: 13, border: '1px solid #94a3b8', borderRadius: 8, padding: '4px 8px', background: '#fff', cursor: 'pointer', color: '#0f172a' }}
                   title="Change planting date"
                 />
               )}
@@ -319,16 +324,17 @@ export function PlanningScreen({
   const [sortMode, setSortMode] = useState<'date' | 'order' | 'layer'>('date');
 
   const shapeStatusMap = new Map(shapes.map(s => [s.id, s.status ?? 'planned']));
+  const liveShapeIds = new Set(shapes.map(s => s.id));
 
-  // "To Plant" — planned shapes with planting tasks
-  const toPlantTasks = tasks.filter(t => {
-    const s = shapeStatusMap.get(t.shapeId);
-    return !s || s === 'planned';
-  });
+  // "To Plant" — planned shapes with planting tasks. Only tasks whose plant is
+  // still on the map (drop orphaned tasks left behind by deleted plants).
+  const toPlantTasks = tasks.filter(t =>
+    liveShapeIds.has(t.shapeId) && (shapeStatusMap.get(t.shapeId) ?? 'planned') === 'planned'
+  );
 
-  // "Caring For" — care items for establishing shapes, sorted by urgency
+  // "Caring For" — care items for establishing shapes still on the map, by urgency
   const caringItems = careItems
-    .filter(c => shapeStatusMap.get(c.shapeId) === 'establishing')
+    .filter(c => liveShapeIds.has(c.shapeId) && shapeStatusMap.get(c.shapeId) === 'establishing')
     .sort((a, b) => a.nextDueDate.getTime() - b.nextDueDate.getTime());
 
   // Stats
