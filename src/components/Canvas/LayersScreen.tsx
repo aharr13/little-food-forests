@@ -11,7 +11,6 @@ import {
 import { FOOD_FOREST_LAYERS, Shape, DrawingTool, LayerVisibility, WaterFeature, WaterFeatureType, WATER_FEATURE_TYPES, Plant, Point, PlantStatus, ConversationMessage, RejectedPlant } from '../../types';
 import { PlantRecommendation, PlacementSuggestion } from '../Consultation/ConsultationScreen';
 import { LayerWizard } from './LayerWizard';
-import { GroundcoverSelector } from './GroundcoverSelector';
 import { WaterTopography } from './WaterTopography';
 import { PlantSearch } from '../Plants/PlantSearch';
 import { GuildAnalysis } from '../Plants/GuildAnalysis';
@@ -1263,9 +1262,7 @@ export function LayersScreen({
 
   const layerShapeCounts = FOOD_FOREST_LAYERS.map(layer => ({
     ...layer,
-    count: layer.id === 'groundcover'
-      ? groundcoverSpecies.length
-      : shapes.filter(s => s.layerId === layer.id).length
+    count: shapes.filter(s => s.layerId === layer.id).length
   }));
 
   const currentLayer = FOOD_FOREST_LAYERS.find(l => l.id === selectedLayerId);
@@ -1546,17 +1543,6 @@ export function LayersScreen({
                     </div>
                   )}
 
-                  {/* Groundcover Selector */}
-                  {selectedLayerId === 'groundcover' && (
-                    <div className="sidebar-section">
-                      <h3>Groundcover Species</h3>
-                      <GroundcoverSelector
-                        selectedSpecies={groundcoverSpecies}
-                        onSpeciesChange={onGroundcoverSpeciesChange}
-                      />
-                    </div>
-                  )}
-
                   <div className="sidebar-actions">
                     {shapes.filter(s => s.layerId === selectedLayerId).length > 0 && (
                       <button
@@ -1565,15 +1551,6 @@ export function LayersScreen({
                       >
                         <Trash2 size={16} />
                         Clear Layer
-                      </button>
-                    )}
-                    {selectedLayerId === 'groundcover' && groundcoverSpecies.length > 0 && (
-                      <button
-                        className="btn-danger"
-                        onClick={() => onGroundcoverSpeciesChange([])}
-                      >
-                        <Trash2 size={16} />
-                        Clear Selection
                       </button>
                     )}
                     <button onClick={onBackToDashboard} className="btn-primary">
