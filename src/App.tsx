@@ -221,6 +221,19 @@ const DesignFlow = () => {
     }
   }, [boundaryPoints, currentStep, shapes, groundcoverSpecies, waterFeatures, savedPlan, consultationHistory, rejectedPlants]);
 
+  // The moment a plant becomes "establishing", make sure it has its watering /
+  // care tasks — so marking it establishing (via the status buttons) creates the
+  // daily watering right away, not only on the next planning-screen open.
+  useEffect(() => {
+    if (!currentProjectId || !currentUser) return;
+    const careShapeIds = new Set(careItems.map(c => c.shapeId));
+    shapes.forEach(s => {
+      if (s.status === 'establishing' && s.plantName && !careShapeIds.has(s.id)) {
+        generateCareItemsForShape(s, currentProjectId, currentUser.uid).forEach(upsertCareItem);
+      }
+    });
+  }, [shapes, careItems, currentProjectId, currentUser]);
+
   // Create new project
   function handleCreateProject() {
     setCurrentProjectId(null);
