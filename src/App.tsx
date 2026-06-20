@@ -657,7 +657,22 @@ const DesignFlow = () => {
                   );
                   if (!existing || isGeneric || isOldStructure) {
                     const task = generateTaskForShape(s, currentProjectId, userProfile, currentUser?.uid ?? '');
-                    if (task) upsertTask(task);
+                    if (task) {
+                      if (existing) {
+                        // Preserve user customizations across regeneration:
+                        // the chosen planting date and any completed steps.
+                        if (existing.scheduledDate) task.scheduledDate = existing.scheduledDate;
+                        task.steps = task.steps.map(ns => {
+                          const prev = existing.steps.find(os => os.title === ns.title);
+                          return prev?.completed ? { ...ns, completed: true, completedAt: prev.completedAt } : ns;
+                        });
+                        const done = task.steps.filter(st => st.completed).length;
+                        task.xpEarned = Math.round((done / Math.max(1, task.steps.length)) * task.xpReward);
+                        task.status = done === task.steps.length ? 'completed' : done > 0 ? 'in_progress' : 'pending';
+                        task.completedAt = existing.completedAt;
+                      }
+                      upsertTask(task);
+                    }
                   }
                 } else if (s.status === 'establishing' && s.plantName && !careByShapeId.get(s.id)) {
                   // Generate care items for establishing shapes that don't have any yet

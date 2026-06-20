@@ -71,7 +71,7 @@
 /* ── Body ── */
 .planning-body {
   display: grid;
-  grid-template-columns: 1fr 380px;
+  grid-template-columns: 40% 60%;
   flex: 1;
   min-height: 0;
   overflow: hidden;
