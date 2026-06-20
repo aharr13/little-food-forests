@@ -241,14 +241,14 @@
 
 /* ── Steps ── */
 .task-steps {
-  padding: 0 0.875rem 0.875rem;
+  padding: 0.25rem 0.75rem 0.6rem;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.1rem;
   background: #1e293b;
 }
 
-.task-phase-group { margin-top: 0.75rem; }
+.task-phase-group { margin-top: 0.45rem; }
 .task-phase-label {
   font-size: 0.72rem;
   font-weight: 700;
@@ -260,9 +260,9 @@
 
 .step-row {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 0.5rem;
-  padding: 0.4rem 0;
+  padding: 0.25rem 0;
   background: #1e293b;
 }
 .step-row--done .step-title { text-decoration: line-through; color: #475569; }

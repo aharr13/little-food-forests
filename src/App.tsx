@@ -226,9 +226,13 @@ const DesignFlow = () => {
   // daily watering right away, not only on the next planning-screen open.
   useEffect(() => {
     if (!currentProjectId || !currentUser) return;
-    const careShapeIds = new Set(careItems.map(c => c.shapeId));
     shapes.forEach(s => {
-      if (s.status === 'establishing' && s.plantName && !careShapeIds.has(s.id)) {
+      if (s.status !== 'establishing' || !s.plantName) return;
+      const shapeCare = careItems.filter(c => c.shapeId === s.id);
+      // Regenerate if there's no care yet, OR it's old-structure care that lacks
+      // the new daily watering item (this also re-dates seasonal care correctly).
+      const hasWatering = shapeCare.some(c => c.id === `care_${s.id}_watering`);
+      if (shapeCare.length === 0 || !hasWatering) {
         generateCareItemsForShape(s, currentProjectId, currentUser.uid).forEach(upsertCareItem);
       }
     });

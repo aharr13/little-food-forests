@@ -47,6 +47,18 @@ function dateInputValue(d: Date): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 }
 
+type TimeFilter = 'all' | 'day' | 'week' | 'month';
+
+// Is the date due within the chosen horizon? (overdue items always pass.)
+function withinFilter(d: Date, filter: TimeFilter): boolean {
+  if (filter === 'all') return true;
+  const end = new Date();
+  end.setHours(23, 59, 59, 999);
+  if (filter === 'week') end.setDate(end.getDate() + 7);
+  if (filter === 'month') end.setDate(end.getDate() + 30);
+  return d.getTime() <= end.getTime();
+}
+
 function progressPercent(task: PlantingTask): number {
   if (!task.steps.length) return 0;
   return Math.round((task.steps.filter(s => s.completed).length / task.steps.length) * 100);
@@ -322,6 +334,7 @@ export function PlanningScreen({
   const [highlightShapeId, setHighlightShapeId] = useState<string | null>(null);
   const [view, setView] = useState<'tasks' | 'calendar' | 'report' | 'photos' | 'gallery'>('tasks');
   const [sortMode, setSortMode] = useState<'date' | 'order' | 'layer'>('date');
+  const [timeFilter, setTimeFilter] = useState<TimeFilter>('all');
 
   const shapeStatusMap = new Map(shapes.map(s => [s.id, s.status ?? 'planned']));
   const liveShapeIds = new Set(shapes.map(s => s.id));
@@ -345,21 +358,24 @@ export function PlanningScreen({
   const careXp = careItems.filter(c => liveShapeIds.has(c.shapeId)).reduce((n, c) => n + (c.totalXpEarned || 0), 0);
   const totalXp = taskXp + careXp;
 
+  const visibleToPlant = toPlantTasks.filter(t => withinFilter(effectiveDate(t), timeFilter));
+  const visibleCaring = caringItems.filter(c => withinFilter(c.nextDueDate, timeFilter));
+
   const plantGroups: { label: string; color?: string; tasks: PlantingTask[] }[] = (() => {
     if (sortMode === 'order') {
       return ORDER_GROUPS.map(g => ({
         label: g.label, color: g.color,
-        tasks: toPlantTasks.filter(t => t.establishmentOrder >= g.min && t.establishmentOrder <= g.max),
+        tasks: visibleToPlant.filter(t => t.establishmentOrder >= g.min && t.establishmentOrder <= g.max),
       })).filter(g => g.tasks.length > 0);
     }
     if (sortMode === 'layer') {
       return FOOD_FOREST_LAYERS.map(l => ({
         label: l.name, color: l.color,
-        tasks: toPlantTasks.filter(t => t.layerId === l.id),
+        tasks: visibleToPlant.filter(t => t.layerId === l.id),
       })).filter(g => g.tasks.length > 0);
     }
     // By date: chronological, grouped by month
-    const sorted = [...toPlantTasks].sort((a, b) => effectiveDate(a).getTime() - effectiveDate(b).getTime());
+    const sorted = [...visibleToPlant].sort((a, b) => effectiveDate(a).getTime() - effectiveDate(b).getTime());
     const byMonth = new Map<string, { date: Date; tasks: PlantingTask[] }>();
     for (const t of sorted) {
       const d = effectiveDate(t);
@@ -455,6 +471,27 @@ export function PlanningScreen({
           {/* Tasks view */}
           {view === 'tasks' && (
             <>
+              <div style={{ display: 'flex', gap: 6, padding: '0 0 12px', flexWrap: 'wrap' }}>
+                {(['day', 'week', 'month', 'all'] as TimeFilter[]).map(f => (
+                  <button
+                    key={f}
+                    onClick={() => setTimeFilter(f)}
+                    style={{
+                      fontSize: 12, padding: '4px 12px', borderRadius: 999, cursor: 'pointer',
+                      border: '1px solid ' + (timeFilter === f ? '#059669' : '#334155'),
+                      background: timeFilter === f ? '#059669' : 'transparent',
+                      color: timeFilter === f ? '#fff' : '#94a3b8',
+                    }}
+                  >
+                    {f === 'day' ? 'Today' : f === 'week' ? 'This week' : f === 'month' ? 'This month' : 'All'}
+                  </button>
+                ))}
+              </div>
+
+              {hasContent && plantGroups.length === 0 && visibleCaring.length === 0 && (
+                <div className="planning-empty"><p>Nothing due in this range.</p></div>
+              )}
+
               {!hasContent && (
                 <div className="planning-empty">
                   <p>No tasks yet.</p>
@@ -509,10 +546,10 @@ export function PlanningScreen({
               )}
 
               {/* Caring For */}
-              {caringItems.length > 0 && (
+              {visibleCaring.length > 0 && (
                 <div className="planning-section">
                   <div className="planning-section-header">💧 Caring For</div>
-                  {caringItems.map(item => (
+                  {visibleCaring.map(item => (
                     <CareItemCard
                       key={item.id}
                       item={item}

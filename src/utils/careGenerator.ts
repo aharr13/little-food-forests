@@ -20,6 +20,35 @@ interface TaskTemplate {
 
 const templates: TaskTemplate[] = plantTasksRaw as TaskTemplate[];
 
+const MONTHS = ['january', 'february', 'march', 'april', 'may', 'june',
+  'july', 'august', 'september', 'october', 'november', 'december'];
+
+// Seasonal care (e.g. "February frost check", "late winter prune") should land
+// in the right month, not now+interval. Falls back to now+interval if no
+// season/month is named.
+function nextCareDate(text: string, fallbackIntervalDays: number, from: Date): Date {
+  const t = text.toLowerCase();
+  let month = -1;
+  for (let i = 0; i < 12; i++) if (t.includes(MONTHS[i])) { month = i; break; }
+  if (month < 0) {
+    if (/late winter|frost/.test(t)) month = 1;       // February
+    else if (/early spring/.test(t)) month = 2;        // March
+    else if (/spring/.test(t)) month = 3;              // April
+    else if (/early summer/.test(t)) month = 4;        // May
+    else if (/summer/.test(t)) month = 6;              // July
+    else if (/early fall|early autumn/.test(t)) month = 8;
+    else if (/fall|autumn/.test(t)) month = 9;         // October
+    else if (/winter|dormant/.test(t)) month = 0;      // January
+  }
+  if (month < 0) {
+    const d = new Date(from);
+    d.setDate(d.getDate() + fallbackIntervalDays);
+    return d;
+  }
+  const year = from.getMonth() > month ? from.getFullYear() + 1 : from.getFullYear();
+  return new Date(year, month, 1);
+}
+
 function matchesTemplate(t: TaskTemplate, plantName: string): boolean {
   const name = plantName.toLowerCase();
   const cn = t.commonName.toLowerCase();
@@ -64,8 +93,7 @@ export function generateCareItemsForShape(shape: Shape, projectId: string, userI
   (template?.careSchedule ?? [])
     .filter(cs => !/water/i.test(cs.title) && !/water/i.test(cs.description))
     .forEach((cs, i) => {
-      const nextDueDate = new Date(now);
-      nextDueDate.setDate(nextDueDate.getDate() + cs.intervalDays);
+      const nextDueDate = nextCareDate(`${cs.title} ${cs.description}`, cs.intervalDays, now);
       items.push({
         id: `care_${shape.id}_${i}`,
         projectId,
