@@ -146,7 +146,7 @@ function TaskCard({ task, isActive, showPlantingBadge = true, onSelect, onComple
         </div>
       </div>
 
-      <div className="task-guild-role">{task.guildRole}</div>
+      {isActive && <div className="task-guild-role">{task.guildRole}</div>}
 
       {isActive && !isDone && (
         <div className="task-steps">
@@ -337,12 +337,13 @@ export function PlanningScreen({
     .filter(c => liveShapeIds.has(c.shapeId) && shapeStatusMap.get(c.shapeId) === 'establishing')
     .sort((a, b) => a.nextDueDate.getTime() - b.nextDueDate.getTime());
 
-  // Stats
+  // Stats — XP is cumulative across ALL of this map's plants (completed planting
+  // tasks count even after a plant advances to establishing/established).
   const totalPlantSteps = toPlantTasks.reduce((n, t) => n + t.steps.length, 0);
   const donePlantSteps  = toPlantTasks.reduce((n, t) => n + t.steps.filter(s => s.completed).length, 0);
-  const taskXp          = toPlantTasks.reduce((n, t) => n + t.xpEarned, 0);
-  const careXp          = caringItems.reduce((n, c) => n + c.totalXpEarned, 0);
-  const totalXp         = taskXp + careXp;
+  const taskXp = tasks.filter(t => liveShapeIds.has(t.shapeId)).reduce((n, t) => n + (t.xpEarned || 0), 0);
+  const careXp = careItems.filter(c => liveShapeIds.has(c.shapeId)).reduce((n, c) => n + (c.totalXpEarned || 0), 0);
+  const totalXp = taskXp + careXp;
 
   const plantGroups: { label: string; color?: string; tasks: PlantingTask[] }[] = (() => {
     if (sortMode === 'order') {
