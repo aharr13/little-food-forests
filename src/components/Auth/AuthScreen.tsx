@@ -1,11 +1,16 @@
 // src/components/Auth/AuthScreen.tsx
 import React, { useState } from 'react';
-import { Sprout, Mail, Lock, AlertCircle } from 'lucide-react';
+import { Sprout, Mail, Lock, AlertCircle, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import './AuthScreen.css';
 
-export function AuthScreen() {
-  const [isLogin, setIsLogin] = useState(true);
+interface AuthScreenProps {
+  initialMode?: 'login' | 'signup';
+  onBack?: () => void;
+}
+
+export function AuthScreen({ initialMode = 'login', onBack }: AuthScreenProps) {
+  const [isLogin, setIsLogin] = useState(initialMode === 'login');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -77,6 +82,11 @@ export function AuthScreen() {
   return (
     <div className="auth-screen">
       <div className="auth-container">
+        {onBack && (
+          <button type="button" className="auth-back" onClick={onBack} disabled={loading}>
+            <ArrowLeft size={16} /> Back to home
+          </button>
+        )}
         <div className="auth-brand">
           <Sprout size={48} color="#059669" />
           <h1>Little Food Forests</h1>

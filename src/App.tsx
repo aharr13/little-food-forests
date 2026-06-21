@@ -6,6 +6,7 @@ import {
 import { GoogleMap, useJsApiLoader, Polygon, Marker, Polyline } from '@react-google-maps/api';
 import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { AuthScreen } from './components/Auth/AuthScreen';
+import { LandingPage } from './components/Landing/LandingPage';
 import { Dashboard } from './components/Dashboard/Dashboard';
 import { LayersScreen } from './components/Canvas/LayersScreen';
 import { FieldPhotoScreen } from './components/Photo/FieldPhotoScreen';
@@ -760,10 +761,19 @@ const DesignFlow = () => {
 // Main App component with authentication
 const App = () => {
   const { currentUser } = useAuth();
+  // Signed-out visitors see the public landing page; auth opens on demand.
+  const [authMode, setAuthMode] = useState<'login' | 'signup' | null>(null);
 
-  // Show auth screen if not logged in
   if (!currentUser) {
-    return <AuthScreen />;
+    if (authMode) {
+      return <AuthScreen initialMode={authMode} onBack={() => setAuthMode(null)} />;
+    }
+    return (
+      <LandingPage
+        onGetStarted={() => setAuthMode('signup')}
+        onSignIn={() => setAuthMode('login')}
+      />
+    );
   }
 
   // Show design flow if logged in
