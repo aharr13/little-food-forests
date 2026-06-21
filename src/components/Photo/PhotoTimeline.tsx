@@ -20,7 +20,7 @@ export function PhotoTimeline({ title, subtitle, photos, onClose, onDelete }: Ph
 
   return (
     <div style={{ position: 'fixed', inset: 0, background: '#f8fafc', zIndex: 4500, display: 'flex', flexDirection: 'column' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px', background: '#064e3b', color: '#fff' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px', paddingTop: 'calc(14px + env(safe-area-inset-top))', background: '#064e3b', color: '#fff' }}>
         <button onClick={onClose} style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', padding: 4 }}><ArrowLeft size={22} /></button>
         <div style={{ minWidth: 0 }}>
           <h2 style={{ margin: 0, fontSize: 17, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{title}</h2>
@@ -28,7 +28,7 @@ export function PhotoTimeline({ title, subtitle, photos, onClose, onDelete }: Ph
         </div>
       </div>
 
-      <div style={{ flex: 1, overflowY: 'auto', padding: 12 }}>
+      <div style={{ flex: 1, overflowY: 'auto', padding: 12, paddingBottom: 'calc(12px + env(safe-area-inset-bottom))' }}>
         {ordered.length === 0 ? (
           <p style={{ textAlign: 'center', color: '#64748b', padding: 40 }}>No photos yet.</p>
         ) : (
@@ -47,7 +47,7 @@ export function PhotoTimeline({ title, subtitle, photos, onClose, onDelete }: Ph
 
       {zoom && (
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.92)', zIndex: 5000, display: 'flex', flexDirection: 'column' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 14, color: '#fff' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: 14, paddingTop: 'calc(14px + env(safe-area-inset-top))', color: '#fff' }}>
             <span style={{ fontSize: 14 }}>{zoom.capturedAt.toLocaleString()}</span>
             <div style={{ display: 'flex', gap: 8 }}>
               <button

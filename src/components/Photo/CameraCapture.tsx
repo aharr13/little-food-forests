@@ -59,7 +59,7 @@ export function CameraCapture({ title, ghostUrl, onCapture, onCancel }: CameraCa
   return (
     <div style={{ position: 'fixed', inset: 0, background: '#000', zIndex: 5000, display: 'flex', flexDirection: 'column' }}>
       {/* Top bar */}
-      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', color: '#fff', background: 'rgba(0,0,0,0.5)' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '12px 16px', paddingTop: 'calc(12px + env(safe-area-inset-top))', color: '#fff', background: 'rgba(0,0,0,0.5)' }}>
         <button onClick={onCancel} style={iconBtn}><X size={22} /></button>
         <span style={{ fontWeight: 600, fontSize: 15 }}>{title}</span>
         <button onClick={() => setFacing(f => (f === 'environment' ? 'user' : 'environment'))} style={iconBtn}><RefreshCw size={20} /></button>
@@ -82,7 +82,7 @@ export function CameraCapture({ title, ghostUrl, onCapture, onCancel }: CameraCa
       </div>
 
       {/* Controls */}
-      <div style={{ background: 'rgba(0,0,0,0.6)', padding: '12px 16px 24px', color: '#fff' }}>
+      <div style={{ background: 'rgba(0,0,0,0.6)', padding: '12px 16px 24px', paddingBottom: 'calc(24px + env(safe-area-inset-bottom))', color: '#fff' }}>
         {ghostUrl && !error && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 12, fontSize: 13 }}>
             <span>Align with last shot</span>

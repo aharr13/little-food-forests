@@ -100,7 +100,7 @@ export function FieldPhotoScreen({ projectId, userId, shapes, onClose }: FieldPh
 
   return (
     <div style={{ position: 'fixed', inset: 0, background: '#f8fafc', zIndex: 4000, display: 'flex', flexDirection: 'column' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px', background: '#064e3b', color: '#fff' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 12, padding: '14px 16px', paddingTop: 'calc(14px + env(safe-area-inset-top))', background: '#064e3b', color: '#fff' }}>
         <button onClick={onClose} style={{ background: 'none', border: 'none', color: '#fff', cursor: 'pointer', padding: 4 }}><ArrowLeft size={22} /></button>
         <h2 style={{ margin: 0, fontSize: 18 }}>📸 Photos</h2>
       </div>
@@ -123,7 +123,7 @@ export function FieldPhotoScreen({ projectId, userId, shapes, onClose }: FieldPh
         ))}
       </div>
 
-      <div style={{ flex: 1, overflowY: 'auto', padding: 12 }}>
+      <div style={{ flex: 1, overflowY: 'auto', padding: 12, paddingBottom: 'calc(12px + env(safe-area-inset-bottom))' }}>
         {tab === 'positions' && (
           anchors.length === 0 ? (
             <Empty icon={<MapPin size={28} />} text="No photo positions yet. On the map, use the Photo Anchors tool to drop spots you'll photograph over time." />
