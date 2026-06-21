@@ -1,0 +1,61 @@
+// src/data/levels.ts
+// The 50-level leveling ladder. `xpRequired` is the cumulative total XP needed
+// to *reach* that level. See GAMIFICATION.md for the design rationale.
+export interface Level {
+  level: number;
+  title: string;
+  xpRequired: number;
+}
+
+export const LEVELS: Level[] = [
+  { level: 1,  title: 'Couch Potato',                xpRequired: 0 },
+  { level: 2,  title: 'Innocent Sprout',             xpRequired: 50 },
+  { level: 3,  title: 'Dirt Dabbler',                xpRequired: 120 },
+  { level: 4,  title: 'Seed Slinger',                xpRequired: 200 },
+  { level: 5,  title: 'Mulch Ado About Nothing',     xpRequired: 300 },
+  { level: 6,  title: 'Weed Whacker',                xpRequired: 420 },
+  { level: 7,  title: 'Compost Connoisseur',         xpRequired: 550 },
+  { level: 8,  title: 'Worm Wrangler',               xpRequired: 700 },
+  { level: 9,  title: 'Vigilante Gardener',          xpRequired: 870 },
+  { level: 10, title: 'Branch Manager',              xpRequired: 1050 },
+  { level: 11, title: 'Shrub Sub',                   xpRequired: 1250 },
+  { level: 12, title: 'Berry Good Planter',          xpRequired: 1470 },
+  { level: 13, title: 'Fungi Fanatic',               xpRequired: 1710 },
+  { level: 14, title: 'Soil Mate',                   xpRequired: 1970 },
+  { level: 15, title: 'Photosynthesis Phreak',       xpRequired: 2250 },
+  { level: 16, title: 'Vine Vindicator',             xpRequired: 2550 },
+  { level: 17, title: 'Pruning Pro',                 xpRequired: 2870 },
+  { level: 18, title: 'Trowel Blazer',               xpRequired: 3210 },
+  { level: 19, title: 'Barking Up the Right Tree',   xpRequired: 3570 },
+  { level: 20, title: 'Hoe-Down Hero',               xpRequired: 3950 },
+  { level: 21, title: 'Rooting For You',             xpRequired: 4350 },
+  { level: 22, title: 'The Plant Whisperer',         xpRequired: 4770 },
+  { level: 23, title: 'Chief of Chives',             xpRequired: 5210 },
+  { level: 24, title: 'Melon-Collie Curer',          xpRequired: 5670 },
+  { level: 25, title: 'The Big Dill',                xpRequired: 6150 },
+  { level: 26, title: 'Lord of the Loam',            xpRequired: 6500 },
+  { level: 27, title: 'Baron of Botany',             xpRequired: 7100 },
+  { level: 28, title: 'The Green Thumb',             xpRequired: 7750 },
+  { level: 29, title: 'Leaf Peeping Legend',         xpRequired: 8450 },
+  { level: 30, title: 'Canopy Captain',              xpRequired: 9200 },
+  { level: 31, title: 'Fungal Philosopher',          xpRequired: 10000 },
+  { level: 32, title: 'Spore Sorcerer',              xpRequired: 10850 },
+  { level: 33, title: 'The Fruitful Friar',          xpRequired: 11750 },
+  { level: 34, title: 'Orchard Oracle',              xpRequired: 12700 },
+  { level: 35, title: 'Master of Mycelium',          xpRequired: 13700 },
+  { level: 36, title: 'Duke of Dirt',                xpRequired: 14750 },
+  { level: 37, title: 'Sultan of Soil',              xpRequired: 15850 },
+  { level: 38, title: 'The Regenerator',             xpRequired: 17000 },
+  { level: 39, title: 'Bio-Char Boss',               xpRequired: 18200 },
+  { level: 40, title: 'Pollinator Paladin',          xpRequired: 19450 },
+  { level: 41, title: 'Flora Pharaoh',               xpRequired: 20750 },
+  { level: 42, title: 'Ecosystem Emperor',           xpRequired: 22100 },
+  { level: 43, title: 'Queen/King of the Crop',      xpRequired: 23500 },
+  { level: 44, title: "Mother Nature's Minion",      xpRequired: 24950 },
+  { level: 45, title: 'Shroom Sage',                 xpRequired: 26450 },
+  { level: 46, title: 'Grandmaster Graft',           xpRequired: 28000 },
+  { level: 47, title: 'Supreme Sprout',              xpRequired: 29600 },
+  { level: 48, title: 'Forest Sovereign',            xpRequired: 31250 },
+  { level: 49, title: 'Steward of the Earth',        xpRequired: 32950 },
+  { level: 50, title: 'The Omnipotent Oak',          xpRequired: 35000 },
+];

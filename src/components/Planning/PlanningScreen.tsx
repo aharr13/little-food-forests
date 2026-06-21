@@ -1,7 +1,8 @@
 // src/components/Planning/PlanningScreen.tsx
 import { useState } from 'react';
 import { MapContainer, TileLayer, Circle as LeafletCircle, Polygon as LeafletPolygon, Tooltip } from 'react-leaflet';
-import { ChevronDown, ChevronRight, CheckCircle2, Circle, ArrowLeft, Trophy, Clock, CalendarDays, ListTodo, FileText, Camera, Image } from 'lucide-react';
+import { ChevronDown, ChevronRight, CheckCircle2, Circle, ArrowLeft, Clock, CalendarDays, ListTodo, FileText, Camera, Image } from 'lucide-react';
+import { LevelBar } from '../Gamification/LevelBar';
 import { FOOD_FOREST_LAYERS, Shape, PlantingTask, TaskStep, CareItem, PhotoReminder } from '../../types';
 import { computeScheduledDate } from '../../utils/taskGenerator';
 import { CalendarView } from './CalendarView';
@@ -421,8 +422,7 @@ export function PlanningScreen({
           )}
         </div>
         <div className="planning-xp">
-          <Trophy size={15} color="#f59e0b" />
-          <span>{totalXp} XP</span>
+          <LevelBar totalXp={totalXp} />
         </div>
       </div>
 
