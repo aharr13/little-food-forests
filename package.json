@@ -1,7 +1,8 @@
 {
-  "name": "existentialnest",
+  "name": "little-food-forests",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Design a permaculture food forest with an AI advisor, on an interactive map.",
   "type": "module",
   "scripts": {
     "dev": "vite",

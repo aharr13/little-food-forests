@@ -15,7 +15,8 @@ const ANTHROPIC_API_KEY = defineSecret('ANTHROPIC_API_KEY');
 // app adopts them — keeps a malicious caller from selecting an arbitrary
 // (e.g. far more expensive) model.
 const ALLOWED_MODELS = new Set([
-  'claude-opus-4-6',
+  'claude-opus-4-8',
+  'claude-opus-4-6', // retained for back-compat during model rollout
   'claude-haiku-4-5-20251001',
 ]);
 

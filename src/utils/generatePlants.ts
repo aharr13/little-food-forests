@@ -26,7 +26,7 @@ Return ONLY a JSON array — no prose, no markdown fences. Each element:
 {"commonName": string, "scientificName": string, "layer": one of ${JSON.stringify(VALID_LAYERS)}, "guildFunctions": array of any of ["nitrogen-fixer","dynamic-accumulator","insectary","mulch-producer","pest-confuser"], "sunRequirement": one of ["full-sun","partial-shade","full-shade"], "waterRequirement": one of ["low","moderate","high"], "matureHeight": number (feet), "matureSpread": number (feet), "edible": boolean, "nativeToTexas": boolean (true if native to the named region), "description": one short sentence}`;
 
   const res = await claudeProxy({
-    model: 'claude-opus-4-6',
+    model: 'claude-opus-4-8',
     max_tokens: 8192,
     system: sys,
     messages: [{ role: 'user', content: `Generate ${count} food-forest plants for: ${region}.` }],

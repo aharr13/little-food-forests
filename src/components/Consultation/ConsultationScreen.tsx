@@ -412,7 +412,7 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
     setLoading(true);
     try {
       const res = await claudeProxy({
-        model: 'claude-opus-4-6',
+        model: 'claude-opus-4-8',
         max_tokens: 1024,
         system: systemPrompt.current,
         messages: [{ role: 'user', content: 'Hello! I\'m ready to get some help with my food forest design.' }],
@@ -466,7 +466,7 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
 
     try {
       const res = await claudeProxy({
-        model: 'claude-opus-4-6',
+        model: 'claude-opus-4-8',
         max_tokens: 2048,
         system: systemPrompt.current,
         messages: newMessages.map(m => ({ role: m.role, content: m.content })),
@@ -677,7 +677,7 @@ Return ONLY a JSON array — no prose, no markdown fences. Each element:
 {"commonName": string, "scientificName": string, "layer": one of ["canopy","understory","shrub","herbaceous","groundcover","rhizosphere","vine"], "lat": number inside the bbox, "lng": number inside the bbox, "radiusFt": number (mature canopy/spread radius in feet), "guildFunctions": array of any of ["nitrogen-fixer","dynamic-accumulator","insectary","mulch-producer","pest-confuser"], "sunRequirement": one of ["full-sun","partial-shade","full-shade"], "waterRequirement": one of ["low","moderate","high"], "edible": boolean, "nativeToTexas": boolean, "reason": short string}`;
 
       const res = await claudeProxy({
-        model: 'claude-opus-4-6',
+        model: 'claude-opus-4-8',
         max_tokens: 8192,
         system: sys,
         messages: [{
