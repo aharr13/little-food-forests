@@ -8,6 +8,7 @@ import { AuthProvider, useAuth } from './contexts/AuthContext';
 import { AuthScreen } from './components/Auth/AuthScreen';
 import { Dashboard } from './components/Dashboard/Dashboard';
 import { LayersScreen } from './components/Canvas/LayersScreen';
+import { FieldPhotoScreen } from './components/Photo/FieldPhotoScreen';
 import { ConsultationScreen, PlantRecommendation, PlacementSuggestion } from './components/Consultation/ConsultationScreen';
 import { PlanningScreen } from './components/Planning/PlanningScreen';
 import { Wiki } from './components/Wiki/Wiki';
@@ -76,6 +77,7 @@ const DesignFlow = () => {
   // Photo reminders
   const { photoReminders, upsertPhotoReminder, completePhotoReminder, snoozePhotoReminder } = usePhotoReminders(currentProjectId, currentUser?.uid ?? null);
   const [showPlanning, setShowPlanning] = useState(false);
+  const [showFieldPhoto, setShowFieldPhoto] = useState(false);
 
   // AI Consultation
   const [showConsultation, setShowConsultation] = useState(false);
@@ -627,6 +629,14 @@ const DesignFlow = () => {
             onClose={() => setShowPlanning(false)}
           />
         )}
+        {showFieldPhoto && currentProjectId && (
+          <FieldPhotoScreen
+            projectId={currentProjectId}
+            userId={currentUser?.uid ?? ''}
+            shapes={shapes}
+            onClose={() => setShowFieldPhoto(false)}
+          />
+        )}
         <LayersScreen
           projectId={currentProjectId || ''}
           mapCenter={mapCenter}
@@ -647,6 +657,7 @@ const DesignFlow = () => {
           onClearRecommendations={() => setPendingRecommendations([])}
           placementSuggestion={placementSuggestion}
           onClearPlacement={() => setPlacementSuggestion(null)}
+          onOpenPhotos={() => setShowFieldPhoto(true)}
           onOpenPlanning={() => {
             if (currentProjectId) {
               const taskByShapeId = new Map(plantingTasks.map(t => [t.shapeId, t]));

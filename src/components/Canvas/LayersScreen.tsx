@@ -39,6 +39,7 @@ interface LayersScreenProps {
   onBackToDashboard: () => void;
   onOpenConsultation: (followUpPlantName?: string) => void;
   onOpenPlanning: () => void;
+  onOpenPhotos: () => void;
   onShapePlanted: (shape: Shape) => void;
   pendingRecommendations: PlantRecommendation[];
   onClearRecommendations: () => void;
@@ -900,6 +901,7 @@ export function LayersScreen({
   placementSuggestion,
   onClearPlacement,
   onOpenPlanning,
+  onOpenPhotos,
   onShapePlanted,
   consultationHistory,
   onSaveConsultationHistory,
@@ -1283,6 +1285,9 @@ export function LayersScreen({
           </button>
           <button onClick={onOpenPlanning} className="header-btn-primary">
             🌱 Grow Your Forest
+          </button>
+          <button onClick={onOpenPhotos} className="header-btn-primary">
+            📸 Photos
           </button>
           <button onClick={() => setShowSnapshotGallery(true)} className="header-btn-primary">
             <Camera size={18} />
