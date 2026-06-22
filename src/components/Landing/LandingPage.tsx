@@ -91,16 +91,6 @@ export function LandingPage({ onGetStarted, onSignIn }: LandingPageProps) {
           <TechCard icon={<Database size={22} />} title="A knowledge base that grows itself"
             body="When the plant database lacks a species, Claude researches and writes a structured record for it on demand — the app's knowledge expands as you use it." />
         </div>
-        <pre className="lp-code" aria-label="Server-side proxy guarantees">
-{`// functions/index.js — the only place the key lives
-const ALLOWED_MODELS = new Set(['claude-opus-4-8', 'claude-haiku-4-5']);
-exports.claudeProxy = onCall({ secrets: [ANTHROPIC_API_KEY] }, async (req) => {
-  if (!req.auth) throw new HttpsError('unauthenticated', 'Sign in first.');
-  if (!ALLOWED_MODELS.has(req.data.model)) throw new HttpsError('invalid-argument');
-  const max_tokens = Math.min(req.data.max_tokens, MAX_TOKENS_CAP);
-  return anthropic.messages.create({ ...req.data, max_tokens });
-});`}
-        </pre>
       </section>
 
       {/* Final CTA */}
