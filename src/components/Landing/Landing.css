@@ -38,7 +38,7 @@
   border-bottom: 1px solid transparent;
 }
 .lp-brand { display: flex; align-items: center; gap: 10px; font-weight: 600; font-size: 18px; color: var(--ink); font-family: "Fraunces", Georgia, serif; }
-.lp-brand-mark { border-radius: 50%; box-shadow: 0 1px 4px rgba(38,32,26,0.18); flex-shrink: 0; }
+.lp-brand-mark { border-radius: 50%; box-shadow: 0 1px 4px rgba(38,32,26,0.18); flex-shrink: 0; object-fit: cover; }
 .lp-nav-actions { display: flex; align-items: center; gap: 10px; }
 .lp-nav-link { display: inline-flex; align-items: center; gap: 6px; color: var(--body); text-decoration: none; font-size: 14px; font-weight: 600; }
 .lp-nav-link:hover { color: var(--ink); }
