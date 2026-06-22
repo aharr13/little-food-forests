@@ -117,23 +117,34 @@
 .replay-sun { position: absolute; top: 12px; right: 14px; color: #e7b13e; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 5px; z-index: 2; }
 .replay-sun span { color: #9a8a6f; }
 .replay-yard {
-  position: relative; flex: 1; border-radius: 12px; margin: 8px 0 12px;
+  position: relative; flex: 1; border-radius: 12px; margin: 8px 0 12px; overflow: hidden;
   background:
-    radial-gradient(circle at 70% 90%, rgba(95,147,137,0.2), transparent 42%),
-    repeating-linear-gradient(0deg, rgba(231,200,120,0.05) 0 1px, transparent 1px 28px),
-    repeating-linear-gradient(90deg, rgba(231,200,120,0.05) 0 1px, transparent 1px 28px),
-    linear-gradient(160deg, #2f6a3f22, #5f938911);
-  border: 1px dashed #4a3c2a;
+    radial-gradient(circle at 26% 28%, #d4ddc0, transparent 42%),
+    radial-gradient(circle at 74% 62%, #c7d3ab, transparent 46%),
+    linear-gradient(160deg, #cfd9b8, #c2cfa4);
+  border: 1px solid #9fb182;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
 }
-.replay-yard-empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #6a5a42; font-size: 13px; font-weight: 600; letter-spacing: .04em; }
+.replay-yard-empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #5f6b46; font-size: 13px; font-weight: 600; letter-spacing: .04em; }
+
+/* map base (lot, street, driveway, house footprint) */
+.replay-basemap { position: absolute; inset: 0; width: 100%; height: 100%; }
+.rm-parcel { fill: none; stroke: #7d9a5f; stroke-width: 1.4; stroke-dasharray: 3 2; vector-effect: non-scaling-stroke; }
+.rm-faint { stroke: #9fb085; stroke-width: 1; vector-effect: non-scaling-stroke; opacity: .5; }
+.rm-road { fill: #d9d5c8; }
+.rm-roadline { stroke: #e7d49a; stroke-width: 1.4; stroke-dasharray: 6 5; vector-effect: non-scaling-stroke; }
+.rm-curb { stroke: #b9b6a4; stroke-width: 1; vector-effect: non-scaling-stroke; opacity: .7; }
+.rm-drive { fill: #dbd7cb; }
+.rm-house { fill: #e7dcc6; stroke: #a5825a; stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+.rm-houseline { stroke: #a5825a; stroke-width: 1.1; vector-effect: non-scaling-stroke; opacity: .65; }
+.replay-house-label { position: absolute; left: 24%; top: 80%; transform: translate(-50%, -50%); color: #8a6c46; font-size: 10px; font-weight: 700; letter-spacing: .03em; pointer-events: none; }
 
 /* water features + orientation */
 .replay-water { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.replay-swale { fill: none; stroke: #4db4dd; stroke-width: 2.6; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; opacity: .92; animation: lp-fade .5s ease both; }
-.replay-pond { fill: rgba(77,180,221,0.3); stroke: #4db4dd; stroke-width: 1.6; vector-effect: non-scaling-stroke; animation: lp-fade .5s ease both; }
-.replay-home { position: absolute; left: 8%; top: 90%; transform: translate(-50%, -50%); font-size: 15px; filter: drop-shadow(0 1px 2px rgba(0,0,0,.5)); }
+.replay-swale { fill: none; stroke: #2f97c4; stroke-width: 2.6; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; opacity: .95; animation: lp-fade .5s ease both; }
+.replay-pond { fill: rgba(47,151,196,0.32); stroke: #2f97c4; stroke-width: 1.6; vector-effect: non-scaling-stroke; animation: lp-fade .5s ease both; }
 .replay-compass { position: absolute; top: 12px; left: 14px; color: #9a8a6f; font-size: 11px; font-weight: 700; letter-spacing: .04em; z-index: 2; }
-.replay-marker-role { font-size: 9px; font-weight: 600; color: #c4b89f; background: rgba(26,21,16,0.72); padding: 0 4px; border-radius: 4px; margin-top: 1px; white-space: nowrap; }
+.replay-marker-role { font-size: 9px; font-weight: 600; color: #e9dec7; background: rgba(26,21,16,0.78); padding: 0 4px; border-radius: 4px; margin-top: 1px; white-space: nowrap; }
 .replay-marker {
   position: absolute; transform: translate(-50%, -50%);
   display: flex; flex-direction: column; align-items: center; gap: 2px;
