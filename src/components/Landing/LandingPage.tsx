@@ -2,7 +2,6 @@
 // Public marketing page shown to signed-out visitors. Tells the product story,
 // foregrounds the Claude integration (the differentiator), and demos it with a
 // deterministic replay before asking anyone to sign up.
-import { useState } from 'react';
 import {
   Map as MapIcon, Wand2, CalendarCheck, Camera,
   ShieldCheck, Braces, Database, Github, ArrowRight,
@@ -111,14 +110,10 @@ export function LandingPage({ onGetStarted, onSignIn }: LandingPageProps) {
   );
 }
 
-// Shows the embroidered logo.png if present (drop one in /public), otherwise the
-// crisp vector mark — so the page looks finished either way.
 function HeroLogo() {
-  const [src, setSrc] = useState('/logo.png');
   return (
     <img
-      src={src}
-      onError={() => setSrc('/logo.svg')}
+      src="/logo.png"
       alt="Little Food Forests"
       className="lp-hero-logo"
       width={140}
