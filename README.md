@@ -7,7 +7,7 @@ complete 7-layer permaculture guild (canopy → groundcover), reasoning about su
 soil, and companion planting. Then plan the planting, track watering, and build
 photo time-lapses as the forest grows.
 
-> **Live demo:** _add your `*.web.app` URL here after `firebase deploy`_
+> **Live demo:** **[little-food-forests.web.app](https://little-food-forests.web.app)**
 > **Stack:** React 19 · TypeScript · Vite · Firebase (Auth/Firestore/Storage/Functions) · Leaflet · Anthropic Claude
 
 ---
