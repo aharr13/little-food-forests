@@ -116,8 +116,8 @@ function HeroLogo() {
       src="/logo.png"
       alt="Little Food Forests"
       className="lp-hero-logo"
-      width={140}
-      height={140}
+      width={240}
+      height={240}
     />
   );
 }

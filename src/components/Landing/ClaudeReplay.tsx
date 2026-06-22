@@ -1,56 +1,59 @@
 // src/components/Landing/ClaudeReplay.tsx
 // The landing page's showpiece: a deterministic, animated replay of a real
-// Claude food-forest design session, laid over a map-style property view (a
-// house footprint, street, driveway, lot boundary). Claude places water first
-// (swale + rain garden), then nests each plant into a guild — narrating WHERE
-// it goes, WHY, and the ROLE it plays in plain English — as the plan fills in.
-// No API calls: it always works and costs nothing, but mirrors what the live
-// advisor actually does.
+// Claude food-forest design session, rendered the way the actual app draws a
+// site — canopy circles sized to mature spread, a tilted lot boundary, faint
+// neighbor lots, a house footprint. Claude works in a sensible order (water →
+// canopy → guilds → annual rows) and narrates the *why* with real agronomy:
+// juglone exclusion around the pecan, shade guilds, nitrogen fixing,
+// pollination, and a pet-toxicity caution. No API calls — it always works and
+// costs nothing — but it mirrors what the live advisor does.
 import { useEffect, useRef, useState } from 'react';
-import { Sparkles, RotateCcw } from 'lucide-react';
+import { Sparkles, RotateCcw, AlertTriangle } from 'lucide-react';
 
-const LAYER: Record<string, { layer: string; color: string }> = {
-  water:      { layer: 'Water',      color: '#2f97c4' },
-  canopy:     { layer: 'Canopy',     color: '#15803d' },
-  understory: { layer: 'Understory', color: '#16a34a' },
-  shrub:      { layer: 'Shrub',      color: '#4d7c0f' },
-  herb:       { layer: 'Herbaceous', color: '#b45309' },
-  ground:     { layer: 'Groundcover',color: '#0e7490' },
-  vine:       { layer: 'Vine',       color: '#7c3aed' },
+type LayerKey = 'water' | 'canopy' | 'understory' | 'shrub' | 'herb' | 'ground' | 'vine' | 'veg';
+const LAYER: Record<LayerKey, { layer: string; color: string }> = {
+  water:      { layer: 'Water',       color: '#2f97c4' },
+  canopy:     { layer: 'Canopy',      color: '#2f7d32' },
+  understory: { layer: 'Understory',  color: '#3f9142' },
+  shrub:      { layer: 'Shrub',       color: '#6f9e2f' },
+  herb:       { layer: 'Herbaceous',  color: '#c08a1e' },
+  ground:     { layer: 'Groundcover', color: '#1c97a6' },
+  vine:       { layer: 'Vine',        color: '#7c3aed' },
+  veg:        { layer: 'Annual veg',  color: '#d1495b' },
 };
 
-interface Placement {
-  name: string; emoji: string; key: keyof typeof LAYER;
-  role: string;          // a short plain-English role, shown on the map marker
-  x: number; y: number;  // percent within the property
-}
-interface Water {
-  key: 'swale' | 'pond';
-  d?: string;                                          // path (swale)
-  cx?: number; cy?: number; rx?: number; ry?: number;  // ellipse (rain garden)
-}
-interface Step { text: string; plant?: Placement; water?: Water }
+interface Plant { name: string; key: LayerKey; x: number; y: number; spread: number }
+interface Bed { name: string; x: number; y: number; cols: number; rows: number } // annual veg in rows
+type Water =
+  | { kind: 'swale'; d: string }
+  | { kind: 'pond'; cx: number; cy: number; rx: number; ry: number }
+  | { kind: 'juglone'; cx: number; cy: number; r: number };
+interface Step { text: string; plant?: Plant; bed?: Bed; water?: Water; tag?: LayerKey; warn?: boolean }
 
 const SCRIPT: Step[] = [
-  { text: 'Reading the lot: house at the south/front, a back yard sloping gently away, full sun along the south edge, and a low spot to the east where rain pools.' },
-  { text: 'Permaculture rule #1 — water before plants. A swale on contour across the slope to slow runoff and soak it in.', water: { key: 'swale', d: 'M6,52 Q50,60 94,50' } },
-  { text: 'A rain garden in the low east corner to catch overflow — and a home for plants that like wet feet.', water: { key: 'pond', cx: 82, cy: 38, rx: 9, ry: 6 } },
-  { text: 'Canopy first, so every lower layer can shelter in its shade.' },
-  { text: 'Pecan → back NW, the tallest, driest spot. Role: the anchor — decades of shade and a nut harvest.', plant: { name: 'Pecan', emoji: '🌳', key: 'canopy', role: 'anchor tree', x: 20, y: 22 } },
-  { text: 'Mulberry → back NE. Role: fast shade + fruit, and it loves the moisture near the rain garden.', plant: { name: 'Mulberry', emoji: '🌳', key: 'canopy', role: 'fruit + shade', x: 74, y: 20 } },
-  { text: 'Pawpaw → under the pecan. Role: understory fruit that prefers part shade when young.', plant: { name: 'Pawpaw', emoji: '🌲', key: 'understory', role: 'shade fruit', x: 44, y: 36 } },
-  { text: 'Elderberry → at the rain garden\'s edge. Role: berries for you and the birds; thrives with wet feet.', plant: { name: 'Elderberry', emoji: '🫐', key: 'shrub', role: 'loves water', x: 84, y: 50 } },
-  { text: 'Currant → shady west pocket. Role: shade-tolerant berries in space nothing else wants.', plant: { name: 'Currant', emoji: '🍇', key: 'shrub', role: 'shade berries', x: 10, y: 40 } },
-  { text: 'Comfrey → ringing the pecan. Role: nutrient pump — deep roots mine minerals, leaves become mulch.', plant: { name: 'Comfrey', emoji: '🌿', key: 'herb', role: 'nutrient pump', x: 28, y: 33 } },
-  { text: 'Echinacea → the sunny mid band. Role: pollinator magnet with a long bloom (and medicine).', plant: { name: 'Echinacea', emoji: '🌸', key: 'herb', role: 'pollinators', x: 58, y: 62 } },
-  { text: 'Grape → the sunny east trellis. Role: climbs vertical space we\'d otherwise waste.', plant: { name: 'Grape', emoji: '🍇', key: 'vine', role: 'vertical crop', x: 92, y: 66 } },
-  { text: 'Dutch clover → across the open ground. Role: nitrogen fixer + living mulch that feeds the soil.', plant: { name: 'Clover', emoji: '🍀', key: 'ground', role: 'N-fixer', x: 54, y: 48 } },
-  { text: 'Strawberry → sunny front edge, right of the house. Role: an edible groundcover you can actually pick.', plant: { name: 'Strawberry', emoji: '🍓', key: 'ground', role: 'edible cover', x: 64, y: 80 } },
-  { text: 'Water shapes the plan; every plant earns its place. Returning the layout as structured JSON for the map.' },
+  { text: 'Reading the lot: house toward the front, a back yard with full sun on the south edge and a low, wet corner to the NE.' },
+  { text: 'Water before plants. A swale on contour to slow runoff and soak it into the slope.', tag: 'water', water: { kind: 'swale', d: 'M14,44 Q50,52 86,40' } },
+  { text: 'A rain garden in the low NE corner to hold the overflow.', tag: 'water', water: { kind: 'pond', cx: 74, cy: 26, rx: 9, ry: 6 } },
+  { text: 'Pecan anchors the canopy — NW, the tallest, driest spot. Decades of shade and a nut crop.', tag: 'canopy', plant: { name: 'Pecan', key: 'canopy', x: 32, y: 30, spread: 19 } },
+  { text: 'Important: pecan roots release juglone — toxic to tomatoes, peppers and potatoes. Mapping its root zone as a no-go for nightshades.', tag: 'water', water: { kind: 'juglone', cx: 32, cy: 30, r: 27 } },
+  { text: 'Currant in the pecan\'s afternoon shade — it actually fruits better out of harsh sun, and uses space nothing else wants.', tag: 'shrub', plant: { name: 'Currant', key: 'shrub', x: 16, y: 20, spread: 7 } },
+  { text: 'Comfrey ringing the pecan\'s base. Its deep roots mine minerals and the leaves chop-and-drop into mulch — a nutrient pump for the whole guild.', tag: 'herb', plant: { name: 'Comfrey', key: 'herb', x: 38, y: 44, spread: 6 } },
+  { text: 'Mulberry on the NE side, drinking from the rain garden. Fast shade plus heavy fruit.', tag: 'canopy', plant: { name: 'Mulberry', key: 'canopy', x: 66, y: 24, spread: 14 } },
+  { text: 'Elderberry at the rain garden\'s edge — it loves wet feet. ⚠ Heads up: raw elderberry leaves and stems are toxic, so I\'m flagging it since you have a dog — keep it out of the play zone.', tag: 'shrub', warn: true, plant: { name: 'Elderberry', key: 'shrub', x: 76, y: 40, spread: 8 } },
+  { text: 'Echinacea in the sunny middle. A pollinator magnet — it pulls in the bees your fruit set depends on.', tag: 'herb', plant: { name: 'Echinacea', key: 'herb', x: 50, y: 52, spread: 4 } },
+  { text: 'Now the annual veg. Tomatoes you\'ll tend daily go in tidy rows in the sunny SE — easy to pick, and well clear of the pecan\'s juglone zone.', tag: 'veg', bed: { name: 'Tomatoes', x: 74, y: 64, cols: 4, rows: 2 } },
+  { text: 'Grape on the SE trellis — climbs vertical space we\'d otherwise waste, in full sun.', tag: 'vine', plant: { name: 'Grape', key: 'vine', x: 90, y: 54, spread: 5 } },
+  { text: 'Strawberry as an edible groundcover along the front path. A crop and a living mulch in one.', tag: 'ground', plant: { name: 'Strawberry', key: 'ground', x: 30, y: 78, spread: 4 } },
+  { text: 'Dutch clover threads the open ground. It fixes nitrogen from the air and feeds every neighbor for free.', tag: 'ground', plant: { name: 'Clover', key: 'ground', x: 50, y: 64, spread: 15 } },
+  { text: 'The pattern: tall to short, water uphill of thirsty roots, toxins mapped, daily harvests within reach. Returning the layout as structured JSON.' },
 ];
 
-const STEP_MS = 1250;
-const LOOP_PAUSE_MS = 4600;
+const STEP_MS = 1500;
+const LOOP_PAUSE_MS = 5200;
+
+// neighbor lots + the tilted property boundary (static)
+const BOUNDARY = '30,6 94,24 76,94 8,70';
+const NEIGHBORS = ['-6,-6 26,2 6,40 -16,30', '92,-8 120,18 100,40 84,16', '70,96 104,80 120,116 80,124'];
 
 export function ClaudeReplay() {
   const [shown, setShown] = useState(0);
@@ -73,9 +76,10 @@ export function ClaudeReplay() {
   }, [shown]);
 
   const steps = SCRIPT.slice(0, shown);
-  const placed = steps.filter((s): s is Step & { plant: Placement } => !!s.plant).map(s => s.plant);
-  const waters = steps.filter((s): s is Step & { water: Water } => !!s.water).map(s => s.water);
-  const usedLayers = Array.from(new Set([...waters.map(() => 'water'), ...placed.map(p => p.key)]));
+  const plants = steps.flatMap(s => s.plant ? [s.plant] : []);
+  const beds = steps.flatMap(s => s.bed ? [s.bed] : []);
+  const waters = steps.flatMap(s => s.water ? [s.water] : []);
+  const usedLayers = Array.from(new Set(steps.flatMap(s => s.tag ? [s.tag] : [])));
 
   return (
     <div className="replay">
@@ -92,16 +96,13 @@ export function ClaudeReplay() {
           </div>
           <div className="replay-transcript" ref={transcriptRef}>
             {steps.map((s, i) => (
-              <div key={i} className="replay-line">
-                <span className="replay-caret">›</span>
+              <div key={i} className={`replay-line${s.warn ? ' replay-line-warn' : ''}`}>
+                <span className="replay-caret">{s.warn ? <AlertTriangle size={13} /> : '›'}</span>
                 <span>
                   {s.text}
-                  {s.plant && (
-                    <span className="replay-tag" style={{ background: LAYER[s.plant.key].color }}>
-                      {LAYER[s.plant.key].layer}
-                    </span>
+                  {s.tag && (
+                    <span className="replay-tag" style={{ background: LAYER[s.tag].color }}>{LAYER[s.tag].layer}</span>
                   )}
-                  {s.water && <span className="replay-tag" style={{ background: LAYER.water.color }}>Water</span>}
                 </span>
               </div>
             ))}
@@ -109,44 +110,64 @@ export function ClaudeReplay() {
           </div>
         </div>
 
-        {/* Property map */}
+        {/* Property map — drawn the way the real app renders a site */}
         <div className="replay-map" aria-label="Property map of the food forest being designed">
           <div className="replay-compass">N ↑</div>
           <div className="replay-sun">☀️ <span>full sun S</span></div>
           <div className="replay-yard">
-            {/* map base: lot boundary, street, driveway, house footprint */}
-            <svg className="replay-basemap" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-              <rect x="2.5" y="2.5" width="95" height="88" className="rm-parcel" />
-              <line x1="97.6" y1="2.5" x2="97.6" y2="90.5" className="rm-faint" />
-              <rect x="0" y="93" width="100" height="7" className="rm-road" />
-              <line x1="0" y1="96.5" x2="100" y2="96.5" className="rm-roadline" />
-              <line x1="0" y1="92.5" x2="100" y2="92.5" className="rm-curb" />
-              <rect x="30" y="88" width="8" height="5.5" className="rm-drive" />
-              <rect x="8" y="72" width="33" height="17" className="rm-house" />
-              <line x1="8" y1="80.5" x2="41" y2="80.5" className="rm-houseline" />
-            </svg>
-            <span className="replay-house-label">House</span>
+            <svg className="replay-mapsvg" viewBox="0 0 100 100" aria-hidden="true">
+              {/* neighbor lots + lot boundary */}
+              {NEIGHBORS.map((p, i) => <polygon key={i} points={p} className="rm-neighbor" />)}
+              <polygon points={BOUNDARY} className="rm-boundary" />
 
-            {/* water features */}
-            <svg className="replay-water" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-              {waters.map((w, i) => w.key === 'swale'
-                ? <path key={i} d={w.d} className="replay-swale" />
-                : <ellipse key={i} cx={w.cx} cy={w.cy} rx={w.rx} ry={w.ry} className="replay-pond" />)}
-            </svg>
+              {/* water under canopy so the green tints over it, like the app */}
+              {waters.map((w, i) => {
+                if (w.kind === 'swale') return <path key={i} d={w.d} className="rm-swale" />;
+                if (w.kind === 'pond') return <ellipse key={i} cx={w.cx} cy={w.cy} rx={w.rx} ry={w.ry} className="rm-pond" />;
+                return null;
+              })}
 
-            {/* plant placements */}
-            {placed.map((p, i) => (
-              <div
-                key={p.name}
-                className="replay-marker"
-                style={{ left: `${p.x}%`, top: `${p.y}%`, borderColor: LAYER[p.key].color, animationDelay: `${i * 0.02}s` }}
-                title={`${p.name} · ${LAYER[p.key].layer} · ${p.role}`}
-              >
-                <span className="replay-marker-emoji">{p.emoji}</span>
-                <span className="replay-marker-name">{p.name}</span>
-                <span className="replay-marker-role">{p.role}</span>
-              </div>
-            ))}
+              {/* canopy spreads */}
+              {plants.map(p => (
+                <circle key={`c-${p.name}`} cx={p.x} cy={p.y} r={p.spread}
+                  className="rm-canopy" style={{ fill: LAYER[p.key].color, stroke: LAYER[p.key].color }} />
+              ))}
+
+              {/* juglone exclusion ring, drawn above canopy so it's legible */}
+              {waters.filter((w): w is Extract<Water, { kind: 'juglone' }> => w.kind === 'juglone').map((w, i) => (
+                <g key={`j-${i}`}>
+                  <circle cx={w.cx} cy={w.cy} r={w.r} className="rm-juglone" />
+                  <text x={w.cx} y={w.cy - w.r + 4} className="rm-juglone-label">⚠ no nightshades</text>
+                </g>
+              ))}
+
+              {/* house footprint */}
+              <rect x="38" y="64" width="24" height="20" className="rm-house2" />
+              <circle cx="50" cy="74" r="1.4" className="rm-house-dot" />
+
+              {/* veg rows */}
+              {beds.map(b => (
+                <g key={`b-${b.name}`} className="rm-bed">
+                  <rect x={b.x - b.cols * 1.8} y={b.y - b.rows * 1.8} width={b.cols * 3.6} height={b.rows * 3.6} rx="1.5" className="rm-bed-box" />
+                  {Array.from({ length: b.rows }).flatMap((_, r) =>
+                    Array.from({ length: b.cols }).map((__, c) => (
+                      <circle key={`${r}-${c}`} r="1.2"
+                        cx={b.x - (b.cols - 1) * 1.8 + c * 3.6}
+                        cy={b.y - (b.rows - 1) * 1.8 + r * 3.6}
+                        className="rm-veg-dot" />
+                    )))}
+                  <text x={b.x} y={b.y + b.rows * 1.8 + 4} className="rm-label">{b.name}</text>
+                </g>
+              ))}
+
+              {/* plant center points + labels (above everything) */}
+              {plants.map(p => (
+                <g key={`p-${p.name}`} className="rm-plant">
+                  <circle cx={p.x} cy={p.y} r="1.3" className="rm-dot" />
+                  <text x={p.x} y={p.y - 2.6} className="rm-label">{p.name}</text>
+                </g>
+              ))}
+            </svg>
           </div>
 
           <div className="replay-legend">

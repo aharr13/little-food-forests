@@ -63,8 +63,9 @@
 /* ---------- Hero ---------- */
 .lp-hero { max-width: 860px; margin: 0 auto; padding: 56px 24px 36px; text-align: center; }
 .lp-hero-logo {
+  width: clamp(180px, 24vw, 240px); height: clamp(180px, 24vw, 240px);
   border-radius: 50%; margin-bottom: 26px; object-fit: cover;
-  box-shadow: 0 14px 36px -12px rgba(38,32,26,0.45); border: 3px solid #fffdf8;
+  box-shadow: 0 18px 44px -14px rgba(38,32,26,0.5); border: 4px solid #fffdf8;
   background: #fffdf8;
 }
 .lp-badge {
@@ -106,7 +107,9 @@
 .replay-model { margin-left: 8px; color: #9a8a6f; font-size: 12px; font-family: ui-monospace, "SF Mono", Menlo, monospace; }
 .replay-transcript { padding: 14px; overflow-y: auto; flex: 1; max-height: 360px; }
 .replay-line { display: flex; gap: 9px; color: #ded2bd; font-size: 13.5px; line-height: 1.55; margin-bottom: 12px; animation: lp-fade .35s ease both; }
-.replay-caret { color: #7cc07f; font-weight: 800; flex-shrink: 0; }
+.replay-caret { color: #7cc07f; font-weight: 800; flex-shrink: 0; display: inline-flex; align-items: center; }
+.replay-line-warn { color: #f0c674; }
+.replay-line-warn .replay-caret { color: #e0a13a; }
 .replay-tag { display: inline-block; margin-left: 8px; color: #fff; font-size: 10.5px; font-weight: 800; padding: 1px 8px; border-radius: 999px; vertical-align: middle; letter-spacing: .02em; }
 .replay-thinking { display: flex; gap: 5px; padding-left: 19px; }
 .replay-thinking span { width: 7px; height: 7px; border-radius: 50%; background: #5a4a34; animation: lp-blink 1.1s infinite ease-in-out; }
@@ -117,45 +120,45 @@
 .replay-sun { position: absolute; top: 12px; right: 14px; color: #e7b13e; font-size: 12px; font-weight: 700; display: flex; align-items: center; gap: 5px; z-index: 2; }
 .replay-sun span { color: #9a8a6f; }
 .replay-yard {
-  position: relative; flex: 1; border-radius: 12px; margin: 8px 0 12px; overflow: hidden;
-  background:
-    radial-gradient(circle at 26% 28%, #d4ddc0, transparent 42%),
-    radial-gradient(circle at 74% 62%, #c7d3ab, transparent 46%),
-    linear-gradient(160deg, #cfd9b8, #c2cfa4);
-  border: 1px solid #9fb182;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.25);
+  position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; margin: 8px 0 12px; overflow: hidden;
+  background: linear-gradient(160deg, #eef0e7, #e6eadd);
+  border: 1px solid #ccd2c1;
 }
-.replay-yard-empty { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #5f6b46; font-size: 13px; font-weight: 600; letter-spacing: .04em; }
+.replay-mapsvg { position: absolute; inset: 0; width: 100%; height: 100%; }
 
-/* map base (lot, street, driveway, house footprint) */
-.replay-basemap { position: absolute; inset: 0; width: 100%; height: 100%; }
-.rm-parcel { fill: none; stroke: #7d9a5f; stroke-width: 1.4; stroke-dasharray: 3 2; vector-effect: non-scaling-stroke; }
-.rm-faint { stroke: #9fb085; stroke-width: 1; vector-effect: non-scaling-stroke; opacity: .5; }
-.rm-road { fill: #d9d5c8; }
-.rm-roadline { stroke: #e7d49a; stroke-width: 1.4; stroke-dasharray: 6 5; vector-effect: non-scaling-stroke; }
-.rm-curb { stroke: #b9b6a4; stroke-width: 1; vector-effect: non-scaling-stroke; opacity: .7; }
-.rm-drive { fill: #dbd7cb; }
-.rm-house { fill: #e7dcc6; stroke: #a5825a; stroke-width: 1.6; vector-effect: non-scaling-stroke; }
-.rm-houseline { stroke: #a5825a; stroke-width: 1.1; vector-effect: non-scaling-stroke; opacity: .65; }
-.replay-house-label { position: absolute; left: 24%; top: 80%; transform: translate(-50%, -50%); color: #8a6c46; font-size: 10px; font-weight: 700; letter-spacing: .03em; pointer-events: none; }
+/* neighbor lots + property boundary */
+.rm-neighbor { fill: #e3e0d6; stroke: #d2cec2; stroke-width: 0.8; vector-effect: non-scaling-stroke; }
+.rm-boundary { fill: rgba(223,143,44,0.05); stroke: #df8f2c; stroke-width: 2; vector-effect: non-scaling-stroke; }
 
-/* water features + orientation */
-.replay-water { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-.replay-swale { fill: none; stroke: #2f97c4; stroke-width: 2.6; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; opacity: .95; animation: lp-fade .5s ease both; }
-.replay-pond { fill: rgba(47,151,196,0.32); stroke: #2f97c4; stroke-width: 1.6; vector-effect: non-scaling-stroke; animation: lp-fade .5s ease both; }
+/* water */
+.rm-swale { fill: none; stroke: #2f97c4; stroke-width: 2.4; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; animation: rm-fade .5s ease both; }
+.rm-pond { fill: rgba(47,151,196,0.3); stroke: #2f97c4; stroke-width: 1.4; vector-effect: non-scaling-stroke; animation: rm-fade .5s ease both; }
+
+/* canopy spreads (sized to mature spread, like the real app) */
+.rm-canopy { fill-opacity: 0.22; stroke-width: 1.2; stroke-dasharray: 2.5 2; vector-effect: non-scaling-stroke; transform-box: fill-box; transform-origin: center; animation: rm-grow .55s cubic-bezier(.2,1.2,.4,1) both; }
+
+/* juglone exclusion zone */
+.rm-juglone { fill: rgba(214,69,69,0.06); stroke: #d64545; stroke-width: 1; stroke-dasharray: 3 2.5; vector-effect: non-scaling-stroke; animation: rm-fade .5s ease both; }
+.rm-juglone-label { fill: #c23b3b; font-size: 3px; font-weight: 700; text-anchor: middle; }
+
+/* house footprint */
+.rm-house2 { fill: #cfcabd; stroke: #8a8475; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.rm-house-dot { fill: #1a1a1a; }
+
+/* annual veg rows */
+.rm-bed-box { fill: rgba(209,73,91,0.08); stroke: #d1495b; stroke-width: 1; stroke-dasharray: 2 1.5; vector-effect: non-scaling-stroke; }
+.rm-veg-dot { fill: #d1495b; animation: rm-fade .4s ease both; }
+
+/* center points + labels */
+.rm-dot { fill: #5a3a1a; }
+.rm-plant { animation: rm-fade .4s ease both; }
+.rm-label { fill: #33402a; font-size: 3px; font-weight: 700; text-anchor: middle; paint-order: stroke; stroke: #fff; stroke-width: 0.7; }
+
 .replay-compass { position: absolute; top: 12px; left: 14px; color: #9a8a6f; font-size: 11px; font-weight: 700; letter-spacing: .04em; z-index: 2; }
-.replay-marker-role { font-size: 9px; font-weight: 600; color: #e9dec7; background: rgba(26,21,16,0.78); padding: 0 4px; border-radius: 4px; margin-top: 1px; white-space: nowrap; }
-.replay-marker {
-  position: absolute; transform: translate(-50%, -50%);
-  display: flex; flex-direction: column; align-items: center; gap: 2px;
-  animation: lp-pop .42s cubic-bezier(.2,1.3,.4,1) both;
-}
-.replay-marker-emoji {
-  width: 30px; height: 30px; display: flex; align-items: center; justify-content: center;
-  background: #1a1510; border: 2px solid; border-radius: 50%; font-size: 15px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.45);
-}
-.replay-marker-name { font-size: 10px; font-weight: 700; color: #ded2bd; background: rgba(26,21,16,0.85); padding: 1px 5px; border-radius: 5px; white-space: nowrap; }
+
+@keyframes rm-grow { from { transform: scale(.4); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+@keyframes rm-fade { from { opacity: 0; } to { opacity: 1; } }
+
 .replay-legend { display: flex; flex-wrap: wrap; gap: 10px; }
 .replay-legend-item { display: inline-flex; align-items: center; gap: 5px; color: #9a8a6f; font-size: 11px; font-weight: 600; animation: lp-fade .3s ease both; }
 .replay-swatch { width: 10px; height: 10px; border-radius: 3px; }
