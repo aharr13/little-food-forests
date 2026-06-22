@@ -9,13 +9,13 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
-      includeAssets: ['app-icon.svg'],
+      includeAssets: ['app-icon.svg', 'logo.svg'],
       manifest: {
         name: 'Little Food Forests',
         short_name: 'Food Forests',
         description: 'Design, plan, and photo-track your food forest.',
-        theme_color: '#064e3b',
-        background_color: '#064e3b',
+        theme_color: '#1f4d2e',
+        background_color: '#f6f1e7',
         display: 'standalone',
         orientation: 'portrait',
         start_url: '/',

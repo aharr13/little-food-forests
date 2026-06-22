@@ -2,8 +2,9 @@
 // Public marketing page shown to signed-out visitors. Tells the product story,
 // foregrounds the Claude integration (the differentiator), and demos it with a
 // deterministic replay before asking anyone to sign up.
+import { useState } from 'react';
 import {
-  Sprout, Map as MapIcon, Wand2, CalendarCheck, Camera,
+  Map as MapIcon, Wand2, CalendarCheck, Camera,
   ShieldCheck, Braces, Database, Github, ArrowRight,
 } from 'lucide-react';
 import { ClaudeReplay } from './ClaudeReplay';
@@ -22,7 +23,7 @@ export function LandingPage({ onGetStarted, onSignIn }: LandingPageProps) {
       {/* Nav */}
       <header className="lp-nav">
         <div className="lp-brand">
-          <Sprout size={24} color="#059669" />
+          <img src="/logo.svg" alt="" className="lp-brand-mark" width={30} height={30} />
           <span>Little Food Forests</span>
         </div>
         <nav className="lp-nav-actions">
@@ -34,7 +35,8 @@ export function LandingPage({ onGetStarted, onSignIn }: LandingPageProps) {
 
       {/* Hero */}
       <section className="lp-hero">
-        <div className="lp-badge"><Sprout size={14} /> Permaculture design, powered by Claude</div>
+        <HeroLogo />
+        <div className="lp-badge">Permaculture design, powered by Claude</div>
         <h1>Turn your yard into a thriving food forest.</h1>
         <p className="lp-sub">
           Map your property, then let an AI advisor lay out a complete 7-layer permaculture
@@ -109,13 +111,29 @@ exports.claudeProxy = onCall({ secrets: [ANTHROPIC_API_KEY] }, async (req) => {
       </section>
 
       <footer className="lp-footer">
-        <div className="lp-brand"><Sprout size={20} color="#059669" /><span>Little Food Forests</span></div>
+        <div className="lp-brand"><img src="/logo.svg" alt="" className="lp-brand-mark" width={26} height={26} /><span>Little Food Forests</span></div>
         <div className="lp-footer-meta">
           <span>React 19 · TypeScript · Firebase · Leaflet · Claude</span>
           <a href={REPO_URL} target="_blank" rel="noreferrer" className="lp-nav-link"><Github size={16} /> Source on GitHub</a>
         </div>
       </footer>
     </div>
+  );
+}
+
+// Shows the embroidered logo.png if present (drop one in /public), otherwise the
+// crisp vector mark — so the page looks finished either way.
+function HeroLogo() {
+  const [src, setSrc] = useState('/logo.png');
+  return (
+    <img
+      src={src}
+      onError={() => setSrc('/logo.svg')}
+      alt="Little Food Forests"
+      className="lp-hero-logo"
+      width={140}
+      height={140}
+    />
   );
 }
 

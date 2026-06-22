@@ -1,6 +1,6 @@
 // src/components/Auth/AuthScreen.tsx
 import React, { useState } from 'react';
-import { Sprout, Mail, Lock, AlertCircle, ArrowLeft } from 'lucide-react';
+import { Mail, Lock, AlertCircle, ArrowLeft } from 'lucide-react';
 import { useAuth } from '../../contexts/AuthContext';
 import './AuthScreen.css';
 
@@ -88,7 +88,7 @@ export function AuthScreen({ initialMode = 'login', onBack }: AuthScreenProps) {
           </button>
         )}
         <div className="auth-brand">
-          <Sprout size={48} color="#059669" />
+          <img src="/logo.svg" alt="" className="auth-logo" width={72} height={72} />
           <h1>Little Food Forests</h1>
           <p>Design your regenerative food forest</p>
         </div>
