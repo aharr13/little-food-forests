@@ -741,6 +741,7 @@ const DesignFlow = () => {
             onSaveRejectedPlants={setRejectedPlants}
             waterFeatures={waterFeatures}
             boundary={boundaryPoints}
+            mapCenter={mapCenter}
             onApplyLayout={(newShapes) => {
               setShapes(prev => [...prev, ...newShapes]);
               // When docked, stay open so the advisor keeps the new plants in

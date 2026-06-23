@@ -36,8 +36,8 @@ export function Dashboard({ onCreateProject, onOpenProject, onOpenWiki, onOpenWi
 
   async function handleGeneratePlants() {
     const region = window.prompt(
-      'Generate food-forest plants for which region/climate?\n(e.g. "Central Texas, USDA zone 8b" or "Pacific Northwest, zone 8a")',
-      'Central Texas, USDA zone 8b'
+      'Generate food-forest plants for which region/climate?\n(e.g. "Northern California, zone 9b, Mediterranean" or "Central Texas, USDA zone 8b")',
+      'Northern California, zone 9b, Mediterranean'
     );
     if (!region || !region.trim()) return;
     setGenerating(true);

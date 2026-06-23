@@ -26,9 +26,22 @@ export async function syncPlantDatabase(
   onProgress?: (message: string) => void
 ): Promise<SyncResult> {
   onProgress?.('Loading plant data…');
-  // Dynamic import keeps the ~117KB plant file out of the main app bundle.
-  const mod = await import('../../data/plants-texas.json');
-  const plants = ((mod as { default?: unknown }).default ?? mod) as Array<Record<string, unknown>>;
+  // Dynamic import keeps the plant files out of the main app bundle. The DB is a
+  // single shared catalog spanning regions; the advisor filters by the project's
+  // climate/zone, so we seed every region's set here.
+  const [txMod, caMod] = await Promise.all([
+    import('../../data/plants-texas.json'),
+    import('../../data/plants-northern-california.json'),
+  ]);
+  const pick = (m: unknown) => ((m as { default?: unknown }).default ?? m) as Array<Record<string, unknown>>;
+  const seenSci = new Set<string>();
+  const plants = [...pick(txMod), ...pick(caMod)].filter(p => {
+    const sci = String(p.scientificName || '').toLowerCase();
+    if (!sci) return true;
+    if (seenSci.has(sci)) return false; // same species in two region files — keep first
+    seenSci.add(sci);
+    return true;
+  });
   const fileScis = new Set(
     plants.map(p => String(p.scientificName || '').toLowerCase()).filter(Boolean)
   );

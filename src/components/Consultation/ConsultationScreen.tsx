@@ -9,6 +9,7 @@ import type { UserProfile } from '../../hooks/useUserProfile';
 import { functions } from '../../firebase';
 import { usePlants } from '../../hooks/usePlants';
 import { addNewPlantsToDb } from '../../utils/plantDbExpand';
+import { getClimate, formatClimateContext, ClimateProfile } from '../../utils/climate';
 import './ConsultationScreen.css';
 
 // Calls the server-side Cloud Function that holds the Anthropic API key.
@@ -68,6 +69,7 @@ interface ConsultationScreenProps {
   // Auto-layout: advisor places a whole plant list onto the map as editable shapes
   waterFeatures?: WaterFeature[];
   boundary?: Point[];
+  mapCenter?: { lat: number; lng: number };  // drives the climate/region profile
   onApplyLayout?: (shapes: Shape[]) => void;
   // Docked side-panel mode (vs full-screen overlay)
   docked?: boolean;
@@ -76,7 +78,7 @@ interface ConsultationScreenProps {
 
 // Build a summary of what's on the map for the system prompt, including coordinates
 // so Claude can reason about placement (sun direction, spacing, proximity)
-function buildMapSummary(shapes: Shape[]): string {
+function buildMapSummary(shapes: Shape[], region = 'this area'): string {
   if (shapes.length === 0) return 'The map is currently empty — no plants have been placed yet.';
 
   const lines = shapes
@@ -97,7 +99,7 @@ function buildMapSummary(shapes: Shape[]): string {
   const unassigned = shapes.filter(s => !s.plantName).length;
   const note = unassigned > 0 ? `\n  (+ ${unassigned} unassigned shape${unassigned > 1 ? 's' : ''})` : '';
 
-  return `Current plants on the map (coordinates in decimal degrees — Texas is ~30°N, 97-100°W):\n${lines.join('\n')}${note}\n\nNote: In Texas (Northern Hemisphere), south-facing sides get more sun. North of a canopy tree = shaded. South = sunny.`;
+  return `Current plants on the map (coordinates in decimal degrees, ${region}):\n${lines.join('\n')}${note}\n\nNote: In the Northern Hemisphere, south-facing sides get more sun. North of a canopy tree = shaded. South = sunny.`;
 }
 
 function buildSavedPlanSummary(plan: PlantRecommendation[]): string {
@@ -193,8 +195,8 @@ function buildGuildAnalysisSummary(shapes: Shape[], plants: Plant[]): string {
   return `GUILD STATUS (per anchor tree, within 2× its canopy radius — the 5 functions are nitrogen-fixer, dynamic-accumulator, insectary, mulch-producer, pest-confuser):\n${lines.join('\n')}\n\nWhen recommending or placing plants, PRIORITIZE filling the MISSING functions near each anchor.`;
 }
 
-function buildSystemPrompt(shapes: Shape[], savedPlan: PlantRecommendation[] = [], wikiArticles: WikiArticleSlim[] = [], messages: { role: string; content: string }[] = [], userProfile: UserProfile = {}, rejectedPlants: RejectedPlant[] = [], waterFeatures: WaterFeature[] = [], plants: Plant[] = []): string {
-  const mapSummary = buildMapSummary(shapes);
+function buildSystemPrompt(shapes: Shape[], savedPlan: PlantRecommendation[] = [], wikiArticles: WikiArticleSlim[] = [], messages: { role: string; content: string }[] = [], userProfile: UserProfile = {}, rejectedPlants: RejectedPlant[] = [], waterFeatures: WaterFeature[] = [], plants: Plant[] = [], climate: ClimateProfile = getClimate()): string {
+  const mapSummary = buildMapSummary(shapes, climate.region);
   const waterSummary = buildWaterSummary(waterFeatures);
   const guildSummary = buildGuildAnalysisSummary(shapes, plants);
   const planSummary = buildSavedPlanSummary(savedPlan);
@@ -213,7 +215,9 @@ function buildSystemPrompt(shapes: Shape[], savedPlan: PlantRecommendation[] = [
     : '';
 
   return `You are a permaculture food forest advisor embedded in the Little Food Forests design app.
-You help homeowners in Texas design, plan, and grow food forests through conversation.
+You help homeowners in ${climate.region} design, plan, and grow food forests through conversation.
+
+${formatClimateContext(climate)}
 
 ${skillContext}
 
@@ -278,7 +282,7 @@ When a user asks "where should I plant X?", "best spot for X", "where does X go?
   "nearPlantName": "Live Oak",
   "direction": "southeast",
   "distanceFt": 15,
-  "reason": "Southeast of your Live Oak gets morning full sun while the oak's canopy provides some afternoon relief from Texas heat. This spot has no competing root systems and fills your understory gap.",
+  "reason": "Southeast of your Live Oak gets morning full sun while the oak's canopy provides some afternoon relief from summer heat. This spot has no competing root systems and fills your understory gap.",
   "sunScore": "good — morning full sun, light afternoon shade",
   "guildRole": "understory anchor, fills layer gap"
 }
@@ -295,7 +299,7 @@ IMPORTANT RULES:
 - Suggest 5-10 plants total, mix of priorities
 - Be specific about WHY each plant fits THIS user's situation
 - Use encouraging, friendly language — this person may be new to permaculture
-- Texas-appropriate plants preferred (drought tolerance matters)
+- Prefer ${climate.nativePreference} plants suited to ${climate.usdaZones}
 - Never produce recommendations until you've asked at least 4 questions`;
 }
 
@@ -333,8 +337,9 @@ const EFFORT_COLORS: Record<number, string> = {
   1: '#059669', 2: '#10b981', 3: '#f59e0b', 4: '#f97316', 5: '#dc2626',
 };
 
-export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, onSavePlan, onPlacementSuggestion, savedPlan, isVisible, followUpPlantName, onFollowUpConsumed, userProfile = {}, onProfileUpdate, consultationHistory = [], onSaveConsultationHistory, rejectedPlants = [], onSaveRejectedPlants, waterFeatures = [], boundary = [], onApplyLayout, docked = false, onToggleDock }: ConsultationScreenProps) {
+export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, onSavePlan, onPlacementSuggestion, savedPlan, isVisible, followUpPlantName, onFollowUpConsumed, userProfile = {}, onProfileUpdate, consultationHistory = [], onSaveConsultationHistory, rejectedPlants = [], onSaveRejectedPlants, waterFeatures = [], boundary = [], onApplyLayout, docked = false, onToggleDock, mapCenter }: ConsultationScreenProps) {
   const { plants } = usePlants(); // for live guild analysis fed to the advisor
+  const climate = getClimate(mapCenter?.lat, mapCenter?.lng); // region-aware advice
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
@@ -342,7 +347,7 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
   const [approved, setApproved] = useState<Set<number>>(new Set(savedPlan.map((_, i) => i)));
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
-  const systemPrompt = useRef(buildSystemPrompt(shapes, savedPlan, wikiArticles, [], userProfile, rejectedPlants, waterFeatures, plants));
+  const systemPrompt = useRef(buildSystemPrompt(shapes, savedPlan, wikiArticles, [], userProfile, rejectedPlants, waterFeatures, plants, climate));
   const pendingFollowUp = useRef<string | null>(null);
 
   // Load consultation history on mount
@@ -360,7 +365,7 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
   // Keep the system prompt fresh as the map state loads/changes — including
   // water features and shapes, which may arrive from Firestore after mount.
   useEffect(() => {
-    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, messages, userProfile, rejectedPlants, waterFeatures, plants);
+    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, messages, userProfile, rejectedPlants, waterFeatures, plants, climate);
   }, [wikiArticles, userProfile, rejectedPlants, waterFeatures, shapes, savedPlan, plants]);
 
 
@@ -401,7 +406,7 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
     setRecommendations([]);
     setApproved(new Set());
     onSaveConsultationHistory?.([]);
-    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, [], userProfile, rejectedPlants, waterFeatures, plants);
+    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, [], userProfile, rejectedPlants, waterFeatures, plants, climate);
     await startConversation(true);
   }
 
@@ -459,7 +464,7 @@ export function ConsultationScreen({ shapes, wikiArticles, onClose, onGoToMap, o
     setLoading(true);
 
     // Always rebuild system prompt with current conversation + latest profile + rejected plants
-    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, newMessages, userProfile, rejectedPlants, waterFeatures, plants);
+    systemPrompt.current = buildSystemPrompt(shapes, savedPlan, wikiArticles, newMessages, userProfile, rejectedPlants, waterFeatures, plants, climate);
 
     // Extract profile facts asynchronously (don't await/block main chat)
     extractProfileFacts(userMessage).catch(() => {});
@@ -647,7 +652,9 @@ Example output: {"experience":"intermediate","goals":"food for family and wildli
         ? waterFeatures.map(w => `  - ${w.type} at ${w.position.lat.toFixed(5)}, ${w.position.lng.toFixed(5)}`).join('\n')
         : '  (none marked)';
 
-      const sys = `You are a permaculture designer placing plants on a real satellite map for a Texas food forest.
+      const sys = `You are a permaculture designer placing plants on a real satellite map for a food forest in ${climate.region}.
+
+${formatClimateContext(climate)}
 
 SITE bounding box (place every plant INSIDE this box):
   latitude:  ${bbox.minLat.toFixed(6)} to ${bbox.maxLat.toFixed(6)}
@@ -657,17 +664,17 @@ WATER FEATURES:
 ${waterText}
 
 EXISTING PLANTS (already on the map — do NOT move or duplicate these; place the new plants around them):
-${buildMapSummary(shapes)}
+${buildMapSummary(shapes, climate.region)}
 
 ${advisorChooses
-  ? `YOUR TASK: Design a COMPLETE food-forest planting for this site. YOU decide which species to use — choose mostly Texas-native, climate-appropriate plants that complete guilds around the existing plants (cover nitrogen-fixer, dynamic-accumulator, insectary, mulch-producer, and pest-confuser roles), fill empty layers, and match the sun/water conditions above. Aim for a realistic, well-spaced planting of roughly 12–30 plants across the layers.`
+  ? `YOUR TASK: Design a COMPLETE food-forest planting for this site. YOU decide which species to use — choose mostly ${climate.nativePreference} plants that complete guilds around the existing plants (cover nitrogen-fixer, dynamic-accumulator, insectary, mulch-producer, and pest-confuser roles), fill empty layers, and match the sun/water conditions above. Aim for a realistic, well-spaced planting of roughly 12–30 plants across the layers.`
   : `YOUR TASK: Place EVERY plant in the user's list. You may also add a few companion species if they clearly complete a guild.`}
 
 USER'S GOALS & PROFILE (match your plant choices and placement to these):
 ${formatProfile(userProfile)}
 
 Apply permaculture principles:
-- In Texas (Northern Hemisphere) the south side gets the most sun; tall plants shade what's north of them.
+- In the Northern Hemisphere the south side gets the most sun; tall plants shade what's north of them.
 - Respect mature spread — don't overlap canopies; space by size.
 - Build complete guilds: cluster supporting species (nitrogen-fixers, accumulators, insectary, mulch, pest-confusers) around each canopy/understory anchor.
 - Put water-loving plants near low/pooling water markers; drought-tolerant plants on high/dry areas.
