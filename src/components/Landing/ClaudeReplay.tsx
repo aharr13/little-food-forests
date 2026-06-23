@@ -8,7 +8,7 @@
 // pollination, and a pet-toxicity caution. No API calls — it always works and
 // costs nothing — but it mirrors what the live advisor does.
 import { useEffect, useRef, useState } from 'react';
-import { Sparkles, RotateCcw, AlertTriangle } from 'lucide-react';
+import { Sparkles, Play, AlertTriangle } from 'lucide-react';
 
 type LayerKey = 'water' | 'canopy' | 'understory' | 'shrub' | 'herb' | 'ground' | 'vine' | 'veg';
 const LAYER: Record<LayerKey, { layer: string; color: string }> = {
@@ -49,7 +49,6 @@ const SCRIPT: Step[] = [
 ];
 
 const STEP_MS = 1500;
-const LOOP_PAUSE_MS = 5200;
 
 // neighbor lots + the tilted property boundary (static)
 const BOUNDARY = '30,6 94,24 76,94 8,70';
@@ -61,11 +60,7 @@ export function ClaudeReplay() {
   const transcriptRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (shown >= SCRIPT.length) {
-      setDone(true);
-      const t = setTimeout(() => { setShown(0); setDone(false); }, LOOP_PAUSE_MS);
-      return () => clearTimeout(t);
-    }
+    if (shown >= SCRIPT.length) { setDone(true); return; } // stop at the end
     const t = setTimeout(() => setShown(s => s + 1), shown === 0 ? 400 : STEP_MS);
     return () => clearTimeout(t);
   }, [shown]);
@@ -84,7 +79,7 @@ export function ClaudeReplay() {
   return (
     <div className="replay">
       <div className="replay-badge">
-        <Sparkles size={14} /> Recorded Claude session · replays in real time
+        <Sparkles size={14} /> How the advisor designs · animated walkthrough
       </div>
 
       <div className="replay-grid">
@@ -182,9 +177,12 @@ export function ClaudeReplay() {
       </div>
 
       {done && (
-        <button className="replay-restart" onClick={() => { setShown(0); setDone(false); }}>
-          <RotateCcw size={15} /> Replay
-        </button>
+        <div className="replay-ended">
+          <button className="replay-play" onClick={() => { setShown(0); setDone(false); }} aria-label="Replay the design">
+            <Play size={30} fill="currentColor" />
+          </button>
+          <span className="replay-ended-label">Replay the design</span>
+        </div>
       )}
     </div>
   );

@@ -35,25 +35,28 @@ export function LandingPage({ onGetStarted, onSignIn }: LandingPageProps) {
       {/* Hero */}
       <section className="lp-hero">
         <HeroLogo />
-        <div className="lp-badge">Permaculture design, powered by Claude</div>
-        <h1>Turn your yard into a thriving food forest.</h1>
-        <p className="lp-sub">
-          Map your property, then let an AI advisor lay out a complete 7-layer permaculture
-          guild — canopy to groundcover — reasoning about sun, soil, and companion planting.
-          Plan the planting, then watch it grow with field photo time-lapses.
-        </p>
-        <div className="lp-hero-cta">
-          <button className="lp-btn lp-btn-lg" onClick={onGetStarted}>Start designing — free <ArrowRight size={18} /></button>
-          <a href="#demo" className="lp-btn-ghost lp-btn-lg">See how it works</a>
+        <div className="lp-hero-text">
+          <div className="lp-badge">Permaculture design, powered by Claude</div>
+          <h1>Turn your yard into a thriving food forest.</h1>
+          <p className="lp-sub">
+            Map your property, then let an AI advisor lay out a full permaculture
+            guild — canopy down to groundcover — reasoning about sun, water, and
+            companion planting. Plan the planting, then track its growth with
+            field photo time-lapses.
+          </p>
+          <div className="lp-hero-cta">
+            <button className="lp-btn lp-btn-lg" onClick={onGetStarted}>Start designing — free <ArrowRight size={18} /></button>
+            <a href="#demo" className="lp-btn-ghost lp-btn-lg">See how it works</a>
+          </div>
+          <div className="lp-trust">No credit card · Private to your account · Installs on your phone</div>
         </div>
-        <div className="lp-trust">No credit card · Your data stays private · Works offline as an app</div>
       </section>
 
       {/* Wow: the Claude replay */}
       <section id="demo" className="lp-demo">
         <div className="lp-section-head">
           <h2>Watch Claude design a food forest</h2>
-          <p>The advisor reads your actual map and returns structured plant placements — here's a real session, replayed.</p>
+          <p>The advisor reads your map and returns structured plant placements. Here's the kind of reasoning it walks through, step by step.</p>
         </div>
         <ClaudeReplay />
       </section>
