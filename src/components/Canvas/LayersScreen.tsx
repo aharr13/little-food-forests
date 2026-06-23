@@ -16,6 +16,8 @@ import { PlantSearch } from '../Plants/PlantSearch';
 import { GuildAnalysis } from '../Plants/GuildAnalysis';
 import { usePlants } from '../../hooks/usePlants';
 import { SnapshotGallery } from './SnapshotGallery';
+import { PhotosSidebar } from '../Photo/PhotosSidebar';
+import { useAuth } from '../../contexts/AuthContext';
 import './LayersScreen.css';
 
 // Fix Leaflet default marker icon issue
@@ -70,11 +72,11 @@ function MapController({
   onMapReady: (map: L.Map) => void;
   activeTool: DrawingTool;
   selectedLayerId: string | null;
-  sidebarMode: 'layers' | 'water';
+  sidebarMode: 'layers' | 'water' | 'photos';
   activeWaterTool: WaterFeatureType | null;
   waterSelectMode: boolean;
   activePlant: Plant | null;
-  onMapClick: (latlng: L.LatLng) => void;
+  onMapClick: (latlng: L.LatLng, opts?: { shiftKey?: boolean }) => void;
   drawingState: { isDrawing: boolean; points: Point[] };
   setDrawingState: (state: { isDrawing: boolean; points: Point[] }) => void;
   onShapeCreated: (shape: Shape) => void;
@@ -166,6 +168,13 @@ function MapController({
             setDrawingState({ isDrawing: true, points: [...drawingState.points, newPoint] });
           }
         }
+        return;
+      }
+
+      // Photo anchors: the Photos sidebar tab, or the layers-mode anchor tool.
+      // Pass shiftKey so the handler can set an aim direction on shift+click.
+      if (sidebarMode === 'photos' || (activeTool === 'photoAnchors' && sidebarMode === 'layers')) {
+        onMapClick(e.latlng, { shiftKey: e.originalEvent.shiftKey });
         return;
       }
 
@@ -911,7 +920,9 @@ export function LayersScreen({
   const [selectedLayerId, setSelectedLayerId] = useState<string>('canopy');
   const [activeTool, setActiveTool] = useState<DrawingTool>('select');
   const [layerVisibility, setLayerVisibility] = useState<LayerVisibility>({});
-  const [sidebarMode, setSidebarMode] = useState<'layers' | 'water'>('layers');
+  const [sidebarMode, setSidebarMode] = useState<'layers' | 'water' | 'photos'>('layers');
+  const [photoHighlightId, setPhotoHighlightId] = useState<string | null>(null);
+  const { currentUser } = useAuth();
   const [activeWaterTool, setActiveWaterTool] = useState<WaterFeatureType | null>(null);
   const [selectedWaterFeature, setSelectedWaterFeature] = useState<WaterFeature | null>(null);
   const [waterSelectMode, setWaterSelectMode] = useState(false);
@@ -1096,7 +1107,7 @@ export function LayersScreen({
     infrastructure: { trunk: 0, canopy: 3 },
   };
 
-  const handleMapClick = useCallback((latlng: L.LatLng) => {
+  const handleMapClick = useCallback((latlng: L.LatLng, opts?: { shiftKey?: boolean }) => {
     // Water tool mode
     if (activeWaterTool) {
       const newFeature: WaterFeature = {
@@ -1108,13 +1119,13 @@ export function LayersScreen({
       return;
     }
 
-    // Photo anchors tool
-    if (activeTool === 'photoAnchors' && sidebarMode === 'layers') {
-      if (e.originalEvent.shiftKey) {
-        // Shift+click: set target for the last anchor point
+    // Photo anchors — Photos sidebar tab, or the layers-mode anchor tool
+    if (sidebarMode === 'photos' || (activeTool === 'photoAnchors' && sidebarMode === 'layers')) {
+      if (opts?.shiftKey) {
+        // Shift+click: set aim direction for the last anchor point
         const anchorPoints = shapes.filter(s => s.photoAnchor);
         if (anchorPoints.length === 0) {
-          alert('Create an anchor point first');
+          alert('Drop a photo position first, then Shift+click to set its aim direction.');
           return;
         }
         const lastAnchor = anchorPoints[anchorPoints.length - 1];
@@ -1136,6 +1147,7 @@ export function LayersScreen({
         };
         onShapesChange([...shapes, newAnchor]);
         setSelectedShape(newAnchor);
+        setPhotoHighlightId(newAnchor.id);
       }
       return;
     }
@@ -1397,7 +1409,40 @@ export function LayersScreen({
                   <Droplets size={16} />
                   Water & Topo
                 </button>
+                <button
+                  className={`sidebar-tab ${sidebarMode === 'photos' ? 'active' : ''}`}
+                  onClick={() => {
+                    setSidebarMode('photos');
+                    setActiveTool('select');
+                    setActiveWaterTool(null);
+                    setWaterSelectMode(false);
+                    setSelectedWaterFeature(null);
+                  }}
+                >
+                  <Camera size={16} />
+                  Photos
+                </button>
               </div>
+
+              {/* Photos Mode Content */}
+              {sidebarMode === 'photos' && (
+                <PhotosSidebar
+                  projectId={projectId}
+                  userId={currentUser?.uid ?? ''}
+                  shapes={shapes}
+                  selectedId={photoHighlightId}
+                  onSelect={(id) => {
+                    setPhotoHighlightId(id);
+                    const sh = id ? shapes.find(s => s.id === id) : null;
+                    if (sh?.center && localMap) localMap.panTo([sh.center.lat, sh.center.lng]);
+                  }}
+                  onRenameAnchor={(id, label) => onShapesChange(shapes.map(s => s.id === id ? { ...s, anchorLabel: label } : s))}
+                  onDeleteAnchor={(id) => {
+                    onShapesChange(shapes.filter(s => s.id !== id));
+                    if (photoHighlightId === id) setPhotoHighlightId(null);
+                  }}
+                />
+              )}
 
               {/* Layer Description */}
               {sidebarMode === 'layers' && currentLayer && (() => {
@@ -2038,13 +2083,26 @@ export function LayersScreen({
                         iconSize: [26, 26],
                         iconAnchor: [13, 26],
                       })}
-                      eventHandlers={{ click: () => { setActiveTool('photoAnchors'); setSelectedShape(anchor); } }}
+                      eventHandlers={{ click: () => { setSelectedShape(anchor); setPhotoHighlightId(anchor.id); if (sidebarMode !== 'photos') setActiveTool('photoAnchors'); } }}
                     >
                       <Tooltip direction="top" offset={[0, -24]}>📷 {name}</Tooltip>
                     </Marker>
                   </div>
                 );
               })}
+
+            {/* Photos-tab selection highlight — ring on the chosen position/plant */}
+            {photoHighlightId && (() => {
+              const sh = shapes.find(s => s.id === photoHighlightId);
+              if (!sh?.center) return null;
+              return (
+                <LeafletCircle
+                  center={[sh.center.lat, sh.center.lng]}
+                  radius={(sh.canopyRadius || 5) + 4}
+                  pathOptions={{ color: '#f59e0b', weight: 3, fillColor: '#fbbf24', fillOpacity: 0.2, dashArray: '6, 4' }}
+                />
+              );
+            })()}
 
             {/* AI Placement suggestion — pulsing zone */}
             {placementSuggestion && (() => {
