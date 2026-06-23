@@ -36,7 +36,7 @@ export function LandingPage({ onGetStarted, onSignIn }: LandingPageProps) {
       <section className="lp-hero">
         <HeroLogo />
         <div className="lp-hero-text">
-          <div className="lp-badge">Permaculture design, powered by Claude</div>
+          <div className="lp-badge">AI-guided permaculture design</div>
           <h1>Turn your yard into a thriving food forest.</h1>
           <p className="lp-sub">
             Map your property, then let an AI advisor lay out a full permaculture
@@ -52,10 +52,10 @@ export function LandingPage({ onGetStarted, onSignIn }: LandingPageProps) {
         </div>
       </section>
 
-      {/* Wow: the Claude replay */}
+      {/* Wow: the design replay */}
       <section id="demo" className="lp-demo">
         <div className="lp-section-head">
-          <h2>Watch Claude design a food forest</h2>
+          <h2>Watch AI build your food forest</h2>
           <p>The advisor reads your map and returns structured plant placements. Here's the kind of reasoning it walks through, step by step.</p>
         </div>
         <ClaudeReplay />
@@ -70,7 +70,7 @@ export function LandingPage({ onGetStarted, onSignIn }: LandingPageProps) {
         <div className="lp-feature-grid">
           <Feature icon={<MapIcon size={22} />} title="Map your real property"
             body="Drop your address, trace your boundary on satellite imagery, and place plants on an interactive map with true-to-scale canopy spreads." />
-          <Feature icon={<Wand2 size={22} />} title="Claude lays out your guild"
+          <Feature icon={<Wand2 size={22} />} title="AI lays out your guild"
             body="Tell the advisor what you want to grow. It analyzes layer coverage and companion relationships, then auto-places a complete design onto the map." />
           <Feature icon={<CalendarCheck size={22} />} title="Plan it, then level up"
             body="Auto-generated planting and watering schedules by season, with a 50-level gamified progression that turns stewardship into a game." />
@@ -79,11 +79,11 @@ export function LandingPage({ onGetStarted, onSignIn }: LandingPageProps) {
         </div>
       </section>
 
-      {/* How Claude powers this — the Anthropic-facing section */}
+      {/* Under the hood — the technical credibility section */}
       <section className="lp-tech">
         <div className="lp-section-head">
-          <h2>How Claude powers this</h2>
-          <p>Not a chatbot bolted on — Claude is the design engine, integrated like a production system.</p>
+          <h2>Under the hood</h2>
+          <p>Not a chatbot bolted on — the AI is the design engine, wired in like a production system.</p>
         </div>
         <div className="lp-tech-grid">
           <TechCard icon={<ShieldCheck size={22} />} title="Secure by construction"
@@ -91,14 +91,14 @@ export function LandingPage({ onGetStarted, onSignIn }: LandingPageProps) {
           <TechCard icon={<Braces size={22} />} title="Structured, spatial output"
             body="The advisor is given the live map state — layer coverage, guild gaps, sun aspect — and returns JSON placements that render straight onto the canvas. Reasoning in, geometry out." />
           <TechCard icon={<Database size={22} />} title="A knowledge base that grows itself"
-            body="When the plant database lacks a species, Claude researches and writes a structured record for it on demand — the app's knowledge expands as you use it." />
+            body="When the plant database lacks a species, the model researches and writes a structured record for it on demand — the app's knowledge expands as you use it." />
         </div>
       </section>
 
       {/* Final CTA */}
       <section className="lp-cta">
         <h2>Design your forest in an afternoon.</h2>
-        <p>Free to use. Start with your address and let Claude do the heavy lifting.</p>
+        <p>Free to use. Start with your address and let the AI do the heavy lifting.</p>
         <button className="lp-btn lp-btn-lg lp-btn-light" onClick={onGetStarted}>Get started <ArrowRight size={18} /></button>
       </section>
 
