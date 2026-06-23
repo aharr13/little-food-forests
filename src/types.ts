@@ -97,6 +97,7 @@ export interface Shape {
   // Photo anchor fields
   photoAnchor?: boolean;        // marks this shape as a photo anchor point
   targetPoint?: Point;          // where camera should aim
+  anchorLabel?: string;         // optional custom name (else "Position N")
 }
 
 export interface ProjectSnapshot {

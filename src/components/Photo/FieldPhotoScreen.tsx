@@ -84,7 +84,7 @@ export function FieldPhotoScreen({ projectId, userId, shapes, onClose }: FieldPh
     return (
       <>
         <CameraCapture
-          title={capturing.kind === 'anchor' ? `Position ${capturing.label}` : (capturing.shape.plantName || 'Plant')}
+          title={capturing.kind === 'anchor' ? capturing.label : (capturing.shape.plantName || 'Plant')}
           ghostUrl={capturing.ghostUrl}
           onCapture={handleCapture}
           onCancel={() => setCapturing(null)}
@@ -129,18 +129,18 @@ export function FieldPhotoScreen({ projectId, userId, shapes, onClose }: FieldPh
             <Empty icon={<MapPin size={28} />} text="No photo positions yet. On the map, use the Photo Anchors tool to drop spots you'll photograph over time." />
           ) : (
             anchors.map((a, i) => {
-              const label = String(i + 1);
+              const label = a.anchorLabel?.trim() || `Position ${i + 1}`;
               const last = lastAnchorPhoto(a.id);
               const count = photosWhere(p => p.kind === 'anchor' && p.anchorPointId === a.id).length;
               return (
                 <Row
                   key={a.id}
                   thumb={last?.photoUrl}
-                  title={`Position ${label}`}
+                  title={label}
                   subtitle={count ? `${count} photo${count !== 1 ? 's' : ''} · last ${timeAgo(last!.capturedAt)}` : 'No photos yet'}
                   count={count}
                   onShoot={() => setCapturing({ kind: 'anchor', shape: a, label, ghostUrl: last?.photoUrl ?? null })}
-                  onView={count ? () => setViewing({ title: `Position ${label}`, subtitle: `${count} photo${count !== 1 ? 's' : ''}`, photos: photosWhere(p => p.kind === 'anchor' && p.anchorPointId === a.id) }) : undefined}
+                  onView={count ? () => setViewing({ title: label, subtitle: `${count} photo${count !== 1 ? 's' : ''}`, photos: photosWhere(p => p.kind === 'anchor' && p.anchorPointId === a.id) }) : undefined}
                 />
               );
             })

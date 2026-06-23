@@ -2001,43 +2001,50 @@ export function LayersScreen({
                 return null;
               })}
 
-            {/* Photo anchor points and target indicators */}
+            {/* Photo anchor points — always-visible numbered pins; the blue zone
+                and target line show only while the Photo Points tool is active. */}
             {shapes
-              .filter(s => s.photoAnchor && s.center && activeTool === 'photoAnchors')
-              .map(anchor => (
-                <div key={`anchor-group-${anchor.id}`}>
-                  {/* Anchor point circle */}
-                  <LeafletCircle
-                    center={[anchor.center!.lat, anchor.center!.lng]}
-                    radius={anchor.canopyRadius || 10}
-                    pathOptions={{
-                      color: '#3b82f6',
-                      fillColor: '#93c5fd',
-                      fillOpacity: 0.4,
-                      weight: 2,
-                    }}
-                  >
-                    <Tooltip>📷 Photo Anchor</Tooltip>
-                  </LeafletCircle>
-
-                  {/* Target direction line */}
-                  {anchor.targetPoint && (
-                    <LeafletPolyline
-                      positions={[
-                        [anchor.center!.lat, anchor.center!.lng],
-                        [anchor.targetPoint.lat, anchor.targetPoint.lng],
-                      ]}
-                      pathOptions={{
-                        color: '#8b5cf6',
-                        weight: 2,
-                        dashArray: '5, 5',
-                      }}
+              .filter(s => s.photoAnchor && s.center)
+              .map((anchor, i) => {
+                const num = i + 1;
+                const name = anchor.anchorLabel?.trim() || `Position ${num}`;
+                const editing = activeTool === 'photoAnchors';
+                const selected = selectedShape?.id === anchor.id;
+                return (
+                  <div key={`anchor-group-${anchor.id}`}>
+                    {editing && (
+                      <LeafletCircle
+                        center={[anchor.center!.lat, anchor.center!.lng]}
+                        radius={anchor.canopyRadius || 10}
+                        pathOptions={{ color: '#3b82f6', fillColor: '#93c5fd', fillOpacity: 0.35, weight: selected ? 3 : 2 }}
+                      />
+                    )}
+                    {editing && anchor.targetPoint && (
+                      <LeafletPolyline
+                        positions={[
+                          [anchor.center!.lat, anchor.center!.lng],
+                          [anchor.targetPoint.lat, anchor.targetPoint.lng],
+                        ]}
+                        pathOptions={{ color: '#8b5cf6', weight: 2, dashArray: '5, 5' }}
+                      >
+                        <Tooltip>🎯 Aim direction</Tooltip>
+                      </LeafletPolyline>
+                    )}
+                    <Marker
+                      position={[anchor.center!.lat, anchor.center!.lng]}
+                      icon={L.divIcon({
+                        className: '',
+                        html: `<div style="background:${selected ? '#2563eb' : '#3b82f6'};color:#fff;border-radius:50% 50% 50% 0;width:26px;height:26px;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,.4)"><span style="transform:rotate(45deg);font-size:11px;font-weight:700;font-family:system-ui">${num}</span></div>`,
+                        iconSize: [26, 26],
+                        iconAnchor: [13, 26],
+                      })}
+                      eventHandlers={{ click: () => { setActiveTool('photoAnchors'); setSelectedShape(anchor); } }}
                     >
-                      <Tooltip>🎯 Target Direction</Tooltip>
-                    </LeafletPolyline>
-                  )}
-                </div>
-              ))}
+                      <Tooltip direction="top" offset={[0, -24]}>📷 {name}</Tooltip>
+                    </Marker>
+                  </div>
+                );
+              })}
 
             {/* AI Placement suggestion — pulsing zone */}
             {placementSuggestion && (() => {
@@ -2109,6 +2116,46 @@ export function LayersScreen({
               />
             )}
           </MapContainer>
+
+          {/* Photo positions manager — list, rename, delete (Photo Points tool) */}
+          {activeTool === 'photoAnchors' && (() => {
+            const anchorList = shapes.filter(s => s.photoAnchor && s.center);
+            return (
+              <div className="anchor-panel">
+                <div className="anchor-panel-head">
+                  <Camera size={15} /> Photo Positions ({anchorList.length})
+                </div>
+                {anchorList.length === 0 ? (
+                  <p className="anchor-panel-empty">Click the map to drop a position. Shift+click sets its aim direction.</p>
+                ) : (
+                  <ul className="anchor-panel-list">
+                    {anchorList.map((a, i) => (
+                      <li key={a.id} className={selectedShape?.id === a.id ? 'is-selected' : ''}>
+                        <span className="anchor-num">{i + 1}</span>
+                        <input
+                          className="anchor-name-input"
+                          value={a.anchorLabel ?? ''}
+                          placeholder={`Position ${i + 1}`}
+                          onFocus={() => setSelectedShape(a)}
+                          onChange={e => onShapesChange(shapes.map(s => s.id === a.id ? { ...s, anchorLabel: e.target.value } : s))}
+                        />
+                        <button
+                          className="anchor-del"
+                          title="Delete this position"
+                          onClick={() => {
+                            if (confirm(`Delete ${a.anchorLabel?.trim() || `Position ${i + 1}`}? Photos already taken from it are kept in storage.`)) {
+                              onShapesChange(shapes.filter(s => s.id !== a.id));
+                              if (selectedShape?.id === a.id) setSelectedShape(null);
+                            }
+                          }}
+                        >×</button>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            );
+          })()}
 
           {/* Compass Rose */}
           <div className="compass-rose" title="North is up">
