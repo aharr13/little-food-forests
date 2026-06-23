@@ -88,7 +88,7 @@ export function AuthScreen({ initialMode = 'login', onBack }: AuthScreenProps) {
           </button>
         )}
         <div className="auth-brand">
-          <img src="/logo.png" alt="" className="auth-logo" width={72} height={72} />
+          <img src="/logo.jpg" alt="" className="auth-logo" width={72} height={72} />
           <h1>Little Food Forests</h1>
           <p>Design your regenerative food forest</p>
         </div>

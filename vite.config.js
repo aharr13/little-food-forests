@@ -9,7 +9,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       injectRegister: 'auto',
-      includeAssets: ['app-icon.svg', 'logo.png'],
+      includeAssets: ['app-icon.svg', 'logo.jpg'],
       manifest: {
         name: 'Little Food Forests',
         short_name: 'Food Forests',

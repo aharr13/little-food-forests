@@ -22,7 +22,7 @@ export function LandingPage({ onGetStarted, onSignIn }: LandingPageProps) {
       {/* Nav */}
       <header className="lp-nav">
         <div className="lp-brand">
-          <img src="/logo.png" alt="" className="lp-brand-mark" width={30} height={30} />
+          <img src="/logo.jpg" alt="" className="lp-brand-mark" width={30} height={30} />
           <span>Little Food Forests</span>
         </div>
         <nav className="lp-nav-actions">
@@ -100,7 +100,7 @@ export function LandingPage({ onGetStarted, onSignIn }: LandingPageProps) {
       </section>
 
       <footer className="lp-footer">
-        <div className="lp-brand"><img src="/logo.png" alt="" className="lp-brand-mark" width={26} height={26} /><span>Little Food Forests</span></div>
+        <div className="lp-brand"><img src="/logo.jpg" alt="" className="lp-brand-mark" width={26} height={26} /><span>Little Food Forests</span></div>
         <div className="lp-footer-meta">
           <span>React 19 · TypeScript · Firebase · Leaflet · Claude</span>
           <a href={REPO_URL} target="_blank" rel="noreferrer" className="lp-nav-link"><Github size={16} /> Source on GitHub</a>
@@ -113,7 +113,7 @@ export function LandingPage({ onGetStarted, onSignIn }: LandingPageProps) {
 function HeroLogo() {
   return (
     <img
-      src="/logo.png"
+      src="/logo.jpg"
       alt="Little Food Forests"
       className="lp-hero-logo"
       width={240}
