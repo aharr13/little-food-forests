@@ -296,13 +296,27 @@ body {
 @media (max-width: 768px) {
   .welcome-content,
   .step-content {
-    padding: 2rem;
+    padding: 1.5rem;
+    max-width: 100%;
   }
-  
+
   .instruction-card {
     flex-direction: column;
     text-align: center;
   }
+
+  .brand-large h1 { font-size: 1.7rem; }
+  .welcome-text h2,
+  .step-header h2 { font-size: 1.35rem; }
+  .btn-primary-large,
+  .btn-primary { width: 100%; justify-content: center; }
+}
+
+@media (max-width: 480px) {
+  .welcome-content,
+  .step-content { padding: 1.1rem; }
+  .brand-large h1 { font-size: 1.45rem; }
+  .feature-list li { font-size: 0.9rem; }
 }
 
 /* ===== LAYERS DRAWING SCREEN ===== */

@@ -1236,17 +1236,63 @@
 }
 
 /* Responsive */
+/* ===== Tablet & mobile: stack the map OVER a scrollable sidebar.
+   !important is required to beat the inline grid styles (350px 1fr) set on
+   .layers-content / .layers-sidebar / .layers-map in the component. ===== */
 @media (max-width: 1024px) {
   .layers-content {
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr !important;
+    grid-template-rows: 1fr auto !important;
+  }
+  .layers-map {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    min-height: 45vh;
+  }
+  .layers-sidebar {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+    max-height: 48vh;
+    border-right: none;
+    border-top: 1px solid #e2e8f0;
+  }
+}
+
+/* ===== Phones ===== */
+@media (max-width: 768px) {
+  .layers-screen { height: 100dvh; }
+
+  /* Compact header; action buttons scroll sideways instead of wrapping */
+  .layers-header { padding: 0.5rem 0.75rem; gap: 0.5rem; }
+  .layers-header h1 {
+    font-size: 1rem; min-width: 0;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .header-actions {
+    gap: 0.4rem; flex-wrap: nowrap; overflow-x: auto;
+    scrollbar-width: none; -webkit-overflow-scrolling: touch;
+  }
+  .header-actions::-webkit-scrollbar { display: none; }
+  .header-btn, .header-btn-primary {
+    padding: 0.45rem 0.6rem; font-size: 0.8rem; white-space: nowrap; flex-shrink: 0;
   }
 
-  .layers-sidebar {
-    max-height: 50vh;
-    border-right: none;
-    border-bottom: 1px solid #e2e8f0;
-  }
+  .layers-sidebar { max-height: 46vh; }
+  .sidebar-section { padding: 0.75rem; }
+  .sidebar-tab { padding: 0.6rem 0.35rem; font-size: 0.78rem; gap: 0.3rem; }
+
+  .drawing-toolbar, .water-toolbar { flex-wrap: wrap; gap: 0.4rem; padding: 0.5rem; }
+  .toolbar-tips { display: none; }
+
+  .compass-rose { transform: scale(0.8); transform-origin: top right; }
+  .zoom-slider-controls { transform: scale(0.85); transform-origin: bottom right; }
+
+  .anchor-panel { width: 190px; max-height: 38vh; top: 8px; left: 8px; }
+}
+
+@media (max-width: 480px) {
+  .layers-header h1 { display: none; }      /* free space for back + actions */
+  .sidebar-tab { font-size: 0.72rem; }
 }
 /* Photo positions manager (Photo Points tool) */
 .anchor-panel {
