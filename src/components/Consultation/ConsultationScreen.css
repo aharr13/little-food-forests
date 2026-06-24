@@ -482,3 +482,25 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .consultation-header { padding: 0.6rem 0.85rem; }
+  .consultation-header-left h2 { font-size: 1rem; }
+  .consultation-header-actions { gap: 0.35rem; }
+
+  /* Stack chat over the plan panel instead of side-by-side */
+  .consultation-body.has-plan {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+  }
+  .consultation-chat { border-right: none; }
+  .consultation-plan {
+    border-top: 1px solid #1e293b;
+    max-height: 42vh;
+    overflow-y: auto;
+  }
+
+  .consultation-messages { padding: 0.75rem; }
+  .consultation-input-area { padding: 0.6rem 0.75rem; }
+}
