@@ -903,6 +903,71 @@ function computePlacementPosition(
   return { lat: origin.lat + off.lat, lng: origin.lng + off.lng };
 }
 
+// ----- Photo anchor: a numbered position with a rotatable camera-aim arrow -----
+const ANCHOR_AIM_RADIUS_M = 7; // arrow length & rotation-circle radius, in meters
+
+function bearingDeg(from: Point, to: Point): number {
+  const a1 = from.lat * Math.PI / 180, a2 = to.lat * Math.PI / 180;
+  const dl = (to.lng - from.lng) * Math.PI / 180;
+  const y = Math.sin(dl) * Math.cos(a2);
+  const x = Math.cos(a1) * Math.sin(a2) - Math.sin(a1) * Math.cos(a2) * Math.cos(dl);
+  return (Math.atan2(y, x) * 180 / Math.PI + 360) % 360;
+}
+function destPoint(from: Point, brg: number, distM: number): Point {
+  const R = 6378137, d = distM / R, t = brg * Math.PI / 180;
+  const a1 = from.lat * Math.PI / 180, l1 = from.lng * Math.PI / 180;
+  const a2 = Math.asin(Math.sin(a1) * Math.cos(d) + Math.cos(a1) * Math.sin(d) * Math.cos(t));
+  const l2 = l1 + Math.atan2(Math.sin(t) * Math.sin(d) * Math.cos(a1), Math.cos(d) - Math.sin(a1) * Math.sin(a2));
+  return { lat: a2 * 180 / Math.PI, lng: l2 * 180 / Math.PI };
+}
+
+function PhotoAnchor({ center, aim, num, name, editing, selected, onSelectClick, onRotate }: {
+  center: Point; aim: Point; num: number; name: string; editing: boolean; selected: boolean;
+  onSelectClick: () => void; onRotate: (aim: Point) => void;
+}) {
+  const brg = bearingDeg(center, aim);
+  const rotate = (e: { target: L.Marker }, commit: boolean) => {
+    const p = e.target.getLatLng();
+    const b = bearingDeg(center, { lat: p.lat, lng: p.lng });
+    const snapped = destPoint(center, b, ANCHOR_AIM_RADIUS_M);
+    e.target.setLatLng([snapped.lat, snapped.lng]); // keep the handle on the circle
+    if (commit) onRotate(snapped);
+  };
+  return (
+    <>
+      {editing && (
+        <LeafletCircle center={[center.lat, center.lng]} radius={ANCHOR_AIM_RADIUS_M} interactive={false}
+          pathOptions={{ color: '#3b82f6', weight: 1, dashArray: '3, 4', fillColor: '#93c5fd', fillOpacity: 0.12 }} />
+      )}
+      {/* aim shaft */}
+      <LeafletPolyline positions={[[center.lat, center.lng], [aim.lat, aim.lng]]} interactive={false}
+        pathOptions={{ color: '#2563eb', weight: 2 }} />
+      {/* numbered position pin */}
+      <Marker
+        position={[center.lat, center.lng]}
+        icon={L.divIcon({ className: '', iconSize: [26, 26], iconAnchor: [13, 26],
+          html: `<div style="background:${selected ? '#1d4ed8' : '#3b82f6'};color:#fff;border-radius:50% 50% 50% 0;width:26px;height:26px;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,.4)"><span style="transform:rotate(45deg);font-size:11px;font-weight:700;font-family:system-ui">${num}</span></div>` })}
+        eventHandlers={{ click: onSelectClick }}
+      >
+        <Tooltip direction="top" offset={[0, -24]}>📷 {name}</Tooltip>
+      </Marker>
+      {/* rotatable arrowhead (drag around the circle to aim the camera) */}
+      <Marker
+        position={[aim.lat, aim.lng]}
+        draggable={editing}
+        icon={L.divIcon({ className: '', iconSize: [26, 26], iconAnchor: [13, 13],
+          html: `<div style="transform:rotate(${brg}deg);width:26px;height:26px;display:flex;align-items:center;justify-content:center;cursor:${editing ? 'grab' : 'default'}"><div style="width:0;height:0;border-left:7px solid transparent;border-right:7px solid transparent;border-bottom:15px solid #2563eb;filter:drop-shadow(0 1px 2px rgba(0,0,0,.45))"></div></div>` })}
+        eventHandlers={editing ? {
+          drag: (e) => rotate(e as unknown as { target: L.Marker }, false),
+          dragend: (e) => rotate(e as unknown as { target: L.Marker }, true),
+        } : undefined}
+      >
+        {editing && <Tooltip direction="top">Drag to aim the camera</Tooltip>}
+      </Marker>
+    </>
+  );
+}
+
 export function LayersScreen({
   projectId,
   mapCenter,
@@ -1146,14 +1211,16 @@ export function LayersScreen({
         ));
       } else {
         // Normal click: create new anchor point
+        const center = { lat: latlng.lat, lng: latlng.lng };
         const newAnchor: Shape = {
           id: `anchor_${Date.now()}_${Math.random()}`,
           layerId: 'infrastructure',
           type: 'circle',
-          center: { lat: latlng.lat, lng: latlng.lng },
+          center,
           radius: 0,
           canopyRadius: 15,
           photoAnchor: true,
+          targetPoint: destPoint(center, 0, ANCHOR_AIM_RADIUS_M), // arrow aims north by default
         };
         onShapesChange([...shapes, newAnchor]);
         setSelectedShape(newAnchor);
@@ -1686,7 +1753,7 @@ export function LayersScreen({
         </div>
 
         {/* Map */}
-        <div ref={layersMapRef} className={`layers-map${sidebarMode === 'layers' ? ' layers-mode' : ''}`} style={{ gridColumn: 2 }}>
+        <div ref={layersMapRef} className={`layers-map${sidebarMode === 'layers' ? ' layers-mode' : ''}${sidebarMode === 'photos' ? ' photos-place-mode' : ''}`} style={{ gridColumn: 2 }}>
           {/* Water Mode Toolbar */}
           {sidebarMode === 'water' && (
             <div className="drawing-toolbar water-toolbar">
@@ -2062,48 +2129,26 @@ export function LayersScreen({
                 return null;
               })}
 
-            {/* Photo anchor points — always-visible numbered pins; the blue zone
-                and target line show only while the Photo Points tool is active. */}
+            {/* Photo anchor points — numbered position pin + a rotatable aim arrow.
+                The aim arrow & rotation circle show only while editing photos. */}
             {shapes
               .filter(s => s.photoAnchor && s.center)
               .map((anchor, i) => {
-                const num = i + 1;
-                const name = anchor.anchorLabel?.trim() || `Position ${num}`;
-                const editing = activeTool === 'photoAnchors';
-                const selected = selectedShape?.id === anchor.id;
+                const center = anchor.center!;
+                const aim = anchor.targetPoint || destPoint(center, 0, ANCHOR_AIM_RADIUS_M);
+                const editing = sidebarMode === 'photos' || activeTool === 'photoAnchors';
                 return (
-                  <div key={`anchor-group-${anchor.id}`}>
-                    {editing && (
-                      <LeafletCircle
-                        center={[anchor.center!.lat, anchor.center!.lng]}
-                        radius={anchor.canopyRadius || 10}
-                        pathOptions={{ color: '#3b82f6', fillColor: '#93c5fd', fillOpacity: 0.35, weight: selected ? 3 : 2 }}
-                      />
-                    )}
-                    {editing && anchor.targetPoint && (
-                      <LeafletPolyline
-                        positions={[
-                          [anchor.center!.lat, anchor.center!.lng],
-                          [anchor.targetPoint.lat, anchor.targetPoint.lng],
-                        ]}
-                        pathOptions={{ color: '#8b5cf6', weight: 2, dashArray: '5, 5' }}
-                      >
-                        <Tooltip>🎯 Aim direction</Tooltip>
-                      </LeafletPolyline>
-                    )}
-                    <Marker
-                      position={[anchor.center!.lat, anchor.center!.lng]}
-                      icon={L.divIcon({
-                        className: '',
-                        html: `<div style="background:${selected ? '#2563eb' : '#3b82f6'};color:#fff;border-radius:50% 50% 50% 0;width:26px;height:26px;transform:rotate(-45deg);display:flex;align-items:center;justify-content:center;border:2px solid #fff;box-shadow:0 2px 5px rgba(0,0,0,.4)"><span style="transform:rotate(45deg);font-size:11px;font-weight:700;font-family:system-ui">${num}</span></div>`,
-                        iconSize: [26, 26],
-                        iconAnchor: [13, 26],
-                      })}
-                      eventHandlers={{ click: () => { setSelectedShape(anchor); setPhotoHighlightId(anchor.id); if (sidebarMode !== 'photos') setActiveTool('photoAnchors'); } }}
-                    >
-                      <Tooltip direction="top" offset={[0, -24]}>📷 {name}</Tooltip>
-                    </Marker>
-                  </div>
+                  <PhotoAnchor
+                    key={`anchor-${anchor.id}`}
+                    center={center}
+                    aim={aim}
+                    num={i + 1}
+                    name={anchor.anchorLabel?.trim() || `Position ${i + 1}`}
+                    editing={editing}
+                    selected={selectedShape?.id === anchor.id || photoHighlightId === anchor.id}
+                    onSelectClick={() => { setSelectedShape(anchor); setPhotoHighlightId(anchor.id); if (sidebarMode !== 'photos') setActiveTool('photoAnchors'); }}
+                    onRotate={(t) => onShapesChange(shapes.map(s => s.id === anchor.id ? { ...s, targetPoint: t } : s))}
+                  />
                 );
               })}
 

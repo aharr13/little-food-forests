@@ -1326,3 +1326,11 @@
   color: #b91c1c; border-radius: 6px; cursor: pointer; font-size: 15px; line-height: 1;
 }
 .anchor-del:hover { background: #fecaca; }
+
+/* In Photos mode, vector shapes (plant canopies, polygons, boundary) become
+   click-through so anchor positions can be dropped on top of them. Markers
+   (numbered pins, the rotatable aim arrow) stay interactive. This mirrors how
+   water markers use pointer-events — react-leaflet's `interactive` prop is not
+   reactive, so CSS is the reliable lever. */
+.photos-place-mode .leaflet-overlay-pane { pointer-events: none; }
+.photos-place-mode .leaflet-marker-pane { pointer-events: auto; }
