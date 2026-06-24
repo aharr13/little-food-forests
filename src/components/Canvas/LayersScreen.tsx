@@ -214,6 +214,7 @@ function EditableCircle({
   activeTool,
   onSelect,
   onUpdate,
+  interactive = true,
 }: {
   shape: Shape;
   layer: typeof FOOD_FOREST_LAYERS[0];
@@ -222,6 +223,7 @@ function EditableCircle({
   activeTool: DrawingTool;
   onSelect: () => void;
   onUpdate: (updates: Partial<Shape>) => void;
+  interactive?: boolean;   // false = click-through (e.g. dropping photo anchors on top)
 }) {
   const canopyRef = useRef<L.Circle | null>(null);
   const trunkRef = useRef<L.Circle | null>(null);
@@ -243,6 +245,7 @@ function EditableCircle({
         ref={canopyRef}
         center={[shape.center.lat, shape.center.lng]}
         radius={canopyRadiusMeters}
+        interactive={interactive}
         pathOptions={{
           fillColor: layer.color,
           fillOpacity: isSelected ? 0.55 : statusOpacity,
@@ -311,6 +314,7 @@ function EditableCircle({
         ref={trunkRef}
         center={[shape.center.lat, shape.center.lng]}
         radius={isTree ? trunkRadiusMeters : Math.max(0.5, canopyRadiusMeters * 0.15)}
+        interactive={interactive}
         pathOptions={{
           fillColor: isTree ? '#5D4037' : layer.color,
           fillOpacity: 0.9,
@@ -427,6 +431,7 @@ function EditablePolygon({
   activeTool,
   onSelect,
   onUpdate,
+  interactive = true,
 }: {
   shape: Shape;
   layer: typeof FOOD_FOREST_LAYERS[0];
@@ -435,6 +440,7 @@ function EditablePolygon({
   activeTool: DrawingTool;
   onSelect: () => void;
   onUpdate: (updates: Partial<Shape>) => void;
+  interactive?: boolean;
 }) {
   const polygonRef = useRef<L.Polygon | null>(null);
   const map = useMap();
@@ -448,6 +454,7 @@ function EditablePolygon({
       <LeafletPolygon
         ref={polygonRef}
         positions={positions}
+        interactive={interactive}
         pathOptions={{
           fillColor: layer.color,
           fillOpacity: isSelected ? 0.45 : 0.3,
@@ -610,6 +617,7 @@ function EditablePolyline({
   activeTool,
   onSelect,
   onUpdate,
+  interactive = true,
 }: {
   shape: Shape;
   layer: typeof FOOD_FOREST_LAYERS[0];
@@ -618,6 +626,7 @@ function EditablePolyline({
   activeTool: DrawingTool;
   onSelect: () => void;
   onUpdate: (updates: Partial<Shape>) => void;
+  interactive?: boolean;
 }) {
   const polylineRef = useRef<L.Polyline | null>(null);
   const map = useMap();
@@ -631,6 +640,7 @@ function EditablePolyline({
       <LeafletPolyline
         ref={polylineRef}
         positions={positions}
+        interactive={interactive}
         pathOptions={{
           color: isSelected ? '#fbbf24' : layer.color,
           weight: isSelected ? 4 : 3,
@@ -1926,10 +1936,11 @@ export function LayersScreen({
 
               const isWaterSelected = selectedWaterFeature?.id === feature.id;
 
-              // In layers mode: markers are faded and non-interactive so plants can be placed on top
+              // Faded + non-interactive in layers mode so plants can be placed on top;
+              // also click-through in photos mode so anchors can be dropped anywhere.
               const isLayersMode = sidebarMode === 'layers';
               const markerOpacity = isLayersMode ? 0.25 : 1;
-              const markerPointerEvents = isLayersMode ? 'none' : 'auto';
+              const markerPointerEvents = (isLayersMode || sidebarMode === 'photos') ? 'none' : 'auto';
 
               return (
                 <Marker
@@ -1967,8 +1978,10 @@ export function LayersScreen({
               );
             })}
 
-            {/* Shapes - sorted by size so larger shapes render first (behind smaller ones) */}
+            {/* Shapes - sorted by size so larger shapes render first (behind smaller ones).
+                Photo anchors are drawn separately as numbered pins, so exclude them here. */}
             {[...shapes]
+              .filter(s => !s.photoAnchor)
               .sort((a, b) => {
                 // Get size for sorting - larger shapes first
                 const getSize = (s: Shape) => {
@@ -2009,6 +2022,7 @@ export function LayersScreen({
                       activeTool={activeTool}
                       onSelect={handleSelect}
                       onUpdate={(updates) => handleShapeUpdate(shape.id, updates)}
+                      interactive={sidebarMode !== 'photos'}
                     />
                   );
                 }
@@ -2024,6 +2038,7 @@ export function LayersScreen({
                       activeTool={activeTool}
                       onSelect={handleSelect}
                       onUpdate={(updates) => handleShapeUpdate(shape.id, updates)}
+                      interactive={sidebarMode !== 'photos'}
                     />
                   );
                 }
@@ -2039,6 +2054,7 @@ export function LayersScreen({
                       activeTool={activeTool}
                       onSelect={handleSelect}
                       onUpdate={(updates) => handleShapeUpdate(shape.id, updates)}
+                      interactive={sidebarMode !== 'photos'}
                     />
                   );
                 }
